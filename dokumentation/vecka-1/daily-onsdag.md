@@ -1,4 +1,4 @@
-# Daily Standup: veckodag 2026-02-11
+# Daily Standup: Onsdag 2026-02-11
 
 - [ ] Plan för standups för v 8
 - [ ] Gruppkontrakt
