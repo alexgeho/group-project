@@ -4,7 +4,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 2. Mötestider
+## 1. Mötestider
 
 ### Gemensamma mötestider
 
@@ -17,7 +17,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 3. Möteskanaler & Format
+## 2. Möteskanaler & Format
 
 | Punkt | Information |
 |--------|-------------|
@@ -29,7 +29,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 4. Kommunikation
+## 3. Kommunikation
 
 | Punkt | Information |
 |--------|-------------|
@@ -40,7 +40,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 5. Arbetssätt & Samarbete
+## 4. Arbetssätt & Samarbete
 
 ### Kodmerges
 - Vi börjar med att göra merges tillsammans.  
@@ -56,7 +56,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 6. Uppgiftsfördelning
+## 5. Uppgiftsfördelning
 
 | Punkt | Information |
 |--------|-------------|
@@ -67,7 +67,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 7. Övriga Förväntningar
+## 6. Övriga Förväntningar
 
 | Punkt | Information |
 |--------|-------------|
@@ -78,7 +78,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 8. Scrum Master-schema
+## 7. Scrum Master-schema
 
 | Vecka | Ansvarig |
 |--------|----------|
@@ -90,7 +90,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 
 ---
 
-## 9. Kodstandard
+## 8. Kodstandard
 
 ### Commit-meddelanden
 Vi använder följande prefix:
@@ -109,7 +109,7 @@ Vi använder följande prefix:
 
 ---
 
-## 10. Underskrifter
+## 9. Underskrifter
 
 Här signeras gruppkontraktet av varje gruppmedlem som bekräftelse på att alla är överens om villkoren.
 
