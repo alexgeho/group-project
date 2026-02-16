@@ -5,4 +5,21 @@
 
 Dagens scrum master: Angelie
 
-Närvarande: Alla
+## Namn: Angelie
+- **Idag har jag** deltagit i team diskussion.
+
+## Namn: Harez
+- **Idag har jag** deltagit i team diskussion.
+
+## Namn: Alexander
+- **Idag har jag** deltagit i team diskussion.
+
+## Namn: Jenny
+- **Idag har jag** deltagit i team diskussion.
+
+## Namn: Tilda
+- **Idag har jag** deltagit i team diskussion.
+
+## Namn: Mojtaba
+- **Idag har jag** deltagit i team diskussion.
+
