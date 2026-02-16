@@ -118,4 +118,4 @@ Här signeras gruppkontraktet av varje gruppmedlem som bekräftelse på att alla
 - Alexander Gerhard  
 - Harez Sait  
 - Tilda Egland  
-- Gruppmedlem 6: __________________________  
+- Jenny Gustafsson 
