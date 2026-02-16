@@ -1,82 +1,80 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marauders Escape Room</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marauders Escape Room</title>
-</head>
+  <body>
+    <header>
+      <section>Timer:</section>
+      <section>Artefact:</section>
+      <section>
+        Progressbar:
+        <progress value="80" max="100">he</progress>
+      </section>
+    </header>
 
-<body>
-  <header>
-    <section>Timer:</section>
-    <section>Artefact:</section>
-    <section>Progressbar: 
-      <progress value="80" max="100">he</progress>
-    </section>
-  </header>
-
-  <main>
-    <section class="welcome-page box">
-      <div class="login-form">
-        <form>
-          <label for="">
-            <span>Player Name:</span>
-            <input type="text" id="player-name" name="player-name" required>
-          </label>
-          <button type="submit">Start Game</button>
-        </form>
-      </div>
-      <div class="welcome-text">
-        <h1>Welcome to the Marauders Escape Room</h1>
-        <p>En liten digital varelse från Kodvärlden har kraschat in i vår värld. Portalen hem är låst av ett säkerhetssystem. För
-          att låsa upp portalen måste du ta dig igenom 6 digitala hinder. Varje hinder ger en bokstav. Tillsammans bildar
-          bokstäverna lösenordet som öppnar portalen. Good luck!</p>
+    <main>
+      <section class="welcome-page box">
+        <div class="login-form">
+          <form>
+            <label for="">
+              <span>Player Name:</span>
+              <input type="text" id="player-name" name="player-name" required />
+            </label>
+            <button type="submit">Start Game</button>
+          </form>
         </div>
-    </section>
-    <section class="rooms box">
-      <!-- <div class="room-one room-card">Room1 <button>Enter</button></div> -->
-    </section>
+        <div class="welcome-text">
+          <h1>Welcome to the Marauders Escape Room</h1>
+          <p>
+            A small digital creature from Cyberspace has crashed into our world.
+            The portal home is locked by a security system. To unlock the
+            portal, you must get through 6 digital obstacles. Each obstacle
+            provides a letter. Together, the letters form the password that
+            opens the portal. Good luck!
+          </p>
+        </div>
+      </section>
+      <section class="rooms box">
+        <!-- <div class="room-one room-card">Room1 <button>Enter</button></div> -->
+      </section>
 
-    <section class="room-one-content">
-    </section>
+      <section class="room-one-content"></section>
 
-    <section class="room-two-content">
-    </section>
+      <section class="room-two-content"></section>
 
-    <section class="room-three-content">
-    </section>
+      <section class="room-three-content"></section>
 
-    <section class="room-four-content">
-    </section>
+      <section class="room-four-content"></section>
 
-    <section class="room-five-content">
-    </section>
+      <section class="room-five-content"></section>
 
-    <section class="room-six-content">
-    </section>
+      <section class="room-six-content"></section>
 
-    <section class="game-over box">Game over</section>
+      <section class="game-over box">Game over</section>
 
-    <section class="high-score box">HighScore
-      <table>
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Time Remaining</th>
-          </tr>
-        </thead>
-        <tbody id="high-score-table-body">
-          <!-- High score entries will be dynamically added here -->
-        </tbody>
-      </table>
-    </section>
+      <section class="high-score box">
+        HighScore
+        <table>
+          <thead>
+            <tr>
+              <th>Player Name</th>
+              <th>Time Remaining</th>
+            </tr>
+          </thead>
+          <tbody id="high-score-table-body">
+            <!-- High score entries will be dynamically added here -->
+          </tbody>
+        </table>
+      </section>
 
-    <section class="about box">About us</section>
-  </main>
+      <section class="about box">About us</section>
+    </main>
 
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
