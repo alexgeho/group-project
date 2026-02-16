@@ -11,7 +11,7 @@ Detta dokument beskriver våra gemensamma överenskommelser kring arbetssätt, k
 | Möte                | Tid                   |
 |---------------------|-----------------------|
 | **Daily Standup**   | Varje dag 08:45–09:00 |
-| **Sprint Planning** | Måndag 10:00–11:00    |
+| **Sprint Planning** | Måndag 11:00–12:00    |
 | **Backlog Refining**| Tisdag 12:00–13:00    |
 | **Retrospektiv**    | Fredag 12:00–13:00    |
 
