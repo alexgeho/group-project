@@ -1,5 +1,6 @@
 # Daily Standup: tisdag 2026-02-17
 
+- [x] Fyll i rätt datum och dag i rubriken här ovanför
 - [ ] Uppdatera/byt ut skärmdumpen som heter board-i-borjan-pa-veckan.jpg med en bild på er board såsom den ser ut när ni startar projektet.
 - [ ] Byt ut namnen och lägg till de som saknas i gruppen, samt fyllt i svar på frågorna.
 
@@ -7,24 +8,25 @@ Dagens scrum master: Angelie
 
 ## Namn: Tilda Egland
 
-Idag har jag undersökt skattebrott.
-Ett problem jag har är att jag inte får tag på min källa längre.
-Jag behöver hjälp med att leta pressklipp på biblioteket från 2014 om skattebrottslingen.
-Idag har jag lärt mig att äta kanelbullar.
+- Klonat ner repot och installerat dependencies. Varit på lektion.
+- Gått bra att klona ner.
 
 ## Namn: Alexander Gerhard
 
-Idag har jag deltagit i en intervju i Sveriges Radio om senaste avsnittet av Uppdrag Granskning.
-Ett problem jag har är att intervjuaren i Studio P1 inte förstod vad jag sa, så det blev inte så bra press. Men "there's no such thing as bad press."
-Jag behöver hjälp med att skriva manus till nästa avsnitt.
-Idag har jag lärt mig att beställa FUP.
+- Skapat en funktion som loopar rummen ur json (renderar till html)
+- Stötte på lite hinder men det har löst sig.
+- Har lärt mig skapa funktionen någorlunda självständigt.
 
-## Namn: 
+## Namn: Harez Sait 
+- Klonat ner repot och installerat dependencies. Varit på lektion.
+- Gått bra att klona ner. 
 
 ## Namn: Jenny Gustafsson
+Frånvarande 
 
 ## Namn: Mojtaba Mobasheri
+Frånvarande
 
 ## Namn: Angelie Ångman
+- Har varit på lektion
 
-Frånvarande.
