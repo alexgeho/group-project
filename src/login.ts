@@ -4,10 +4,10 @@ export function login() {
     const form = document.querySelector<HTMLFormElement>('#login-form')
     const input = document.querySelector<HTMLInputElement>('#player-name')
     const logoutBtn = document.querySelector<HTMLButtonElement>('#logout-btn')
-
-
+    const loggedIn = document.querySelector<HTMLElement>('#loggedIn')
 
     form?.addEventListener('submit', createPlayer);
+
 
     function createPlayer(e: Event) {
         e.preventDefault();
@@ -36,23 +36,29 @@ export function login() {
 
         console.log("Created:", newPlayer);
 
-        /* LOG OUT BTN */
+        /* LOG OUT BTN +*/
 
         if (newPlayer) {
             form.style.display = "none";
             logoutBtn.style.display = "block";
+            loggedIn.style.display = "block";
+
+            loggedIn!.textContent = `${newPlayer.name} | Points: ${newPlayer.points} | Artifacts: ${newPlayer.artifacts.length}`;
         }
 
-        logoutBtn?.addEventListener("click", handleLogout);
+    logoutBtn?.addEventListener("click", handleLogout);
 
         function handleLogout(): void {
             localStorage.removeItem("currentPlayerId");
             form.style.display = "block";
             logoutBtn.style.display = "none";
+            loggedIn.style.display = "none";
             input.value = "";
         }
 
     }
+
+
 
 
 
