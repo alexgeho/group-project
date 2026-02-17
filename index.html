@@ -1,80 +1,87 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marauders Escape Room</title>
-  </head>
 
-  <body>
-    <header>
-      <section>Timer:</section>
-      <section>Artefact:</section>
-      <section>
-        Progressbar:
-        <progress value="80" max="100">he</progress>
-      </section>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marauders Escape Room</title>
+</head>
 
-    <main>
-      <section class="welcome-page box">
-        <div class="login-form">
-          <form>
-            <label for="">
-              <span>Player Name:</span>
-              <input type="text" id="player-name" name="player-name" required />
-            </label>
-            <button type="submit">Start Game</button>
-          </form>
-        </div>
-        <div class="welcome-text">
-          <h1>Welcome to the Marauders Escape Room</h1>
-          <p>
-            A small digital creature from Cyberspace has crashed into our world.
-            The portal home is locked by a security system. To unlock the
-            portal, you must get through 6 digital obstacles. Each obstacle
-            provides a letter. Together, the letters form the password that
-            opens the portal. Good luck!
-          </p>
-        </div>
-      </section>
-      <section class="rooms box">
-        <!-- <div class="room-one room-card">Room1 <button>Enter</button></div> -->
-      </section>
+<body>
 
-      <section class="room-one-content"></section>
+  <header>
+    <section>Timer:</section>
+    <section>Artefact:</section>
+    <section>
+      Progressbar:
+      <progress value="80" max="100">he</progress>
+    </section>
+  </header>
 
-      <section class="room-two-content"></section>
+  <main>
+    <section class="welcome-page box">
 
-      <section class="room-three-content"></section>
+      <form id="login-form">
+        <label>
+          <span>Player Name:</span>
+          <input type="text" id="player-name" required />
+        </label>
+        <button type="submit">Start Game</button>
+      </form>
 
-      <section class="room-four-content"></section>
+      <!-- <div class="welcome-text">
+        <h1>Welcome to the Marauders Escape Room</h1>
+        <p>
+          A small digital creature from Cyberspace has crashed into our world.
+          The portal home is locked by a security system. To unlock the
+          portal, you must get through 6 digital obstacles. Each obstacle
+          provides a letter. Together, the letters form the password that
+          opens the portal. Good luck!
+        </p>
+      </div> -->
+    </section>
+    <section class="rooms box">
+      <div id="roomsTest">
 
-      <section class="room-five-content"></section>
 
-      <section class="room-six-content"></section>
+      </div>
+      <!-- <div class="room-one room-card">Room1 <button>Enter</button></div> -->
+    </section>
 
-      <section class="game-over box">Game over</section>
+    <section class="room-one-content"></section>
 
-      <section class="high-score box">
-        HighScore
-        <table>
-          <thead>
-            <tr>
-              <th>Player Name</th>
-              <th>Time Remaining</th>
-            </tr>
-          </thead>
-          <tbody id="high-score-table-body">
-            <!-- High score entries will be dynamically added here -->
-          </tbody>
-        </table>
-      </section>
+    <section class="room-two-content"></section>
 
-      <section class="about box">About us</section>
-    </main>
+    <section class="room-three-content"></section>
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <section class="room-four-content"></section>
+
+    <section class="room-five-content"></section>
+
+    <section class="room-six-content"></section>
+
+    <section class="game-over box">Game over</section>
+
+    <section class="high-score box">
+      HighScore
+      <table>
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Time Remaining</th>
+          </tr>
+        </thead>
+        <tbody id="high-score-table-body">
+          <!-- High score entries will be dynamically added here -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="about box">About us</section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
