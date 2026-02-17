@@ -3,6 +3,7 @@ import type { IPLayer } from "./models/Player";
 export function login() {
     const form = document.querySelector<HTMLFormElement>('#login-form')
     const input = document.querySelector<HTMLInputElement>('#player-name')
+    const logoutBtn = document.querySelector<HTMLButtonElement>('#logout-btn')
 
 
 
@@ -14,7 +15,6 @@ export function login() {
         if (!input) return;
 
         const name = input.value.trim();
-
 
         const newPlayer: IPLayer = {
             id: crypto.randomUUID(),
@@ -35,6 +35,22 @@ export function login() {
         localStorage.setItem("currentPlayerId", newPlayer.id);
 
         console.log("Created:", newPlayer);
+
+        /* LOG OUT BTN */
+
+        if (newPlayer) {
+            form.style.display = "none";
+            logoutBtn.style.display = "block";
+        }
+
+        logoutBtn?.addEventListener("click", handleLogout);
+
+        function handleLogout(): void {
+            localStorage.removeItem("currentPlayerId");
+            form.style.display = "block";
+            logoutBtn.style.display = "none";
+            input.value = "";
+        }
 
     }
 
