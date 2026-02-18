@@ -7,32 +7,35 @@
  */
 
 let totalSeconds: number = 0;
+let accumulatedSeconds: number = 0;  // Time from previous sessions
 let isRunning: boolean = false;
 let intervalId: number | null = null;
 let timerDisplay: HTMLElement | null = null;
+let startTime: number = 0;  // When current session started
 
 // Initialize on load
 timerDisplay = document.querySelector('#timer-display');
-loadFromLocalStorage();
 updateDisplay();
 
 // START TIMER -- called when the user ENTERS a room
 export function startTotalTimer(): void {
     if (!isRunning) {
         isRunning = true;
+        startTime = Date.now();
         
         // check if timer is resuming or starting for the first time
-        if (totalSeconds > 0) {
+        if (accumulatedSeconds > 0) {
             console.log('Total Timer resumed');
         } else {
             console.log('Total Timer started');
         }
 
         intervalId = window.setInterval(() => {
-            totalSeconds++;
+            const sessionTime = Math.floor((Date.now() - startTime) / 1000);
+            totalSeconds = accumulatedSeconds + sessionTime;
             updateDisplay();
             saveToLocalStorage();
-        }, 1000);
+        }, 100); // Update more frequently for accurate time
     }
 }
 
@@ -41,6 +44,10 @@ export function pauseTotalTimer(): void {
     if (isRunning) {
         isRunning = false;
         console.log('Total Timer paused');
+
+        // Save time from this session
+        const sessionTime = Math.floor((Date.now() - startTime) / 1000);
+        accumulatedSeconds += sessionTime;
 
         if (intervalId) {
             window.clearInterval(intervalId);
@@ -58,8 +65,16 @@ export function getTotalSeconds(): number {
 export function resetTotalTimer(): void {
     pauseTotalTimer();
     totalSeconds = 0;
+    accumulatedSeconds = 0;
     updateDisplay();
     localStorage.removeItem('totalSeconds');
+    console.log('Total Timer reset');
+}
+
+// Load from localStorage (call manually to resume)
+export function loadTotalTimerFromLocalStorage(): void {
+    loadFromLocalStorage();
+    console.log('Total Timer loaded from localStorage');
 }
 
 // Format seconds to HH:MM:SS
@@ -86,5 +101,6 @@ function saveToLocalStorage(): void {
 // Load from localStorage
 function loadFromLocalStorage(): void {
     const saved = localStorage.getItem('totalSeconds');
-    totalSeconds = saved ? parseInt(saved, 10) : 0;
+    accumulatedSeconds = saved ? parseInt(saved, 10) : 0;
+    totalSeconds = accumulatedSeconds;
 }
