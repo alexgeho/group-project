@@ -6,6 +6,8 @@ export function login(): void {
     const logoutBtn = document.querySelector<HTMLButtonElement>('#logout-btn');
     const enterBtn = document.querySelector<HTMLButtonElement>('#enter-btn');
     const loggedIn = document.querySelector<HTMLElement>('#loggedIn');
+    const main = document.querySelector<HTMLElement>('main');
+
 
     form?.addEventListener('submit', createPlayer);
     logoutBtn?.addEventListener('click', handleLogout);
@@ -63,14 +65,16 @@ export function login(): void {
         return players.find(p => p.id === currentId) || null;
     }
 
-    // Updates the UI based on current player state
+    // Show/hide enter button and main based on player state
     function renderPlayerInfo(): void {
         const player = getCurrentPlayer();
 
         if (!player) {
             form!.style.display = 'block';
             logoutBtn!.style.display = 'none';
+            enterBtn!.style.display = 'none';
             loggedIn!.style.display = 'none';
+            main!.style.display = 'none'; // hide main on logout
             return;
         }
 
@@ -83,11 +87,17 @@ export function login(): void {
             `${player.name} | Points: ${player.points} | Artifacts: ${player.artifacts.length}`;
     }
 
+    // Add this inside login() with other event listeners
+    enterBtn?.addEventListener('click', function showMain(): void {
+        if (main) main.style.display = 'block';
+    });
+
     // Logs out the current player and resets UI
     function handleLogout(): void {
         localStorage.removeItem('currentPlayerId');
-        renderPlayerInfo();
+        if (main) main.style.display = 'none';
         if (input) input.value = '';
+        renderPlayerInfo();
     }
 
 
