@@ -7,60 +7,39 @@
  */
 
 let totalSeconds: number = 0;
-let accumulatedSeconds: number = 0;
-let isRunning: boolean = false;
 let intervalId: number | null = null;
 let timerDisplay: HTMLElement | null = null;
-let startTime: number = 0;
 
 // Initialize on load
 timerDisplay = document.querySelector('#timer-display');
 updateDisplay();
 
-// START TIMER -- called when the user ENTERS a room
+// START TIMER - called when the user enters a room
 export function startTotalTimer(): void {
-    if (!isRunning) {
-        isRunning = true;
-        startTime = Date.now();
-        
-        // check if timer is resuming or starting for the first time
-        if (accumulatedSeconds > 0) {
-            console.log('Total Timer resumed');
-        } else {
-            console.log('Total Timer started');
-        }
+    if (intervalId !== null) return;
 
-        intervalId = window.setInterval(() => {
-            const sessionTime = Math.floor((Date.now() - startTime) / 1000);
-            totalSeconds = accumulatedSeconds + sessionTime;
-            updateDisplay();
-            saveToLocalStorage();
-        }, 100); // Update more frequently for accurate time
-    }
+    console.log(totalSeconds > 0 ? 'Total Timer resumed' : 'Total Timer started');
+
+    intervalId = window.setInterval(() => {
+        totalSeconds++;
+        updateDisplay();
+        saveToLocalStorage();
+    }, 1000);
 }
 
-// PAUSE TIMER - called when the user EXITS a room
+// PAUSE TIMER - called when the user exits a room
 export function pauseTotalTimer(): void {
-    if (isRunning) {
-        isRunning = false;
-        console.log('Total Timer paused');
+    if (intervalId === null) return;
 
-        // Save time from this session
-        const sessionTime = Math.floor((Date.now() - startTime) / 1000);
-        accumulatedSeconds += sessionTime;
-
-        if (intervalId) {
-            window.clearInterval(intervalId);
-            intervalId = null;
-        }
-    }
+    console.log('Total Timer paused');
+    window.clearInterval(intervalId);
+    intervalId = null;
 }
 
-// Reset timer - only called when/if resetting the game
+// Reset timer - only called when resetting the game
 export function resetTotalTimer(): void {
     pauseTotalTimer();
     totalSeconds = 0;
-    accumulatedSeconds = 0;
     updateDisplay();
     localStorage.removeItem('totalSeconds');
     console.log('Total Timer reset');
@@ -82,7 +61,7 @@ function updateDisplay(): void {
     }
 }
 
-// Save to localStorage
+// Save to localStorage ??
 function saveToLocalStorage(): void {
     localStorage.setItem('totalSeconds', String(totalSeconds));
 }
