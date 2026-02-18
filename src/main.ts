@@ -4,6 +4,7 @@ import renderRooms from "./roomsTest";
 
 
 login();
+
 renderRooms();
 
 
