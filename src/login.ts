@@ -17,7 +17,11 @@ export function login(): void {
         e.preventDefault();
         if (!input) return;
 
-        const name = input.value.trim();
+        const name = input.value;
+
+        console.log('name:::::', name);
+
+
         if (!name) return;
 
         const newPlayer: IPLayer = {
@@ -28,11 +32,17 @@ export function login(): void {
             roomTimes: []
         };
 
+        console.log('newPlayer:::::', newPlayer);
+
         const players: IPLayer[] = JSON.parse(
             localStorage.getItem('players') || '[]'
         );
 
+        console.log('players:::::', players);
+
+
         players.push(newPlayer);
+
 
         localStorage.setItem('players', JSON.stringify(players));
         localStorage.setItem('currentPlayerId', newPlayer.id);
@@ -78,5 +88,5 @@ export function login(): void {
         if (input) input.value = '';
     }
 
-    
+
 }
