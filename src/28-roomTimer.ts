@@ -20,8 +20,5 @@ export function startRoomTimer(updateUI: (time: number) => void) {
 
         clearInterval(intervalId)
         intervalId = null
-
-        console.log("Room time", seconds)
-
         return seconds
     }
