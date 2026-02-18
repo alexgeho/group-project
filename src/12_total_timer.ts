@@ -1,17 +1,17 @@
 /*
  * 12_total_timer.ts
  * 
- * Measures the TOTAL time for the game.
- * The timer starts or resumes when entering a room
- * Timer pauses when exiting a room.
+ * Measures the total time for the game (every room visit):
+ * Timer starts or resumes when entering a room
+ * Timer pauses when exiting a room
  */
 
 let totalSeconds: number = 0;
-let accumulatedSeconds: number = 0;  // Time from previous sessions
+let accumulatedSeconds: number = 0;
 let isRunning: boolean = false;
 let intervalId: number | null = null;
 let timerDisplay: HTMLElement | null = null;
-let startTime: number = 0;  // When current session started
+let startTime: number = 0;
 
 // Initialize on load
 timerDisplay = document.querySelector('#timer-display');
@@ -56,11 +56,6 @@ export function pauseTotalTimer(): void {
     }
 }
 
-// Get total time (in seconds)
-export function getTotalSeconds(): number {
-    return totalSeconds;
-}
-
 // Reset timer - only called when/if resetting the game
 export function resetTotalTimer(): void {
     pauseTotalTimer();
@@ -69,12 +64,6 @@ export function resetTotalTimer(): void {
     updateDisplay();
     localStorage.removeItem('totalSeconds');
     console.log('Total Timer reset');
-}
-
-// Load from localStorage (call manually to resume)
-export function loadTotalTimerFromLocalStorage(): void {
-    loadFromLocalStorage();
-    console.log('Total Timer loaded from localStorage');
 }
 
 // Format seconds to HH:MM:SS
@@ -96,11 +85,4 @@ function updateDisplay(): void {
 // Save to localStorage
 function saveToLocalStorage(): void {
     localStorage.setItem('totalSeconds', String(totalSeconds));
-}
-
-// Load from localStorage
-function loadFromLocalStorage(): void {
-    const saved = localStorage.getItem('totalSeconds');
-    accumulatedSeconds = saved ? parseInt(saved, 10) : 0;
-    totalSeconds = accumulatedSeconds;
 }
