@@ -4,98 +4,87 @@
  * Measures the TOTAL time for the game.
  * The timer starts or resumes when entering a room
  * Timer pauses when exiting a room.
- * 
- * Will be initialized in main.ts
  */
 
-class TotalTimer {
-    private totalSeconds: number = 0;
-    private isRunning: boolean = false;
-    private intervalId: number | null = null;
-    private timerDisplay: HTMLElement | null = null;
+let totalSeconds: number = 0;
+let isRunning: boolean = false;
+let intervalId: number | null = null;
+let timerDisplay: HTMLElement | null = null;
 
-    constructor() {
-        // Find element to display the timer
-        this.timerDisplay = document.querySelector('#timer-display');
-        this.loadFromLocalStorage();
-        this.updateDisplay();
-    }
+// Initialize on load
+timerDisplay = document.querySelector('#timer-display');
+loadFromLocalStorage();
+updateDisplay();
 
-
-    // START TIMER -- called when the user ENTERS a room
-    public startTimer(): void {
-        if (!this.isRunning) {
-            this.isRunning = true;
-            
-            // check if timer is resuming game time or starting for the first time
-            if (this.totalSeconds > 0) {
-                console.log('Total Timer resumed');
-            } else {
-                console.log('Total Timer started');
-            }
-
-            this.intervalId = window.setInterval(() => {
-                this.totalSeconds++;
-                this.updateDisplay();
-                this.saveToLocalStorage();
-            }, 1000);
+// START TIMER -- called when the user ENTERS a room
+export function startTotalTimer(): void {
+    if (!isRunning) {
+        isRunning = true;
+        
+        // check if timer is resuming or starting for the first time
+        if (totalSeconds > 0) {
+            console.log('Total Timer resumed');
+        } else {
+            console.log('Total Timer started');
         }
-    }
 
-    // PAUSE TIMER - called when the user EXITS a room
-    public pauseTimer(): void {
-        if (this.isRunning) {
-            this.isRunning = false; // ← paused timer
-            console.log('Total Timer paused');
-
-            if (this.intervalId) {
-                window.clearInterval(this.intervalId);
-                this.intervalId = null;
-            }
-        }
-    }
-
-    // Get total time (in seconds)
-    public getTotalSeconds(): number {
-        return this.totalSeconds;
-    }
-
-    // Format seconds to HH:MM:SS
-    private formatTime(seconds: number): string {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
-
-        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
-    }
-
-
-    // Update UI display. TODO: fix CSS
-    private updateDisplay(): void {
-        if (this.timerDisplay) {
-            this.timerDisplay.textContent = `Timer: ${this.formatTime(this.totalSeconds)}`;
-        }
-    }
-
-
-    // Save to localStorage. TODO: Use correct save logic in the future. Player data?
-    private saveToLocalStorage(): void {
-        localStorage.setItem('totalSeconds', String(this.totalSeconds));
-    }
-
-    // Load from localStorage. TODO: Use correct load logic in the future
-    private loadFromLocalStorage(): void {
-        const saved = localStorage.getItem('totalSeconds');
-        this.totalSeconds = saved ? parseInt(saved, 10) : 0;
-    }
-
-    // Reset timer - only called when/if resetting the game
-    public resetTimer(): void {
-        this.pauseTimer();
-        this.totalSeconds = 0;
-        this.updateDisplay();
-        localStorage.removeItem('totalSeconds');
+        intervalId = window.setInterval(() => {
+            totalSeconds++;
+            updateDisplay();
+            saveToLocalStorage();
+        }, 1000);
     }
 }
 
-export default TotalTimer;
+// PAUSE TIMER - called when the user EXITS a room
+export function pauseTotalTimer(): void {
+    if (isRunning) {
+        isRunning = false;
+        console.log('Total Timer paused');
+
+        if (intervalId) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+        }
+    }
+}
+
+// Get total time (in seconds)
+export function getTotalSeconds(): number {
+    return totalSeconds;
+}
+
+// Reset timer - only called when/if resetting the game
+export function resetTotalTimer(): void {
+    pauseTotalTimer();
+    totalSeconds = 0;
+    updateDisplay();
+    localStorage.removeItem('totalSeconds');
+}
+
+// Format seconds to HH:MM:SS
+function formatTime(seconds: number): string {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+// Update UI display
+function updateDisplay(): void {
+    if (timerDisplay) {
+        timerDisplay.textContent = `Timer: ${formatTime(totalSeconds)}`;
+    }
+}
+
+// Save to localStorage
+function saveToLocalStorage(): void {
+    localStorage.setItem('totalSeconds', String(totalSeconds));
+}
+
+// Load from localStorage
+function loadFromLocalStorage(): void {
+    const saved = localStorage.getItem('totalSeconds');
+    totalSeconds = saved ? parseInt(saved, 10) : 0;
+}
