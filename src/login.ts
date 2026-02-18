@@ -4,6 +4,7 @@ export function login(): void {
     const form = document.querySelector<HTMLFormElement>('#login-form');
     const input = document.querySelector<HTMLInputElement>('#player-name');
     const logoutBtn = document.querySelector<HTMLButtonElement>('#logout-btn');
+    const enterBtn = document.querySelector<HTMLButtonElement>('#enter-btn');
     const loggedIn = document.querySelector<HTMLElement>('#loggedIn');
 
     form?.addEventListener('submit', createPlayer);
@@ -75,6 +76,7 @@ export function login(): void {
 
         form!.style.display = 'none';
         logoutBtn!.style.display = 'block';
+        enterBtn!.style.display = 'block';
         loggedIn!.style.display = 'block';
 
         loggedIn!.textContent =

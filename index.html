@@ -11,16 +11,6 @@
 <body>
 
   <header>
-    <section>Timer:</section>
-    <section>Artefact:</section>
-    <section>
-      Progressbar:
-      <progress value="80" max="100">he</progress>
-    </section>
-  </header>
-
-  <main>
-
 
     <section class="login box">
 
@@ -29,20 +19,29 @@
           <span>Player Name:</span>
           <input type="text" id="player-name" required />
         </label>
-        <button type="submit">Start Game</button>
+        <button type="submit">Register Player</button>
       </form>
 
-      
-      <div id="loggedIn" style="display:none;"></div>
 
+      <div id="loggedIn" style="display:none;"></div>
       <button id="logout-btn" style="display:none;">Logga ut</button>
+      <button id="enter-btn" type="submit" style="display:none;">Enter Lobby</button>
 
     </section>
 
+    <div style="display:none;">
+      <section>Timer:</section>
+      <section>Artefact:</section>
+      <section>
+        Progressbar:
+        <progress value="80" max="100">he</progress>
+      </section>
+    </div>
+  </header>
 
-
+  <main style="display:none;">
     <section class="welcome-page box">
-    <div class="welcome-text">
+      <div class="welcome-text">
         <h1>Welcome to the Marauders Escape Room</h1>
         <p>
           A small digital creature from Cyberspace has crashed into our world.
@@ -51,7 +50,7 @@
           provides a letter. Together, the letters form the password that
           opens the portal. Good luck!
         </p>
-      </div> 
+      </div>
     </section>
     <section class="rooms box">
       <div id="roomsTest">
