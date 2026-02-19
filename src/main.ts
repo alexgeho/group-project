@@ -5,15 +5,15 @@ import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
 import { fetchRooms } from "./fetchRooms";
 
 const roms = fetchRooms();
-console.log('roms:::::', JSON.stringify(roms)) ;
+console.log("roms:::::", JSON.stringify(roms));
 login();
 
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('main > section');
-  sections.forEach(section => section.classList.add('hidden'));
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll("main > section");
+  sections.forEach((section) => section.classList.add("hidden"));
 
   // Only show welcome page to begin with.
-  document.querySelector('.homepage-page')?.classList.remove('hidden');
+  document.querySelector(".homepage-page")?.classList.remove("hidden");
 });
 // =============================================================
 // ROOM 1 ======================================================
@@ -39,14 +39,15 @@ function showRoomOneView() {
   });
 }
 
-
 const startGameButton = document.getElementById("start-game-btn");
-startGameButton?.addEventListener('click', loginUser);
+startGameButton?.addEventListener("click", loginUser);
 
 function loginUser(e: Event): void {
   e.preventDefault();
-  const usernameInput = document.getElementById('player-name') as HTMLInputElement;
- 
+  const usernameInput = document.getElementById(
+    "player-name",
+  ) as HTMLInputElement;
+
   const player: any = {
     id: crypto.randomUUID(),
     name: usernameInput.value.trim(),
@@ -54,22 +55,25 @@ function loginUser(e: Event): void {
     currentRoom: 1,
     artifacts: [],
     roomTimes: [],
-    completedRooms: []
+    completedRooms: [],
   };
 
-  localStorage.setItem('player', JSON.stringify(player));
+  localStorage.setItem("player", JSON.stringify(player));
 
   displayWelcomeMessage();
 
   // Transition to rooms box view
-  document.querySelector('.homepage-page')?.classList.add('hidden');
-  document.querySelector('#rooms')?.classList.remove('hidden');
-  document.querySelector('.welcome-message')?.classList.remove('hidden');
+  document.querySelector(".homepage-page")?.classList.add("hidden");
+  document.querySelector("#rooms")?.classList.remove("hidden");
+  document.querySelector(".welcome-message")?.classList.remove("hidden");
 }
 
-
 function displayWelcomeMessage(): void {
-  const storedPlayer = localStorage.getItem('player');
-  const playNameSpan = document.getElementById('player-name-display') as HTMLSpanElement;
-  playNameSpan.textContent = storedPlayer ? JSON.parse(storedPlayer).name : 'Unkown Marauder';
+  const storedPlayer = localStorage.getItem("player");
+  const playNameSpan = document.getElementById(
+    "player-name-display",
+  ) as HTMLSpanElement;
+  playNameSpan.textContent = storedPlayer
+    ? JSON.parse(storedPlayer).name
+    : "Unkown Marauder";
 }
