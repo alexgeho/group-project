@@ -1,7 +1,7 @@
 /*
  * 12_total_timer.ts
  * 
- * Measures the total time for the game (every room visit):
+ * Measures the total time for the game (every room visit)
  * Timer starts or resumes when entering a room
  * Timer pauses when exiting a room
  */
@@ -10,8 +10,7 @@ let totalSeconds: number = 0;
 let intervalId: number | null = null;
 let timerDisplay: HTMLElement | null = null;
 
-// Initialize on load
-timerDisplay = document.querySelector('#timer-display');
+timerDisplay = document.querySelector('#total-timer');
 updateDisplay();
 
 // START TIMER - called when the user enters a room
