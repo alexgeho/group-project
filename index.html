@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap" rel="stylesheet">
   <title>Marauders Escape Room</title>
 </head>
 
@@ -90,6 +93,90 @@
     </section>
 
     <section class="about box">About us</section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+
+      <div class="login-form">
+        <form id="login-form">
+          <label for="player-name">
+            <span>Player Name:</span>
+            <input type="text" id="player-name" name="player-name" required />
+          </label>
+          <button id="start-game-btn" type="submit">Start Game</button>
+        </form>
+
+        <div id="loggedIn"></div>
+        <button id="logoutBtn">Logga ut</button>
+        <button id="enterBtn" type="submit">Enter Lobby</button>
+      </div>
+    </section>
+
+    <!-- WELCOME MESSAGE (to show after login) -->
+    <section class="welcome-message box">
+      <h2 id="welcome-message-text">Welcome to the Marauders Escape Room! <span id="player-name-display"></span></h2>
+    </section>
+
+    <!-- ALL ROOMS -->
+    <section id="roomsBox" class="rooms box">
+      <div class="room-one room-card">
+        Room1 <button id="enterRoomOne">Enter</button>
+      </div>
+    </section>
+
+    <!-- ROOM 1-6 CONTENT -->
+    <section id="roomOneContent" class="room-one-content"></section>
+    <section id="roomTwoContent" class="room-two-content"></section>
+    <section id="roomThreeContent" class="room-three-content"></section>
+    <section id="roomFourContent" class="room-four-content"></section>
+    <section id="roomFiveContent" class="room-five-content"></section>
+    <section id="roomSixContent" class="room-six-content"></section>
+
+    <!-- FINAL PUZZEL -->
+    <section class="final-puzzle box">
+      <h2>Final Puzzle</h2>
+      <p>You have collected the following letters:</p>
+      <div id="puzzle-letters"></div>
+      <form id="puzzle-form">
+        <label for="puzzle-answer">
+          Enter the password:
+          <input type="text" id="puzzle-answer" required />
+        </label>
+        <button type="submit">Unlock Portal</button>
+      </form>
+      <p id="puzzle-feedback"></p>
+    </section>
+
+    <!-- GAME OVER -->
+    <section class="game-over box">
+      <h2 id="game-over-title">Game Over</h2>
+      <p id="game-over-message"></p>
+      <button id="play-again-btn">Play Again</button>
+    </section>
+
+    <!-- HIGHSCORE -->
+    <section class="high-score box">
+      <h2 id="highscore-title">High Score</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Score</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="high-score-table-body">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- AbOUT USS -->
+    <section class="about box">
+      <h2>About Us</h2>
+      <p>Info om teamet kommer här...</p>
+    </section>
   </main>
 
   <script type="module" src="/src/main.ts"></script>
