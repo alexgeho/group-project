@@ -59,7 +59,7 @@ function formatTime(seconds: number): string {
 // Update UI display
 function updateDisplay(): void {
     if (timerDisplay) {
-        timerDisplay.textContent = `Timer: ${formatTime(totalSeconds)}`;
+        timerDisplay.textContent = formatTime(totalSeconds);
     }
 }
 
