@@ -1,4 +1,4 @@
-# Daily Standup: onsdag 2026-02-18
+# Daily Standup: torsdag 2026-02-19
 
 - [ ] Fyll i rätt datum och dag i rubriken här ovanför
 - [ ] Uppdatera/byt ut skärmdumpen som heter board-i-borjan-pa-veckan.jpg med en bild på er board såsom den ser ut när ni startar projektet.
@@ -7,25 +7,26 @@
 Dagens scrum master: Angelie
 
 ## Namn: Tilda Egland
-- Skapat en branch och funderat kring koden för timer och hur det ska kopplas ihop med allt annat. 
+- Fortsatt med totaltimer-koden
 
 ## Namn: Alexander Gerhard
 
-- Skapat login interface utkast
-- Pushat en branch till main
+- Fortsatt arbeta med login sektionen
+- Finns lite merge-konflikter att resolva
 
 ## Namn: Harez Sait 
-- Skapat branch och påbörjat det (timer)
-- Ett problem är att det verkar som att man inte kan console-logga om branchen inte är i main?
+- Fortsatt med koden
+- Hade lite problem som löste sig 
 
 ## Namn: Jenny Gustafsson
-- Tittat på lektionerna från igår
+- Frånvarande
 
 ## Namn: Mojtaba Mobasheri
-- Kollat lektioner video
-- uppdaterat json för rummen
-- uppdaterad html-struktur
+- Rewiwad och mergat
+- Resolvat en merge-konflikt
+- Stylat startsidan lite
 
 ## Namn: Angelie Ångman
-- Skapat branch. Och pushat.
-- Funderat hur det ska kopplas ihop.  
+- Har skickat rewies
+- Fortsatt med koden
+- Gjort pull request
