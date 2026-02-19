@@ -1,9 +1,12 @@
 /*
  * 12_total_timer.ts
  * 
- * Measures the total time for the game (every room visit)
- * Timer starts or resumes when entering a room
- * Timer pauses when exiting a room
+ * Measures the total game time played (room visit time) for a user
+ * Timer starts or resumes when entering a room and pauses when exiting a room
+ * Timer can be reset when needed
+ * 
+ * TO-DO: Integrate with actual progress saving logic, instead of saving
+ * to localStorage (currently used for testing/logging purposes)
  */
 
 let totalSeconds: number = 0;
@@ -13,7 +16,7 @@ let timerDisplay: HTMLElement | null = null;
 timerDisplay = document.querySelector('#total-timer');
 updateDisplay();
 
-// START TIMER - called when the user enters a room
+// START & RESUME TIMER - called when the user enters a room
 export function startTotalTimer(): void {
     if (intervalId !== null) return;
 
@@ -22,7 +25,7 @@ export function startTotalTimer(): void {
     intervalId = window.setInterval(() => {
         totalSeconds++;
         updateDisplay();
-        saveToLocalStorage();
+        saveToLocalStorage(); // Save the current time to localStorage every second (for now)
     }, 1000);
 }
 
@@ -60,7 +63,8 @@ function updateDisplay(): void {
     }
 }
 
-// Save to localStorage ??
+// Save to localStorage (currently used for testing/logging purposes)
+// TO-DO: integrate data progress saving logic, or optimize to save only when pausing or exiting a room? 
 function saveToLocalStorage(): void {
     localStorage.setItem('totalSeconds', String(totalSeconds));
 }
