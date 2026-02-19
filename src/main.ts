@@ -1,5 +1,6 @@
 import "./styles/style.scss";
 import { loadRoomOne } from "./15_room_one";
+import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
 
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('main > section');
@@ -17,6 +18,7 @@ const roomOneView = document.getElementById("roomOneContent");
 const roomsBoxView = document.getElementById("roomsBox");
 
 enterRoomOneButton?.addEventListener("click", () => {
+  startTotalTimer(); //start total-timer when entering room
   showRoomOneView();
 });
 
@@ -25,6 +27,7 @@ function showRoomOneView() {
   roomOneView?.classList.remove("hidden");
 
   loadRoomOne(() => {
+    pauseTotalTimer(); //pause total-timer when exiting room
     roomOneView?.classList.add("hidden");
     roomsBoxView?.classList.remove("hidden");
   });
