@@ -5,8 +5,7 @@
  * Timer starts or resumes when entering a room and pauses when exiting a room
  * Timer can be reset when needed
  * 
- * TO-DO: Integrate with actual progress saving logic, instead of saving
- * to localStorage (currently used for testing/logging purposes)
+ * Data is passed via callback function - caller decides how to save/use it
  */
 
 let totalSeconds: number = 0;
@@ -17,25 +16,25 @@ timerDisplay = document.querySelector('#total-timer');
 updateDisplay();
 
 // START & RESUME TIMER - called when the user enters a room
-export function startTotalTimer(): void {
+export function startTotalTimer(updateUI?: (time: number) => void): void {
     if (intervalId !== null) return;
-
-    console.log(totalSeconds > 0 ? 'Total Timer resumed' : 'Total Timer started');
 
     intervalId = window.setInterval(() => {
         totalSeconds++;
         updateDisplay();
-        saveToLocalStorage(); // Save the current time to localStorage every second (for now)
+        if (updateUI) {
+            updateUI(totalSeconds);
+        }
     }, 1000);
 }
 
 // PAUSE TIMER - called when the user exits a room
-export function pauseTotalTimer(): void {
-    if (intervalId === null) return;
+export function pauseTotalTimer(): number {
+    if (intervalId === null) return 0;
 
-    console.log('Total Timer paused');
     window.clearInterval(intervalId);
     intervalId = null;
+    return totalSeconds;
 }
 
 // Reset timer - only called when resetting the game
@@ -43,8 +42,6 @@ export function resetTotalTimer(): void {
     pauseTotalTimer();
     totalSeconds = 0;
     updateDisplay();
-    localStorage.removeItem('totalSeconds');
-    console.log('Total Timer reset');
 }
 
 // Format seconds to HH:MM:SS
@@ -61,10 +58,4 @@ function updateDisplay(): void {
     if (timerDisplay) {
         timerDisplay.textContent = formatTime(totalSeconds);
     }
-}
-
-// Save to localStorage (currently used for testing/logging purposes)
-// TO-DO: integrate data progress saving logic, or optimize to save only when pausing or exiting a room? 
-function saveToLocalStorage(): void {
-    localStorage.setItem('totalSeconds', String(totalSeconds));
 }

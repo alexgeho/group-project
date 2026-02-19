@@ -28,9 +28,6 @@ function showRoomOneView() {
 
   loadRoomOne(() => {
     pauseTotalTimer(); //pause total-timer when exiting room
-    const savedTime = localStorage.getItem('totalSeconds'); // only used for logging purposes - REMOVE when integrating with actual progress saving logic
-    console.log(`Total time saved in localStorage: ${savedTime} seconds`); // logging purposes - REMOVE when integrating with actual progress saving logic
-    console.log(localStorage);
     roomOneView?.classList.add("hidden");
     roomsBoxView?.classList.remove("hidden");
   });
