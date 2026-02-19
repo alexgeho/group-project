@@ -7,7 +7,7 @@ import { loadRoomOne } from "./15_room_one";
 
 const enterRoomOneButton = document.getElementById("enterRoomOne");
 const roomOneView = document.getElementById("roomOneContent");
-const roomsBoxView = document.getElementById("roomsBox");
+const roomsBoxView = document.getElementById("rooms");
 
 enterRoomOneButton?.addEventListener("click", () => {
   showRoomOneView();
