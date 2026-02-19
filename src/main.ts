@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach(section => section.classList.add('hidden'));
 
   // Only show welcome page to begin with.
-  document.querySelector('.welcome-page')?.classList.remove('hidden');
+  document.querySelector('.homepage-page')?.classList.remove('hidden');
 });
 // =============================================================
 // ROOM 1 ======================================================
