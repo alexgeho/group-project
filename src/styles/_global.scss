@@ -5,7 +5,10 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url('/images/digiworld.jpg');
 }
-
+header{
+  position: sticky;
+  top: 0;
+}
 .room-card {
   background-color: #fff;
   border-radius: 10px;
