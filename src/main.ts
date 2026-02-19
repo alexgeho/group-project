@@ -39,9 +39,8 @@ function showRoomOneView() {
   });
 }
 
-
 const startGameButton = document.getElementById("start-game-btn");
-startGameButton?.addEventListener('click', loginUser);
+startGameButton?.addEventListener("click", loginUser);
 
 function loginUser(e: Event): void {
   e.preventDefault();
@@ -55,17 +54,20 @@ function loginUser(e: Event): void {
     currentRoom: 1,
     artifacts: [],
     roomTimes: [],
-    completedRooms: []
+    completedRooms: [],
   };
 
-  localStorage.setItem('player', JSON.stringify(player));
+  localStorage.setItem("player", JSON.stringify(player));
 
   displayWelcomeMessage();
 }
 
-
 function displayWelcomeMessage(): void {
-  const storedPlayer = localStorage.getItem('player');
-  const playNameSpan = document.getElementById('player-name-display') as HTMLSpanElement;
-  playNameSpan.textContent = storedPlayer ? JSON.parse(storedPlayer).name : 'Unkown Marauder';
+  const storedPlayer = localStorage.getItem("player");
+  const playNameSpan = document.getElementById(
+    "player-name-display",
+  ) as HTMLSpanElement;
+  playNameSpan.textContent = storedPlayer
+    ? JSON.parse(storedPlayer).name
+    : "Unkown Marauder";
 }
