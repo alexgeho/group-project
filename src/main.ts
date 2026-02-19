@@ -29,3 +29,36 @@ function showRoomOneView() {
     roomsBoxView?.classList.remove("hidden");
   });
 }
+
+
+const startGameButton = document.getElementById("start-game-btn");
+startGameButton?.addEventListener('click', loginUser);
+
+function loginUser(e: Event): void {
+  e.preventDefault();
+  const usernameInput = document.getElementById('player-name') as HTMLInputElement;
+ 
+  const player: any = {
+    id: crypto.randomUUID(),
+    name: usernameInput.value.trim(),
+    points: 0,
+    currentRoom: 1,
+    artifacts: [],
+    roomTimes: [],
+    completedRooms: []
+  };
+
+  localStorage.setItem('player', JSON.stringify(player));
+
+  displayWelcomeMessage();
+
+  // Transition to rooms box view
+  document.querySelector('.homepage-page')?.classList.add('hidden');
+  document.querySelector('#roomsBox')?.classList.remove('hidden');
+  document.querySelector('.welcome-message')?.classList.remove('hidden');
+}
+function displayWelcomeMessage(): void {
+  const storedPlayer = localStorage.getItem('player');
+  const playNameSpan = document.getElementById('player-name-display') as HTMLSpanElement;
+  playNameSpan.textContent = storedPlayer ? JSON.parse(storedPlayer).name : 'Unkown Marauder';
+}

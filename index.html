@@ -41,14 +41,18 @@
             <span>Player Name:</span>
             <input type="text" id="player-name" name="player-name" required />
           </label>
-          <button type="submit">Start Game</button>
+          <button id="start-game-btn" type="submit">Start Game</button>
         </form>
+
+        <div id="loggedIn"></div>
+        <button id="logoutBtn">Logga ut</button>
+        <button id="enterBtn" type="submit">Enter Lobby</button>
       </div>
     </section>
 
     <!-- WELCOME MESSAGE (to show after login) -->
     <section class="welcome-message box">
-      <h2 id="welcome-message-text">Welcome to the Marauders Escape Room!(Name)</h2>
+      <h2 id="welcome-message-text">Welcome to the Marauders Escape Room! <span id="player-name-display"></span></h2>
     </section>
 
     <!-- ALL ROOMS -->
