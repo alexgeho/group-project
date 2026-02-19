@@ -1,3 +1,7 @@
+import './styles/style.scss'
+import { login } from "./login";
+
+login();
 import "./styles/style.scss";
 import { loadRoomOne } from "./15_room_one";
 import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
