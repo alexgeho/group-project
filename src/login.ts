@@ -1,4 +1,5 @@
 import type { IPLayer } from "./models/Player";
+import { goToLobby } from "./gotoLobby";
 
 export function login(): void {
     const form = document.querySelector<HTMLFormElement>('#login-form');
@@ -11,7 +12,7 @@ export function login(): void {
 
     form?.addEventListener('submit', createPlayer);
     logoutBtn?.addEventListener('click', handleLogout);
-
+    goToLobby();
     // Initial UI render on page load
     renderPlayerInfo();
 
@@ -74,9 +75,7 @@ export function login(): void {
             return;
         }
 
-
-        loggedIn!.textContent =
-            `${player.name} | Points: ${player.points} | Artifacts: ${player.artifacts.length}`;
+        loggedIn!.textContent = `${player.name} | Points: ${player.points} | Artifacts: ${player.artifacts.length}`;
     }
 
     // Add this inside login() with other event listeners
@@ -90,6 +89,4 @@ export function login(): void {
         if (input) input.value = '';
         renderPlayerInfo();
     }
-
-
 }

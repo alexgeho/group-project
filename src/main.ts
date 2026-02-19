@@ -3,25 +3,27 @@ import { login } from "./login";
 import { loadRoomOne } from "./15_room_one";
 import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
 import { fetchRooms } from "./fetchRooms";
+import { goToLobby } from "./gotoLobby";
 
-const roms = fetchRooms();
-console.log('roms:::::', JSON.stringify(roms)) ;
-login();
 
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('main > section');
   sections.forEach(section => section.classList.add('hidden'));
-
-  // Only show welcome page to begin with.
+  document.querySelector('#logout-btn')?.classList.add('hidden');
+  document.querySelector('header')?.classList.add('hidden');
+  
   document.querySelector('.homepage-page')?.classList.remove('hidden');
 });
+
+const rooms = fetchRooms();
+console.log('rooms', JSON.stringify(rooms)) ;
+
 // =============================================================
 // ROOM 1 ======================================================
 // =============================================================
 
 const enterRoomOneButton = document.getElementById("enterRoomOne");
 const roomOneView = document.getElementById("firewall");
-const roomsBoxView = document.getElementById("rooms");
 
 enterRoomOneButton?.addEventListener("click", () => {
   startTotalTimer(); //start total-timer when entering room
@@ -29,13 +31,11 @@ enterRoomOneButton?.addEventListener("click", () => {
 });
 
 function showRoomOneView() {
-  roomsBoxView?.classList.add("hidden");
   roomOneView?.classList.remove("hidden");
 
   loadRoomOne(() => {
     pauseTotalTimer(); //pause total-timer when exiting room
     roomOneView?.classList.add("hidden");
-    roomsBoxView?.classList.remove("hidden");
   });
 }
 
@@ -45,6 +45,7 @@ startGameButton?.addEventListener('click', loginUser);
 
 function loginUser(e: Event): void {
   e.preventDefault();
+  goToLobby();
   const usernameInput = document.getElementById('player-name') as HTMLInputElement;
  
   const player: any = {
@@ -60,11 +61,6 @@ function loginUser(e: Event): void {
   localStorage.setItem('player', JSON.stringify(player));
 
   displayWelcomeMessage();
-
-  // Transition to rooms box view
-  document.querySelector('.homepage-page')?.classList.add('hidden');
-  document.querySelector('#rooms')?.classList.remove('hidden');
-  document.querySelector('.welcome-message')?.classList.remove('hidden');
 }
 
 
