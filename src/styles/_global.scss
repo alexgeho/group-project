@@ -9,8 +9,8 @@ header{
   position: sticky;
   top: 0;
 }
-.room-card {
-  background-color: #fff;
+.room-card{
+  background-color: #312e2e;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -19,6 +19,10 @@ header{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  h2{
+    font-size: 2.5rem;
+  }
 }
 
 .rooms {
@@ -71,18 +75,12 @@ header {
 }
 
 .hidden {
-  display: none;
+  // display: none;
 }
-
-
-.box{
-  width: 100%;
-  max-height: 400px;
-
 
 .box {
   height: 400px;
-  border: 1px solid black;
+  border: 1px solid rgb(216, 183, 183);
   margin: 20px;
 }
 
@@ -118,4 +116,18 @@ header {
       font-family: "Iceland", system-ui;
     }
   }
+}
+
+#firewall,
+#database,
+#logic-module,
+#encryption,
+#bug-room,
+#portal-control {
+  background-color: #312e2e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  margin: 20px;
+  text-align: center;
 }

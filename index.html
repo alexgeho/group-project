@@ -7,44 +7,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
+    rel="stylesheet">
   <title>Marauders Escape Room</title>
 </head>
 
 <body>
-
   <header>
-
-    <section class="login box">
-
-      <form id="login-form">
-        <label>
-          <span>Player Name:</span>
-          <input type="text" id="player-name" required />
-        </label>
-        <button type="submit">Register Player</button>
-      </form>
-
-
-      <div id="loggedIn" style="display:none;"></div>
-      <button id="logout-btn" style="display:none;">Logga ut</button>
-      <button id="enter-btn" type="submit" style="display:none;">Enter Lobby</button>
-
+    <section id="total-timer-display">Total: <span id="total-timer">00:00</span></section>
+    <section id="artefact-display">Artefacts: <span id="collected-artefacts"></span></section>
+    <section id="progress-display">
+      Progress:
+      <progress id="progress-bar" value="0" max="6"></progress>
     </section>
-
-    <div style="display:none;">
-      <section>Timer:</section>
-      <section>Artefact:</section>
-      <section>
-        Progressbar:
-        <progress value="80" max="100">he</progress>
-      </section>
-    </div>
   </header>
 
-  <main style="display:none;">
-    <section class="welcome-page box">
-      <div class="welcome-text">
+  <main>
+    <!-- WELCOME / LOGIN -->
+    <section class="homepage-page">
+      <div class="homepage-text">
         <h1>Welcome to the Marauders Escape Room</h1>
         <p>
           A small digital creature from Cyberspace has crashed into our world.
@@ -54,50 +35,6 @@
           opens the portal. Good luck!
         </p>
       </div>
-    </section>
-    <section class="rooms box">
-      <div id="roomsTest">
-
-
-      </div>
-      <!-- <div class="room-one room-card">Room1 <button>Enter</button></div> -->
-    </section>
-
-    <section class="room-one-content"></section>
-
-    <section class="room-two-content"></section>
-
-    <section class="room-three-content"></section>
-
-    <section class="room-four-content"></section>
-
-    <section class="room-five-content"></section>
-
-    <section class="room-six-content"></section>
-
-    <section class="game-over box">Game over</section>
-
-    <section class="high-score box">
-      HighScore
-      <table>
-        <thead>
-          <tr>
-            <th>Player Name</th>
-            <th>Time Remaining</th>
-          </tr>
-        </thead>
-        <tbody id="high-score-table-body">
-          <!-- High score entries will be dynamically added here -->
-        </tbody>
-      </table>
-    </section>
-
-    <section class="about box">About us</section>
-  </main>
-
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
 
       <div class="login-form">
         <form id="login-form">
@@ -109,8 +46,7 @@
         </form>
 
         <div id="loggedIn"></div>
-        <button id="logoutBtn">Logga ut</button>
-        <button id="enterBtn" type="submit">Enter Lobby</button>
+        <button id="logout-btn">Logga ut</button>
       </div>
     </section>
 
@@ -120,19 +56,17 @@
     </section>
 
     <!-- ALL ROOMS -->
-    <section id="roomsBox" class="rooms box">
-      <div class="room-one room-card">
-        Room1 <button id="enterRoomOne">Enter</button>
-      </div>
-    </section>
+    <section id="rooms" class="rooms box"></section>
 
     <!-- ROOM 1-6 CONTENT -->
-    <section id="roomOneContent" class="room-one-content"></section>
-    <section id="roomTwoContent" class="room-two-content"></section>
-    <section id="roomThreeContent" class="room-three-content"></section>
-    <section id="roomFourContent" class="room-four-content"></section>
-    <section id="roomFiveContent" class="room-five-content"></section>
-    <section id="roomSixContent" class="room-six-content"></section>
+    <section id="firewall" class="room-one-content"></section>
+    <section id="database" class="room-two-content"></section>
+    <section id="logic-module" class="room-three-content"></section>
+    <section id="encryption" class="room-four-content"></section>
+    <section id="bug-room" class="room-five-content"></section>
+    <section id="portal-control" class="room-six-content"></section>
+
+    <button id="enterRoomOne">click</button>
 
     <!-- FINAL PUZZEL -->
     <section class="final-puzzle box">

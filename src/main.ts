@@ -1,10 +1,12 @@
-import './styles/style.scss'
-import { login } from "./login";
-
-login();
 import "./styles/style.scss";
+import { login } from "./login";
 import { loadRoomOne } from "./15_room_one";
 import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
+import { fetchRooms } from "./fetchRooms";
+
+const roms = fetchRooms();
+console.log('roms:::::', JSON.stringify(roms)) ;
+login();
 
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('main > section');
@@ -18,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // =============================================================
 
 const enterRoomOneButton = document.getElementById("enterRoomOne");
-const roomOneView = document.getElementById("roomOneContent");
-const roomsBoxView = document.getElementById("roomsBox");
+const roomOneView = document.getElementById("firewall");
+const roomsBoxView = document.getElementById("rooms");
 
 enterRoomOneButton?.addEventListener("click", () => {
   startTotalTimer(); //start total-timer when entering room
@@ -61,9 +63,11 @@ function loginUser(e: Event): void {
 
   // Transition to rooms box view
   document.querySelector('.homepage-page')?.classList.add('hidden');
-  document.querySelector('#roomsBox')?.classList.remove('hidden');
+  document.querySelector('#rooms')?.classList.remove('hidden');
   document.querySelector('.welcome-message')?.classList.remove('hidden');
 }
+
+
 function displayWelcomeMessage(): void {
   const storedPlayer = localStorage.getItem('player');
   const playNameSpan = document.getElementById('player-name-display') as HTMLSpanElement;

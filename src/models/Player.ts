@@ -4,4 +4,5 @@ export interface IPLayer {
     points: number,
     artifacts: string[],
     roomTimes: number[],
+    roomsCompleted?: number[]
 }

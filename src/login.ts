@@ -70,18 +70,10 @@ export function login(): void {
         const player = getCurrentPlayer();
 
         if (!player) {
-            form!.style.display = 'block';
-            logoutBtn!.style.display = 'none';
-            enterBtn!.style.display = 'none';
-            loggedIn!.style.display = 'none';
-            main!.style.display = 'none'; // hide main on logout
+
             return;
         }
 
-        form!.style.display = 'none';
-        logoutBtn!.style.display = 'block';
-        enterBtn!.style.display = 'block';
-        loggedIn!.style.display = 'block';
 
         loggedIn!.textContent =
             `${player.name} | Points: ${player.points} | Artifacts: ${player.artifacts.length}`;
@@ -95,7 +87,6 @@ export function login(): void {
     // Logs out the current player and resets UI
     function handleLogout(): void {
         localStorage.removeItem('currentPlayerId');
-        if (main) main.style.display = 'none';
         if (input) input.value = '';
         renderPlayerInfo();
     }
