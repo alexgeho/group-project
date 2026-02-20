@@ -1,5 +1,4 @@
 import "./styles/style.scss";
-import { login } from "./login";
 import { loadRoomOne } from "./15_room_one";
 import { startTotalTimer, pauseTotalTimer } from "./12_total_timer";
 import { fetchRooms } from "./fetchRooms";
