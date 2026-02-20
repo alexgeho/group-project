@@ -14,10 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   document.querySelector('.homepage-page')?.classList.remove('hidden');
 });
-
-const rooms = fetchRooms();
-console.log('rooms', JSON.stringify(rooms)) ;
-
 // =============================================================
 // ROOM 1 ======================================================
 // =============================================================
@@ -60,6 +56,7 @@ function loginUser(e: Event): void {
   localStorage.setItem("player", JSON.stringify(player));
 
   displayWelcomeMessage();
+  fetchRooms();
 }
 
 function displayWelcomeMessage(): void {

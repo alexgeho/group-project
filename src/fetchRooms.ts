@@ -23,7 +23,6 @@ function goToRoom(room: any) {
   sections.forEach(section => section.classList.add('hidden'));
   
   document.getElementById(room.name)?.classList.remove('hidden');
-  console.log(`Entering ${room.name}`);
   startTotalTimer();
 
   if (room.name === 'firewall') loadRoomOne(() => goToLobby());
