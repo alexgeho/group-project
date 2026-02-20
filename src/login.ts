@@ -28,17 +28,18 @@ export function login(): void {
 
         if (!name) return;
 
-        const newPlayer: IPLayer = {
+        const newPlayer: IPlayer = {
             id: crypto.randomUUID(),
             name,
             points: 0,
             artifacts: [],
-            roomTimes: []
+            roomTimes: [],
+            roomsCompleted: []
         };
 
         console.log('newPlayer:::::', newPlayer);
 
-        const players: IPLayer[] = JSON.parse(
+        const players: IPlayer[] = JSON.parse(
             localStorage.getItem('players') || '[]'
         );
 
@@ -59,7 +60,7 @@ export function login(): void {
         const currentId = localStorage.getItem('currentPlayerId');
         if (!currentId) return null;
 
-        const players: IPLayer[] = JSON.parse(
+        const players: IPlayer[] = JSON.parse(
             localStorage.getItem('players') || '[]'
         );
 
