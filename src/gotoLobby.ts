@@ -1,4 +1,5 @@
 import { pauseTotalTimer } from "./12_total_timer";
+import { displayWelcomeMessage } from "./displayWelcomeMsg";
 
 export function goToLobby() {
   console.log('lobb');
@@ -11,4 +12,5 @@ export function goToLobby() {
   document.querySelector('#logoutBtn')?.classList.remove('hidden');
 
   pauseTotalTimer();
+  displayWelcomeMessage();
 }

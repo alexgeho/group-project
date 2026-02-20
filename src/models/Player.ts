@@ -1,8 +1,8 @@
-export interface IPLayer {
+export interface IPlayer {
     id: string,
     name: string,
     points: number,
     artifacts: string[],
-    roomTimes: number[],
-    roomsCompleted?: number[]
+    roomTimes: { roomId: number, time: number }[],
+    roomsCompleted: number[]
 }

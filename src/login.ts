@@ -1,4 +1,4 @@
-import type { IPLayer } from "./models/Player";
+import type { IPlayer } from "./models/Player";
 import { goToLobby } from "./gotoLobby";
 
 export function login(): void {
@@ -55,7 +55,7 @@ export function login(): void {
     }
 
     // Returns the currently logged-in player from localStorage
-    function getCurrentPlayer(): IPLayer | null {
+    function getCurrentPlayer(): IPlayer | null {
         const currentId = localStorage.getItem('currentPlayerId');
         if (!currentId) return null;
 

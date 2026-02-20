@@ -2,23 +2,30 @@ import { startTotalTimer } from "./12_total_timer";
 import { loadRoomFive } from "./19_room_five";
 import { loadRoomOne } from "./15_room_one";
 import { goToLobby } from "./gotoLobby";
+import type { IRoom } from "./models/Room";
+
+let roomLoaded = false;
 
 export async function fetchRooms(): Promise<void> {
 
-  const categories = await loadCategories('rooms.json');
+  if (roomLoaded) return;
+  const roomsContainer = document.getElementById('rooms');
+  const rooms: IRoom[] = await loadRooms('rooms.json');
 
-  categories.forEach((room: any) => {
+  rooms.forEach((room: IRoom) => {
     const roomElement = document.createElement('div');
     roomElement.className = `room-${room.id} room-card`;
     roomElement.innerHTML = `<h2>${room.name}</h2><span>${room.description}</span><button id="enterRoom${room.id}" class="btn-primary">Enter</button>`;
 
-    document.getElementById('rooms')?.appendChild(roomElement);
+    roomsContainer?.appendChild(roomElement);
 
-    document.getElementById(`enterRoom${room.id}`)?.addEventListener('click', () => goToRoom(room));
+    const roomBtn = roomElement.querySelector('button');
+    roomBtn?.addEventListener('click', () => goToRoom(room));
   });
+  roomLoaded = true;
 };
 
-function goToRoom(room: any) {
+function goToRoom(room: IRoom) {
   const sections = document.querySelectorAll('main > section');
   sections.forEach(section => section.classList.add('hidden'));
   
@@ -29,7 +36,7 @@ function goToRoom(room: any) {
   if (room.name === 'bug-room') loadRoomFive();
 }
 
-async function loadCategories(cateName: string) {
+async function loadRooms(cateName: string) {
   const catData = await fetch(`./${cateName}`)
   return await catData.json();
 }
