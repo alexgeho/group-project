@@ -143,6 +143,35 @@ main {
   font-family: inherit;
   letter-spacing: inherit;
 }
+.completed{
+border: 2px solid green;
+}
+
+progress {
+  width: 200px;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+
+  background-color: #706f6f;
+
+  // WebKit (Chrome, Edge, Safari)
+  &::-webkit-progress-bar {
+    background-color: #333333;
+    border-radius: 10px;
+  }
+
+  &::-webkit-progress-value {
+    background-color: #6dbb71;
+    border-radius: 10px;
+  }
+
+  // Firefox
+  &::-moz-progress-bar {
+    background-color: #6dbb71;
+    border-radius: 10px;
+  }
+}
 
 #firewall,
 #database,
