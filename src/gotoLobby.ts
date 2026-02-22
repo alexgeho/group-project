@@ -1,5 +1,6 @@
 import { pauseTotalTimer } from "./12_total_timer";
 import { displayWelcomeMessage } from "./displayWelcomeMsg";
+import { showPlayerStats } from "./showPlayerStats";
 
 export function goToLobby() {
   console.log('lobb');
@@ -12,5 +13,6 @@ export function goToLobby() {
   document.querySelector('#logoutBtn')?.classList.remove('hidden');
 
   pauseTotalTimer();
+  showPlayerStats();
   displayWelcomeMessage();
 }
