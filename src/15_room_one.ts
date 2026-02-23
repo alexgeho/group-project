@@ -8,20 +8,25 @@
  * The player wins when all pairs of cards are matched.
  */
 
-// Skickar vidare parametern från backButtonSetup()
+// goToRoom anropar loadRoomOne
+// tar emot parametern
+// skickar vidare parametern
 export function loadRoomOne(onBack: () => void) {
   backButtonSetup(onBack);
 }
 
+// Här sätts event-lyssnare
 function backButtonSetup(onBack: () => void) {
-  const backButton = document.querySelector("back");
+  const backButton = document.querySelector("#back");
 
+  // klick på back button triggar backToLobby funktionen
   backButton?.addEventListener("click", onBack);
 }
 
+// View
 const gameBoard = document.querySelector("#firewall");
 
 gameBoard!.innerHTML = `
     <p>Welcome to Room One Firewall :)</p>
-    <button id="backToRooms">Back</button>
+    <button id="back">Back</button>
   `;
