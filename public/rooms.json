@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "firewall",
+    "title": "The Firewall",
+    "description": "You have entered a digital firewall protecting the Code World. The system requires logical thinking to grant access. Solve the challenge to earn a letter for the portal password."
+  },
+  {
+    "id": 2,
+    "name": "database",
+    "title": "The Database",
+    "description": "This database stores critical information from the Code World. After the crash, the data is disorganized. Restore order to receive a letter needed for the portal password."
+  },
+  {
+    "id": 3,
+    "name": "logic-module",
+    "title": "The Logic Module",
+    "description": "The Logic Module tests your ability to reason and make correct decisions. Apply logical rules to complete the task and obtain a letter."
+  },
+  {
+    "id": 4,
+    "name": "encryption",
+    "title": "The Encryption",
+    "description": "All communication in the Code World is encrypted. Decode the message, reveal its meaning, and collect a letter for the portal password."
+  },
+  {
+    "id": 5,
+    "name": "bug-room",
+    "title": "The Bug Room",
+    "description": "A malfunctioning piece of code is causing instability in the system. Identify the bug and fix it to secure a letter."
+  },
+  {
+    "id": 6,
+    "name": "portal-control",
+    "title": "Portal Control",
+    "description": "This control unit monitors access to the portal. Complete the verification process to obtain a letter required to unlock the portal."
+  }
+]

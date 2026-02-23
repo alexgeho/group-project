@@ -1,24 +1,21 @@
 import "./styles/style.scss";
-import { loadRoomOne } from "./15_room_one";
+import { loginUser } from "./login2";
+import { logout } from "./logout";
+import { fetchRooms } from "./fetchRooms";
+import { checkLoggedInPlayer } from "./checkLoggedInPlayer";
 
-// =============================================================
-// ROOM 1 ======================================================
-// =============================================================
+document.addEventListener("DOMContentLoaded", async () => {
+  await fetchRooms();
+  const sections = document.querySelectorAll("main > section");
+  sections.forEach((section) => section.classList.add("hidden"));
+  document.querySelector("#logout-btn")?.classList.add("hidden");
+  document.querySelector("header")?.classList.add("hidden");
 
-const enterRoomOneButton = document.getElementById("enterRoomOne");
-const roomOneView = document.getElementById("roomOneContent");
-const roomsBoxView = document.getElementById("rooms");
-
-enterRoomOneButton?.addEventListener("click", () => {
-  showRoomOneView();
+  document.querySelector(".homepage-page")?.classList.remove("hidden");
+  checkLoggedInPlayer();
 });
 
-function showRoomOneView() {
-  roomsBoxView?.classList.add("hidden");
-  roomOneView?.classList.remove("hidden");
+const startGameButton = document.getElementById("start-game-btn");
+startGameButton?.addEventListener("click", loginUser);
 
-  loadRoomOne(() => {
-    roomOneView?.classList.add("hidden");
-    roomsBoxView?.classList.remove("hidden");
-  });
-}
+document.querySelector("#logoutBtn")?.addEventListener("click", logout);
