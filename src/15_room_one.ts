@@ -56,8 +56,6 @@ function fireWallView() {
 
   let cardsMarkup = "";
 
-  memoryCards[5].flipped = true;
-
   // data-id - för att
   for (let i = 0; i < memoryCards.length; i++) {
     cardsMarkup += `
@@ -68,6 +66,8 @@ function fireWallView() {
   }
 
   cardsBoard!.innerHTML = cardsMarkup;
+
+  addEventsToAllCards();
 }
 
 // 3. Render
@@ -85,6 +85,17 @@ export function loadRoomOne(onBack: () => void) {
 // 5. om nej -> vänd tillbaka
 
 // 4. Här sätts event-lyssnare
+
+function addEventsToAllCards() {
+  const cardButtons = document.querySelectorAll<HTMLButtonElement>(".card");
+
+  cardButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log("Kortet är klickat!");
+    });
+  });
+}
+
 function backButtonSetup(onBack: () => void) {
   const backButton = document.querySelector("#back");
 
