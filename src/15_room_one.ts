@@ -84,6 +84,12 @@ export function loadRoomOne(onBack: () => void) {
 // 4. om ja -> gör ingenting
 // 5. om nej -> vänd tillbaka
 
+function flippCardOnClick(cardPosition: number) {
+  memoryCards[cardPosition].flipped = true;
+
+  fireWallView();
+}
+
 // 4. Här sätts event-lyssnare
 
 function addEventsToAllCards() {
@@ -96,6 +102,8 @@ function addEventsToAllCards() {
       // gör id till number
       const cardPosition = Number(dataId);
       console.log(memoryCards[cardPosition]);
+
+      flippCardOnClick(cardPosition);
     });
   });
 }
