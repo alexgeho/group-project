@@ -40,7 +40,7 @@ function fireWallView() {
     <h2>You've entered a Firewall</h2>
     <p>It is your mission to break it</p>
     <div id='cardBoard'></div>
-    <button id="back">Back</button>
+    <button id="back" class=btn-primary>Back</button>
   `;
 
   const cardsBoard = document.querySelector("#cardBoard");
