@@ -1,3 +1,6 @@
+@use "roomFive";
+@use "gameOver";
+
 body {
   font-family: 'Orbitron', 'Iceland', 'Courier', monospace, system-ui;
   letter-spacing: 2px;
@@ -142,6 +145,7 @@ main {
   cursor: pointer;
   font-family: inherit;
   letter-spacing: inherit;
+  align-self: center;
 }
 .completed{
 border: 2px solid green;
@@ -172,6 +176,7 @@ progress {
     border-radius: 10px;
   }
 }
+
 
 #firewall,
 #database,
