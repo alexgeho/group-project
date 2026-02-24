@@ -91,7 +91,11 @@ function addEventsToAllCards() {
 
   cardButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      console.log("Kortet är klickat!");
+      // hämta knappens data-id nummer (string) - för att veta vilket kort som klickades
+      const dataId = button.dataset.id;
+      // gör id till number
+      const cardPosition = Number(dataId);
+      console.log(memoryCards[cardPosition]);
     });
   });
 }
