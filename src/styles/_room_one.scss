@@ -1,1 +1,20 @@
+.card-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1rem;
+}
 
+.card-style {
+  padding: 1rem;
+  padding-block: 4rem;
+  background-color: rgb(112, 112, 112);
+  border-radius: 1rem;
+  border: 2px solid rgb(112, 112, 112);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.card-style:hover {
+  border: 2px solid purple;
+}

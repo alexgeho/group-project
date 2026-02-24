@@ -39,7 +39,7 @@ function fireWallView() {
   firewallMarkup!.innerHTML = `
     <h2>You've entered a Firewall</h2>
     <p>It is your mission to break it</p>
-    <div id='cardBoard'></div>
+    <div id="cardBoard" class="card-board"></div>
     <button id="back" class=btn-primary>Back</button>
   `;
 
@@ -47,9 +47,9 @@ function fireWallView() {
 
   let cardsMarkup = "";
 
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 12; i++) {
     cardsMarkup += `
-  <div id='card'>🔥</div>
+  <button id="card" class="card-style">🔥</button>
   `;
   }
 
