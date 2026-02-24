@@ -1,32 +1,16 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
-      rel="stylesheet"
-    />
-    <title>Marauders Escape Room</title>
-  </head>
 
-  <body>
-    <header>
-      <section id="total-timer-display">
-        Total: <span id="total-timer">00:00</span>
-      </section>
-      <section id="artefact-display">
-        Artefacts: <span id="collected-artefacts"></span>
-      </section>
-      <section id="progress-display">
-        Progress:
-        <progress id="progress-bar" value="0" max="6"></progress>
-      </section>
-      <button id="logoutBtn" class="btn-primary">Logga ut</button>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
+    rel="stylesheet">
+  <title>Marauders Escape Room</title>
+</head>
 
 <body>
   
@@ -40,80 +24,95 @@
     </section>
     <button id="logoutBtn" class="btn-primary">Logga ut</button>
 
-        <div class="login-form">
-          <form id="login-form">
-            <label for="player-name">
-              <span>Player Name:</span>
-              <input type="text" id="player-name" name="player-name" required />
-            </label>
-            <button id="start-game-btn" type="submit">Start Game</button>
-          </form>
-        </div>
-      </section>
+  </header>
 
-      <!-- WELCOME MESSAGE (to show after login) -->
-      <section class="welcome-message">
-        <h2 id="welcome-message-text">
-          Welcome to the Marauders Escape Room!
-          <span id="player-name-display"></span>
-        </h2>
-      </section>
+  <main>
+    <!-- WELCOME / LOGIN -->
+    <section class="homepage-page">
+      <div class="homepage-text">
+        <h1>Welcome to the Marauders Escape Room</h1>
+        <p>
+          A small digital creature from Cyberspace has crashed into our world.
+          The portal home is locked by a security system. To unlock the
+          portal, you must get through 6 digital obstacles. Each obstacle
+          provides a letter. Together, the letters form the password that
+          opens the portal. Good luck!
+        </p>
+      </div>
 
-      <!-- ALL ROOMS -->
-      <section id="rooms" class="rooms"></section>
-
-      <!-- ROOM 1-6 CONTENT -->
-      <section id="firewall" class="room-one-content"></section>
-      <section id="database" class="room-two-content"></section>
-      <section id="logic-module" class="room-three-content"></section>
-      <section id="encryption" class="room-four-content"></section>
-      <section id="bug-room" class="room-five-content"></section>
-      <section id="portal-control" class="room-six-content"></section>
-
-      <!-- FINAL PUZZEL -->
-      <section class="final-puzzle box">
-        <h2>Final Puzzle</h2>
-        <p>You have collected the following letters:</p>
-        <div id="puzzle-letters"></div>
-        <form id="puzzle-form">
-          <label for="puzzle-answer">
-            Enter the password:
-            <input type="text" id="puzzle-answer" required />
+      <div class="login-form">
+        <form id="login-form">
+          <label for="player-name">
+            <span>Player Name:</span>
+            <input type="text" id="player-name" name="player-name" required />
           </label>
-          <button type="submit">Unlock Portal</button>
+          <button id="start-game-btn" type="submit">Start Game</button>
         </form>
-        <p id="puzzle-feedback"></p>
-      </section>
+      </div>
+    </section>
 
-      <!-- GAME OVER -->
-      <section class="game-over box">
-        <h2 id="game-over-title">Game Over</h2>
-        <p id="game-over-message"></p>
-        <button id="play-again-btn">Play Again</button>
-      </section>
+    <!-- WELCOME MESSAGE (to show after login) -->
+    <section class="welcome-message">
+      <h2 id="welcome-message-text">Welcome to the Marauders Escape Room! <span id="player-name-display"></span></h2>
+    </section>
 
-      <!-- HIGHSCORE -->
-      <section class="high-score box">
-        <h2 id="highscore-title">High Score</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Player Name</th>
-              <th>Score</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody id="high-score-table-body"></tbody>
-        </table>
-      </section>
+    <!-- ALL ROOMS -->
+    <section id="rooms" class="rooms"></section>
 
-      <!-- AbOUT USS -->
-      <section class="about box">
-        <h2>About Us</h2>
-        <p>Info om teamet kommer här...</p>
-      </section>
-    </main>
+    <!-- ROOM 1-6 CONTENT -->
+    <section id="firewall" class="room-one-content"></section>
+    <section id="database" class="room-two-content"></section>
+    <section id="logic-module" class="room-three-content"></section>
+    <section id="encryption" class="room-four-content"></section>
+    <section id="bug-room" class="room-five-content"></section>
+    <section id="portal-control" class="room-six-content"></section>
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+    <!-- FINAL PUZZEL -->
+    <section class="final-puzzle box">
+      <h2>Final Puzzle</h2>
+      <p>You have collected the following letters:</p>
+      <div id="puzzle-letters"></div>
+      <form id="puzzle-form">
+        <label for="puzzle-answer">
+          Enter the password:
+          <input type="text" id="puzzle-answer" required />
+        </label>
+        <button type="submit">Unlock Portal</button>
+      </form>
+      <p id="puzzle-feedback"></p>
+    </section>
+
+    <!-- GAME OVER -->
+    <section class="game-over box">
+      <h2 id="game-over-title">Game Over</h2>
+      <p id="game-over-message"></p>
+      <button id="play-again-btn">Play Again</button>
+    </section>
+
+    <!-- HIGHSCORE -->
+    <section class="high-score box">
+      <h2 id="highscore-title">High Score</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Score</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody id="high-score-table-body">
+        </tbody>
+      </table>
+    </section>
+
+    <!-- AbOUT USS -->
+    <section class="about box">
+      <h2>About Us</h2>
+      <p>Info om teamet kommer här...</p>
+    </section>
+  </main>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
