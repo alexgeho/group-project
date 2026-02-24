@@ -28,19 +28,17 @@
       <button id="logoutBtn" class="btn-primary">Logga ut</button>
     </header>
 
-    <main>
-      <!-- WELCOME / LOGIN -->
-      <section class="homepage-page">
-        <div class="homepage-text">
-          <h1>Welcome to the Marauders Escape Room</h1>
-          <p>
-            A small digital creature from Cyberspace has crashed into our world.
-            The portal home is locked by a security system. To unlock the
-            portal, you must get through 6 digital obstacles. Each obstacle
-            provides a letter. Together, the letters form the password that
-            opens the portal. Good luck!
-          </p>
-        </div>
+<body>
+  
+  <header>
+
+    <section id="total-timer-display">Total: <span id="total-timer">00:00</span></section>
+    <section id="artefact-display">Artefacts: <span id="collected-artefacts"></span></section>
+    <section id="progress-display">
+      Progress:
+      <progress id="progress-bar" value="0" max="6"></progress>
+    </section>
+    <button id="logoutBtn" class="btn-primary">Logga ut</button>
 
         <div class="login-form">
           <form id="login-form">

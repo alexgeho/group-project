@@ -1,6 +1,7 @@
 import { startTotalTimer } from "./12_total_timer";
 import { loadRoomFive } from "./19_room_five";
 import { loadRoomOne } from "./15_room_one";
+import { loadRoomTwo } from "./16_room_two";
 import { goToLobby } from "./gotoLobby";
 import type { IRoom } from "./models/Room";
 
@@ -33,6 +34,7 @@ function goToRoom(room: IRoom) {
   startTotalTimer();
 
   if (room.name === 'firewall') loadRoomOne(() => goToLobby());
+  if (room.name === 'database') loadRoomTwo(() => goToLobby());
   if (room.name === 'bug-room') loadRoomFive();
 }
 
