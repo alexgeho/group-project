@@ -34,22 +34,32 @@ memoryCards;
 
 // 2. View
 function fireWallView() {
-  const gameBoard = document.querySelector("#firewall");
-  const gameCard = document.querySelector("#firewall");
+  const firewallMarkup = document.querySelector("#firewall");
 
-  gameBoard!.innerHTML = `
-    <p>Welcome to Room One Firewall :)</p>
+  firewallMarkup!.innerHTML = `
+    <h2>You've entered a Firewall</h2>
+    <p>It is your mission to break it</p>
+    <div id='cardBoard'></div>
     <button id="back">Back</button>
   `;
 
-  gameCard!.innerHTML += `
-  <p>🔥</p>`;
+  const cardsBoard = document.querySelector("#cardBoard");
+
+  let cardsMarkup = "";
+
+  for (let i = 0; i < 6; i++) {
+    cardsMarkup += `
+  <div id='card'>🔥</div>
+  `;
+  }
+
+  cardsBoard!.innerHTML = cardsMarkup;
 }
 
 // 3. Render
 export function loadRoomOne(onBack: () => void) {
-  backButtonSetup(onBack);
-  fireWallView();
+  fireWallView(); // 1️⃣ skapa HTML
+  backButtonSetup(onBack); // 2️⃣ koppla event
 }
 
 // 4. Här sätts event-lyssnare
