@@ -103,10 +103,10 @@ export function loadRoomFive(): void {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
       let player = getPlayer();
       if (player) {
-        if (!player.artifacts.includes('u')) {
+        if (!player.artifacts.includes('u') && !player.roomsCompleted.includes(5)) {
         player.artifacts.push('u');
-        }
         player.roomsCompleted.push(5);
+        }
         localStorage.setItem("player", JSON.stringify(player));
       }
       loadGameOverPage(message, true);

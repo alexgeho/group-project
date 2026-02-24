@@ -24,7 +24,6 @@ export function showPlayerStats(): void {
     }
 
 
-    console.log('Player data found in localStorage:', playerData.roomTimes);
     if (!playerData.roomTimes) {
       console.log('No roomTimes found for player');
       return;
