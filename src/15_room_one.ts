@@ -9,30 +9,44 @@
  */
 
 // 1. DATA - the cards for the memory game
-// 2. VIEW - HTML markup
-// 3. RENDER - inject the wiew into doom
-// 4. EVENTS
-// 5. GAME LOGIC
+// 2. STATE
+// 3. VIEW - HTML markup
+// 4. RENDER - inject the view into DOM
+// 6. GAME LOGIC
+// 5. EVENTS
 
 // 1. Data
+
+type MemoryCard = {
+  id: number;
+  emoji: string;
+  flipped: boolean; // är kortet vänt (true)
+  matched: boolean; // är kortet matchat (true)
+};
+
 const memoryCards = [
-  { id: 1, emoji: "👻", matched: false },
-  { id: 2, emoji: "👻", matched: false },
-  { id: 3, emoji: "🧠", matched: false },
-  { id: 4, emoji: "🧠", matched: false },
-  { id: 5, emoji: "🌛", matched: false },
-  { id: 6, emoji: "🌛", matched: false },
-  { id: 7, emoji: "🪼", matched: false },
-  { id: 8, emoji: "🪼", matched: false },
-  { id: 9, emoji: "💄", matched: false },
-  { id: 10, emoji: "💄", matched: false },
-  { id: 11, emoji: "🦄", matched: false },
-  { id: 12, emoji: "🦄", matched: false },
+  { id: 1, emoji: "👻", flipped: false, matched: false },
+  { id: 2, emoji: "👻", flipped: false, matched: false },
+  { id: 3, emoji: "🧠", flipped: false, matched: false },
+  { id: 4, emoji: "🧠", flipped: false, matched: false },
+  { id: 5, emoji: "🌛", flipped: false, matched: false },
+  { id: 6, emoji: "🌛", flipped: false, matched: false },
+  { id: 7, emoji: "🪼", flipped: false, matched: false },
+  { id: 8, emoji: "🪼", flipped: false, matched: false },
+  { id: 9, emoji: "💄", flipped: false, matched: false },
+  { id: 10, emoji: "💄", flipped: false, matched: false },
+  { id: 11, emoji: "🦄", flipped: false, matched: false },
+  { id: 12, emoji: "🦄", flipped: false, matched: false },
 ];
 
 memoryCards;
 
-// 2. View
+// 2. state
+// null at default
+let firstSelectedCard: number | null = null;
+let secondSelectedCard: number | null = null;
+
+// 3. View
 function fireWallView() {
   const firewallMarkup = document.querySelector("#firewall");
 
@@ -70,7 +84,9 @@ function backButtonSetup(onBack: () => void) {
 }
 
 // 5. Logic
-// false -> not matched
-// true -> matched
-// if the card is false -> turn
-// if the card is true -> stay
+
+// 1. tryck på kort 1 -> kortet vänds
+// 2. tryck på kort 2 -> kortet vänds
+// 3. matchar korten?
+// 4. om ja -> gör ingenting
+// 5. om nej -> vänd tillbaka
