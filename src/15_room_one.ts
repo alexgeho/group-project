@@ -33,20 +33,23 @@ const memoryCards = [
 memoryCards;
 
 // 2. View
-const gameBoard = document.querySelector("#firewall");
-const gameCard = document.querySelector("#firewall");
+function fireWallView() {
+  const gameBoard = document.querySelector("#firewall");
+  const gameCard = document.querySelector("#firewall");
 
-gameBoard!.innerHTML = `
+  gameBoard!.innerHTML = `
     <p>Welcome to Room One Firewall :)</p>
     <button id="back">Back</button>
   `;
 
-gameCard!.innerHTML += `
-  <p>hejhej</p>`;
+  gameCard!.innerHTML += `
+  <p>🔥</p>`;
+}
 
 // 3. Render
 export function loadRoomOne(onBack: () => void) {
   backButtonSetup(onBack);
+  fireWallView();
 }
 
 // 4. Här sätts event-lyssnare
