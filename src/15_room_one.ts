@@ -56,10 +56,14 @@ function fireWallView() {
 
   let cardsMarkup = "";
 
+  memoryCards[5].flipped = true;
+
   // data-id - för att
   for (let i = 0; i < memoryCards.length; i++) {
     cardsMarkup += `
-  <button class="card" data-id="${i}">${memoryCards[i].emoji}</button>
+  <button class="card" data-id="${i}">
+  ${memoryCards[i].flipped ? memoryCards[i].emoji : "🔥"}
+  </button>
   `;
   }
 
