@@ -17,25 +17,25 @@
 
 // 1. Data
 
-type MemoryCard = {
+interface MemoryCard {
   emoji: string;
   flipped: boolean; // är kortet vänt (true)
   matched: boolean; // är kortet matchat (true)
-};
+}
 
 const memoryCards: MemoryCard[] = [
-  { emoji: "👻", flipped: false, matched: false },
-  { emoji: "👻", flipped: false, matched: false },
+  { emoji: "🪐", flipped: false, matched: false },
+  { emoji: "🌙", flipped: false, matched: false },
   { emoji: "🧠", flipped: false, matched: false },
+  { emoji: "👾", flipped: false, matched: false },
+  { emoji: "🛸", flipped: false, matched: false },
+  { emoji: "🌙", flipped: false, matched: false },
+  { emoji: "🛸", flipped: false, matched: false },
+  { emoji: "🌎", flipped: false, matched: false },
+  { emoji: "👾", flipped: false, matched: false },
+  { emoji: "🪐", flipped: false, matched: false },
+  { emoji: "🌎", flipped: false, matched: false },
   { emoji: "🧠", flipped: false, matched: false },
-  { emoji: "🌛", flipped: false, matched: false },
-  { emoji: "🌛", flipped: false, matched: false },
-  { emoji: "🪼", flipped: false, matched: false },
-  { emoji: "🪼", flipped: false, matched: false },
-  { emoji: "💄", flipped: false, matched: false },
-  { emoji: "💄", flipped: false, matched: false },
-  { emoji: "🦄", flipped: false, matched: false },
-  { emoji: "🦄", flipped: false, matched: false },
 ];
 
 // 2. state
@@ -85,6 +85,7 @@ export function loadRoomOne(onBack: () => void) {
 // 5. om nej -> vänd tillbaka
 
 function flippCardOnClick(cardPosition: number) {
+  // vid klick ändras flipped: false -> true
   memoryCards[cardPosition].flipped = true;
 
   fireWallView();
