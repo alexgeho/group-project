@@ -14,7 +14,7 @@
 
 export function loadRoomOne(onBack: () => void) {
   // 1️⃣ skapa HTML
-  fireWallView();
+  renderRoom();
   renderCards();
   // 2️⃣ koppla event
   backButtonSetup(onBack);
@@ -49,7 +49,7 @@ const memoryCards: MemoryCard[] = [
 // 🖼 View - HTML Markup
 // ──────────────────────────────────────────────────────────────────────────────────────
 
-function fireWallView() {
+function renderRoom() {
   const firewallMarkup = document.querySelector("#firewall");
   if (!firewallMarkup) return;
 
@@ -68,6 +68,9 @@ function renderCards() {
   let cardsMarkup = "";
 
   for (let i = 0; i < memoryCards.length; i++) {
+    // 1. Skriv button markup
+    // 2. hämta cards från arrayen
+    // 3. ...
     cardsMarkup += `
       <button class="card">
         ${memoryCards[i].flipped ? memoryCards[i].emoji : "🔥"}
@@ -84,19 +87,29 @@ function renderCards() {
 // 🎮 GAME LOGIC
 // ──────────────────────────────────────────────────────────────────────────────────────
 
-// ❌ false →
-// ✅ true → the card is flipped
+/* 
+Simply changing the status of the card from 
+❌ false → ✅ true
+the cards are false to begin with 
+*/
 
-// 1. tryck på kort -> kortet vänds
+// 1. click on card -> true -> flip
 
 function flippCardOnClick(index: number) {
-  // 1. Ta reda på vilket kort som klickades baserat på index
+  // Ta reda på vilket kort som klickades baserat på index
   const clickedCard = memoryCards[index];
-  console.log(clickedCard);
-  // 2. Ändra status vid klick
+
+  // ⚠️ Om kortet inte finns ELLER om kortet redan är vänt -> avbryt!
+  if (!clickedCard || clickedCard.flipped) return;
+  console.log(memoryCards[index]);
+
+  // Annars -> ändra status
   clickedCard.flipped = true;
-  // 3. Rendera korten igen baserat på den nya statusen
+
+  // Rendera korten igen baserat på den nya statusen
   renderCards();
+
+  console.log(memoryCards);
 }
 
 // 3. matchar korten?
