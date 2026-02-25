@@ -95,14 +95,19 @@ the cards are false to begin with
 
 // 1. click on card -> true -> flip
 
-function flippCardOnClick(index: number) {
+function handleCardClick(index: number) {
   const clickedCard = memoryCards[index];
 
   // 🛑 GUARDS
   if (!clickedCard) return;
   if (clickedCard.flipped) return;
 
-  const flippedCards = memoryCards.filter((card) => card.flipped);
+  // Aktiva öppna kort (inte matchade)
+  const flippedCards = memoryCards.filter(
+    (card) => card.flipped === true && card.matched === false,
+  );
+
+  // avbryt om två redan är öppna
   if (flippedCards.length >= 2) return;
 
   // ✅ Ändra status
@@ -111,15 +116,30 @@ function flippCardOnClick(index: number) {
   console.log(memoryCards[index]);
 
   renderCards();
+  checkForMatch();
 }
 
 // 2. matchar korten?
 
-/*function checkForMatch() {
-  // Gå igenom alla kort och behåll dom som är vända (true)
-  const flippedCards = memoryCards.filter((card) => card.flipped);
-  if (flippedCards.length >= 2) return;
-}*/
+function checkForMatch() {
+  // Aktiva öppna kort (inte matchade)
+  const flippedCards = memoryCards.filter(
+    (card) => card.flipped === true && card.matched === false,
+  );
+
+  // kör endast funktionen då två kort är öppna
+  if (flippedCards.length !== 2) return;
+
+  // hämta de två korten öppna korten i den nya arrayen
+  const firstCard = flippedCards[0];
+  const secondCard = flippedCards[1];
+
+  if (firstCard.emoji === secondCard.emoji) {
+    console.log("MATCH!");
+    firstCard.matched = true;
+    secondCard.matched = true;
+  }
+}
 
 /*function filterByCategoryFireFu() {
   filteredProducts = products.filter((product) => product.category == "fire"); // .filter( HÄR INNE SKER NÅGOT SUPER KOMPLEXT );
@@ -142,7 +162,7 @@ function addEventForEachCard() {
   // 4. vid klick - kom ihåg vilket kort som klickades
   cards.forEach((button, index) => {
     button.addEventListener("click", () => {
-      flippCardOnClick(index);
+      handleCardClick(index);
     });
   });
 }
