@@ -89,30 +89,43 @@ function renderCards() {
 
 /* 
 Simply changing the status of the card from 
-❌ false → ✅ true
+❌ false ➔ ✅ true
 the cards are false to begin with 
 */
 
 // 1. click on card -> true -> flip
 
 function flippCardOnClick(index: number) {
-  // Ta reda på vilket kort som klickades baserat på index
   const clickedCard = memoryCards[index];
 
-  // ⚠️ Om kortet inte finns ELLER om kortet redan är vänt -> avbryt!
-  if (!clickedCard || clickedCard.flipped) return;
-  console.log(memoryCards[index]);
+  // 🛑 GUARDS
+  if (!clickedCard) return;
+  if (clickedCard.flipped) return;
 
-  // Annars -> ändra status
+  const flippedCards = memoryCards.filter((card) => card.flipped);
+  if (flippedCards.length >= 2) return;
+
+  // ✅ Ändra status
   clickedCard.flipped = true;
 
-  // Rendera korten igen baserat på den nya statusen
-  renderCards();
+  console.log(memoryCards[index]);
 
-  console.log(memoryCards);
+  renderCards();
 }
 
-// 3. matchar korten?
+// 2. matchar korten?
+
+/*function checkForMatch() {
+  // Gå igenom alla kort och behåll dom som är vända (true)
+  const flippedCards = memoryCards.filter((card) => card.flipped);
+  if (flippedCards.length >= 2) return;
+}*/
+
+/*function filterByCategoryFireFu() {
+  filteredProducts = products.filter((product) => product.category == "fire"); // .filter( HÄR INNE SKER NÅGOT SUPER KOMPLEXT );
+  printProducts();
+}*/
+
 // 4. om ja -> gör ingenting
 // 5. om nej -> vänd tillbaka
 
