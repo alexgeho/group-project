@@ -1,6 +1,6 @@
 /**
- * FIREWALL - Memory Game
- * 👾
+ * FIREWALL - Memory Game 🃏🃏
+ *
  * The player have to get pairs of cards with the same emoji.
  * The cards are placed face down and the player can flip two cards at a time.
  * If the cards match, they stay face up.
@@ -8,14 +8,21 @@
  * The player wins when all pairs of cards are matched.
  */
 
-// 1. DATA - the cards for the memory game
-// 2. STATE
-// 3. VIEW - HTML markup
-// 4. RENDER - inject the view into DOM
-// 6. GAME LOGIC
-// 5. EVENTS
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🔥 LOAD ROOM ONE
+// ──────────────────────────────────────────────────────────────────────────────────────
 
-// 1. Data
+export function loadRoomOne(onBack: () => void) {
+  // 1️⃣ skapa HTML
+  fireWallView();
+  renderCards();
+  // 2️⃣ koppla event
+  backButtonSetup(onBack);
+}
+
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🗂 DATA - memory card information
+// ──────────────────────────────────────────────────────────────────────────────────────
 
 interface MemoryCard {
   emoji: string;
@@ -38,79 +45,87 @@ const memoryCards: MemoryCard[] = [
   { emoji: "🧠", flipped: false, matched: false },
 ];
 
-// 2. state
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🖼 View - HTML Markup
+// ──────────────────────────────────────────────────────────────────────────────────────
 
-// 3. View
 function fireWallView() {
   const firewallMarkup = document.querySelector("#firewall");
   if (!firewallMarkup) return;
 
   firewallMarkup.innerHTML = `
     <h2>You've entered a Firewall</h2>
-    <p>It is your mission to break it</p>
+    <p>It is your mission to break it!</p>
     <div id="cardBoard" class="card-board"></div>
-    <button id="back" class=btn-primary>Back</button>
+    <button id="back" class="btn-primary">Back</button>
   `;
+}
 
+function renderCards() {
   const cardsBoard = document.querySelector("#cardBoard");
+  if (!cardsBoard) return;
 
   let cardsMarkup = "";
 
-  // data-id - för att
   for (let i = 0; i < memoryCards.length; i++) {
     cardsMarkup += `
-  <button class="card" data-id="${i}">
-  ${memoryCards[i].flipped ? memoryCards[i].emoji : "🔥"}
-  </button>
-  `;
+      <button class="card">
+        ${memoryCards[i].flipped ? memoryCards[i].emoji : "🔥"}
+      </button>
+    `;
   }
 
-  cardsBoard!.innerHTML = cardsMarkup;
+  cardsBoard.innerHTML = cardsMarkup;
 
-  addEventsToAllCards();
+  addEventForEachCard();
 }
 
-// 3. Render
-export function loadRoomOne(onBack: () => void) {
-  fireWallView(); // 1️⃣ skapa HTML
-  backButtonSetup(onBack); // 2️⃣ koppla event
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🎮 GAME LOGIC
+// ──────────────────────────────────────────────────────────────────────────────────────
+
+// ❌ false →
+// ✅ true → the card is flipped
+
+// 1. tryck på kort -> kortet vänds
+
+function flippCardOnClick(index: number) {
+  // 1. Ta reda på vilket kort som klickades baserat på index
+  const clickedCard = memoryCards[index];
+  console.log(clickedCard);
+  // 2. Ändra status vid klick
+  clickedCard.flipped = true;
+  // 3. Rendera korten igen baserat på den nya statusen
+  renderCards();
 }
 
-// 5. Logic
-
-// 1. tryck på kort 1 -> kortet vänds
-// 2. tryck på kort 2 -> kortet vänds
 // 3. matchar korten?
 // 4. om ja -> gör ingenting
 // 5. om nej -> vänd tillbaka
 
-function flippCardOnClick(cardPosition: number) {
-  // vid klick ändras flipped: false -> true
-  memoryCards[cardPosition].flipped = true;
+// ──────────────────────────────────────────────────────────────────────────────────────
+// 🎧 Här sätts event-lyssnare
+// ──────────────────────────────────────────────────────────────────────────────────────
 
-  fireWallView();
-}
+function addEventForEachCard() {
+  // 1. Hämta element som ska ha event-lyssnare
+  const cards = document.querySelectorAll<HTMLButtonElement>(".card");
 
-// 4. Här sätts event-lyssnare
-
-function addEventsToAllCards() {
-  const cardButtons = document.querySelectorAll<HTMLButtonElement>(".card");
-
-  cardButtons.forEach((button) => {
+  // 2. Sätt event-lyssnare på varje element,
+  // 3. koppla funktion som ska triggas vid klick,
+  // 4. vid klick - kom ihåg vilket kort som klickades
+  cards.forEach((button, index) => {
     button.addEventListener("click", () => {
-      // hämta knappens data-id nummer (string) - för att veta vilket kort som klickades
-      const dataId = button.dataset.id;
-      // gör id till number
-      const cardPosition = Number(dataId);
-      console.log(memoryCards[cardPosition]);
-
-      flippCardOnClick(cardPosition);
+      flippCardOnClick(index);
     });
   });
 }
 
 function backButtonSetup(onBack: () => void) {
+  // 1. Hämta element
   const backButton = document.querySelector("#back");
 
+  // 2. Sätt event-lyssnare på elementet
+  // 3. koppla indirekt en funktion som ska köras vid klick
   backButton?.addEventListener("click", onBack);
 }
