@@ -1,0 +1,58 @@
+pre,
+.code {
+  font-family: monospace;
+  text-align: left;
+  background-color: #000000f5;
+  border-radius: 5px;
+  padding: 2px;
+  color: green;
+  font-size: 0.8rem;
+  overflow: scroll;
+}
+
+.code-snippet {
+  display: flex;
+  justify-content: center;
+  color: green;
+}
+
+.bug-options {
+  display: flex;
+  justify-content: center;
+}
+
+.room-five-content {
+  gap: 22px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 10px aqua;
+  }
+
+  label {
+    align-self: self-start;
+    display: flex;
+  }
+
+  p {
+    max-width: 511px;
+    align-self: center;
+    line-height: 1.5rem;
+  }
+}
+
+.room-timer{
+  font-size: 1.5rem;
+  color: red;
+  text-shadow: 1px 1px 10px red;
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+}

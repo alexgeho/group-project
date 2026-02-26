@@ -1,3 +1,6 @@
+@use "roomFive";
+@use "gameOver";
+
 body {
   font-family: 'Orbitron', 'Iceland', 'Courier', monospace, system-ui;
   letter-spacing: 2px;
@@ -7,8 +10,7 @@ body {
 }
 
 header {
-  position: sticky;
-  top: 0;
+  flex-wrap: wrap;
   background-color: #1d1c44f5;
   color: #fff;
   padding: 20px;
@@ -19,10 +21,22 @@ header {
 }
 
 main {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 100vh;
+}
+
+section {
+  padding: 20px;
+}
+
+.progress-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 .room-card {
@@ -44,7 +58,7 @@ main {
 
 .rooms {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   margin-top: 20px;
   padding: 20px;
@@ -96,7 +110,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 
   .homepage-text {
     display: flex;
@@ -142,9 +156,11 @@ main {
   cursor: pointer;
   font-family: inherit;
   letter-spacing: inherit;
+  align-self: center;
 }
-.completed{
-border: 2px solid green;
+
+.completed {
+  border: 2px solid green;
 }
 
 progress {
@@ -172,6 +188,18 @@ progress {
     border-radius: 10px;
   }
 }
+
+.room-timer {
+  font-size: 1.5rem;
+  color: red;
+  text-shadow: 1px 1px 10px red;
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+}
+
 
 #firewall,
 #database,

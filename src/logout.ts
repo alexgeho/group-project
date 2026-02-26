@@ -8,5 +8,5 @@ export function logout(): void {
   document.querySelector('header')?.classList.add('hidden');
   
   document.querySelector('.homepage-page')?.classList.remove('hidden');
-
+  document.querySelectorAll('.room-card').forEach(card => card.classList.remove('completed'));
 };
