@@ -39,10 +39,18 @@ const memoryCards: MemoryCard[] = [
   { emoji: "🌙", flipped: false, matched: false },
   { emoji: "🛸", flipped: false, matched: false },
   { emoji: "🌎", flipped: false, matched: false },
-  { emoji: "👾", flipped: false, matched: false },
-  { emoji: "🪐", flipped: false, matched: false },
+  { emoji: "🧩", flipped: false, matched: false },
+  { emoji: "🌕", flipped: false, matched: false },
   { emoji: "🌎", flipped: false, matched: false },
   { emoji: "🧠", flipped: false, matched: false },
+  { emoji: "🦋", flipped: false, matched: false },
+  { emoji: "🪐", flipped: false, matched: false },
+  { emoji: "🦄", flipped: false, matched: false },
+  { emoji: "🧩", flipped: false, matched: false },
+  { emoji: "👾", flipped: false, matched: false },
+  { emoji: "🦋", flipped: false, matched: false },
+  { emoji: "🌕", flipped: false, matched: false },
+  { emoji: "🦄", flipped: false, matched: false },
 ];
 
 // ──────────────────────────────────────────────────────────────────────────────────────
