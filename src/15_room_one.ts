@@ -8,6 +8,7 @@
  * The player wins when all pairs of cards are matched.
  */
 
+import { stopRoomTimer } from "./28-roomTimer";
 import { showPlayerStats } from "./showPlayerStats";
 
 // ──────────────────────────────────────────────────────────────────────────────────────
@@ -65,10 +66,14 @@ function renderRoom() {
 
   firewallMarkup.innerHTML = `
     <h2>You've entered a Firewall</h2>
+    <div id="roomHeader"></div>
     <p>It is your mission to break it!</p>
     <div id="cardBoard" class="card-board"></div>
     <button id="back" class="btn-primary">Back</button>
   `;
+
+  const roomHeader = document.querySelector<HTMLElement>("#roomHeader");
+  if (!roomHeader) return;
 }
 
 function renderCards() {
@@ -167,8 +172,13 @@ function checkForMatch() {
 }
 
 function handleRoomComplete() {
+  stopRoomTimer();
+  /*const timeLeft = getTimeLeft();
+  player.roomTimes*/
+
   const playerItem = localStorage.getItem("player");
   if (!playerItem) return;
+
   const player = JSON.parse(playerItem);
 
   // Om artefakt INTE finns..
@@ -176,7 +186,6 @@ function handleRoomComplete() {
     // lägg till den
     player.artifacts.push("G");
     localStorage.setItem("player", JSON.stringify(player));
-    // rendera om sidan med collected artifakt
     showPlayerStats();
   }
 }
