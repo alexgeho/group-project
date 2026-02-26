@@ -16,8 +16,8 @@
   <header>
     <section id="total-timer-display">Total: <span id="total-timer">00:00</span></section>
     <section id="artefact-display">Artefacts: <span id="collected-artefacts"></span></section>
-    <section id="progress-display">
-      Progress:
+    <section id="progress-display" class="progress-section">
+      <span>Progress:</span>
       <progress id="progress-bar" value="0" max="6"></progress>
     </section>
     <button id="logoutBtn" class="btn-primary">Logga ut</button>
@@ -81,7 +81,7 @@
     </section>
 
     <!-- GAME OVER -->
-    <section class="game-over box">
+    <section class="game-over">
       <h2 id="game-over-title">Game Over</h2>
       <p id="game-over-message"></p>
       <button id="play-again-btn">Play Again</button>

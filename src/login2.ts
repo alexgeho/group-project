@@ -13,7 +13,7 @@ export function loginUser(e: Event): void {
     name: usernameInput.value.trim(),
     points: 0,
     artifacts: [],
-    roomTimes: [{ roomId: 3, time: 200 }],
+    roomTimes: [],
     roomsCompleted: [],
   };
 

@@ -9,7 +9,7 @@ export function loadGameOverPage(message: string, isWin: boolean): void {
   gameOverContainer.classList.remove('hidden');
 
   gameOverContainer.innerHTML = `
-    ${isWin ? `<h2 class="win">Congratulations!</h2>        <p class="p-message-win">${message}</p>` : `<h2 class="lose">Game Over</h2> <p class="p-message-lose">${message}</p>`}
+    ${isWin ? `<h2 class="win">Congratulations!</h2> <p class="p-message-win">${message}</p>` : `<h2 class="lose">Game Over</h2> <p class="p-message-lose">${message}</p>`}
     
     <button id="backToLobbyBtn" class="btn-primary">Back to lobby</button>
   `;

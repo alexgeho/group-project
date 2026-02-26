@@ -1,13 +1,15 @@
 import { goToLobby } from "./gotoLobby";
 import { loadGameOverPage } from "./gameOverPage";
 import { getPlayer } from "./fetchPlayerFromLs";
-
+import { startRoomTimer, stopRoomTimer, getTimeLeft } from "./28-roomTimer";
 
 const memoryContainer = document.getElementById("bug-room");
+const roomNumber = 5;
+
+console.log(memoryContainer, " timer element in room 5");
 
 export function loadRoomFive(): void {
   if (!memoryContainer) return;
-  //    <p>In this room, you will be presented with a series of code snippets. Your task is to identify and fix the bugs in each snippet to progress through the room. Pay close attention to details, as even a small mistake can lead to unexpected behavior. Good luck!</p>
   memoryContainer.innerHTML = `
     <h2>Welcome to Room 5 - Bug Room</h2>
     <p>Warning! A rogue process has infiltrated the system. The bug is spreading and corrupting the portal's code. You must locate the error before it's too late.<br>–<br> <br>Analyze the code carefully <br> one wrong answer and the bug wins.</p>
@@ -93,23 +95,31 @@ export function loadRoomFive(): void {
     <button id="fiveBackToRooms" class="btn-primary">Back</button>
   `;
 
+  startRoomTimer(memoryContainer, 60);
   const backButton = document.getElementById("fiveBackToRooms");
-  backButton?.addEventListener("click", goToLobby);
+  backButton?.addEventListener("click", () => {
+    stopRoomTimer();
+    goToLobby();
+  });
 
   const submitButton = document.getElementById("submitBugFix");
   submitButton?.addEventListener("click", (e) => {
     e.preventDefault();
     if (checkAnswers()) {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
+
       let player = getPlayer();
       if (player) {
-        if (!player.artifacts.includes('u') && !player.roomsCompleted.includes(5)) {
-        player.artifacts.push('u');
-        player.roomsCompleted.push(5);
+        if (!player.artifacts.includes('u') && !player.roomsCompleted.includes(roomNumber)) {
+          player.artifacts.push('u');
+          player.roomsCompleted.push(roomNumber);
+          player.roomTimes.push({ roomId: roomNumber, time: getTimeLeft() });
         }
         localStorage.setItem("player", JSON.stringify(player));
+        stopRoomTimer();
       }
       loadGameOverPage(message, true);
+
     } else {
       const message = "Incorrect answer. Please review the code and try again.";
       loadGameOverPage(message, false);

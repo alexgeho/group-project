@@ -18,7 +18,6 @@ export function showPlayerStats(): void {
     }
 
     const progress = document.querySelector('#progress-bar') as HTMLProgressElement;
-    console.log(progress);
     if (progress) {
       progress.value = Number(playerData.roomsCompleted.length);
     }
