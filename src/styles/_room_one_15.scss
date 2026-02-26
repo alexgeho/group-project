@@ -9,8 +9,8 @@ p {
 
 .card-board {
   display: grid;
-  grid-template-columns: repeat(4, 120px);
-  gap: 1rem;
+  grid-template-columns: repeat(5, 120px);
+  gap: 0.5rem;
   margin: 1rem;
   padding: 1rem;
   //border: 1px solid green;
@@ -20,7 +20,7 @@ p {
 }
 
 .card {
-  grid-column: span 1;
+  //grid-column: span 1;
   //padding: 0.5rem;
   //padding-block: 4rem;
   background-color: rgba(20, 20, 30, 0.95);
@@ -28,8 +28,8 @@ p {
   border: 2px solid rgb(112, 112, 112);
   font-size: 3.5rem;
   cursor: pointer;
-  width: 110px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 .card:hover {
