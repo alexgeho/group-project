@@ -1,6 +1,5 @@
 export async function loadRoomTwo(onComplete: () => void): Promise<void> {
-
-  const container = document.getElementById('database');
+  const container = document.getElementById("database");
   if (!container) return;
 
   // Initialize only if puzzle not yet solved
@@ -29,6 +28,7 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
 
     <button id="check-btn">Check Database</button>
     <button id="reset-btn">Reset Room</button>
+    <button id="back-to-lobby-btn">Back To Lobby</button>
 
     <button id="next-btn">
       Next
@@ -37,17 +37,20 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
 
   renderStorage();
 
-  const addBtn = document.getElementById('add-btn');
-  const removeBtn = document.getElementById('remove-btn');
-  const checkBtn = document.getElementById('check-btn');
-  const resetBtn = document.getElementById('reset-btn');
-  const nextBtn = document.getElementById('next-btn');
+  const addBtn = document.getElementById("add-btn");
+  const removeBtn = document.getElementById("remove-btn");
+  const checkBtn = document.getElementById("check-btn");
+  const resetBtn = document.getElementById("reset-btn");
+  const toLobbyBtn = document.getElementById("back-to-lobby-btn");
+  const nextBtn = document.getElementById("next-btn");
 
-  if (addBtn) addBtn.addEventListener('click', addOrUpdateItem);
-  if (removeBtn) removeBtn.addEventListener('click', removeItem);
+  toLobbyBtn?.addEventListener("click", onComplete);
+
+  if (addBtn) addBtn.addEventListener("click", addOrUpdateItem);
+  if (removeBtn) removeBtn.addEventListener("click", removeItem);
 
   if (checkBtn) {
-    checkBtn.addEventListener('click', function () {
+    checkBtn.addEventListener("click", function () {
       const success = checkDatabase();
       if (success && nextBtn) {
         nextBtn.classList.add("show");
@@ -56,22 +59,20 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
   }
 
   if (resetBtn) {
-    resetBtn.addEventListener('click', function () {
+    resetBtn.addEventListener("click", function () {
       initBrokenDatabase();
       renderStorage();
     });
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener('click', function () {
+    nextBtn.addEventListener("click", function () {
       onComplete();
     });
   }
 }
 
-
 function initBrokenDatabase(): void {
-
   localStorage.removeItem("key1");
   localStorage.removeItem("key2");
   localStorage.removeItem("key3");
@@ -85,9 +86,7 @@ function initBrokenDatabase(): void {
   localStorage.setItem("debug", "true");
 }
 
-
 function renderStorage(): void {
-
   const container = document.getElementById("storage-view");
   if (!container) return;
 
@@ -105,9 +104,7 @@ function renderStorage(): void {
   }
 }
 
-
 function addOrUpdateItem(): void {
-
   const keyInput = document.getElementById("add-key") as HTMLInputElement;
   const valueInput = document.getElementById("add-value") as HTMLInputElement;
 
@@ -121,9 +118,7 @@ function addOrUpdateItem(): void {
   renderStorage();
 }
 
-
 function removeItem(): void {
-
   const keyInput = document.getElementById("remove-key") as HTMLInputElement;
   if (!keyInput.value) return;
 
@@ -134,9 +129,7 @@ function removeItem(): void {
   renderStorage();
 }
 
-
 function checkDatabase(): boolean {
-
   const k1 = localStorage.getItem("key1");
   const k2 = localStorage.getItem("key2");
   const k3 = localStorage.getItem("key3");
@@ -156,7 +149,6 @@ function checkDatabase(): boolean {
   }
 
   if (k1 === "M" && k2 === "A" && k3 === "R" && k4 === "S") {
-
     localStorage.setItem("artifact_i", "true");
 
     alert("ACCESS GRANTED\nArtifact 'I' collected!");
