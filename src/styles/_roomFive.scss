@@ -8,6 +8,10 @@ pre,
   color: green;
   font-size: 0.8rem;
   overflow: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+      display: none;
+    }
 }
 
 .code-snippet {
