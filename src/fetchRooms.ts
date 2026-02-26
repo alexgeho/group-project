@@ -29,7 +29,6 @@ export async function fetchRooms(): Promise<void> {
     <button id="enterRoom${room.id}" class="btn-primary">Enter</button>`;
 
     // создаем тэг div который будет передан в createElement
-    const roomElement = document.createElement("div");
 
     // даем тегу div класс в который будет подставляться ид комнаты
     roomElement.className = `room-${room.id} room-card`;
