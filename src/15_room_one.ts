@@ -158,7 +158,7 @@ function checkForMatch() {
       firstCard.flipped = false;
       secondCard.flipped = false;
       renderCards();
-    }, 1500);
+    }, 500);
   }
 
   console.log("Aktiva öppna:", flippedCards.length);
