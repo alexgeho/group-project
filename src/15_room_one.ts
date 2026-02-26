@@ -134,17 +134,23 @@ function checkForMatch() {
   const firstCard = flippedCards[0];
   const secondCard = flippedCards[1];
 
+  // Change state if match
   if (firstCard.emoji === secondCard.emoji) {
     console.log("MATCH!");
     firstCard.matched = true;
     secondCard.matched = true;
+  } else {
+    setTimeout(function waitForIt() {
+      firstCard.flipped = false;
+      secondCard.flipped = false;
+      renderCards();
+    }, 1500);
   }
-}
 
-/*function filterByCategoryFireFu() {
-  filteredProducts = products.filter((product) => product.category == "fire"); // .filter( HÄR INNE SKER NÅGOT SUPER KOMPLEXT );
-  printProducts();
-}*/
+  console.log("Aktiva öppna:", flippedCards.length);
+
+  // No match -> flip back
+}
 
 // 4. om ja -> gör ingenting
 // 5. om nej -> vänd tillbaka
