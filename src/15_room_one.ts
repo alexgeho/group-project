@@ -136,9 +136,12 @@ function checkForMatch() {
 
   // Change state if match
   if (firstCard.emoji === secondCard.emoji) {
-    console.log("MATCH!");
     firstCard.matched = true;
     secondCard.matched = true;
+
+    // All cards are matched -> artefact
+    if (memoryCards.every((card) => card.matched === true)) {
+    }
   } else {
     setTimeout(function waitForIt() {
       firstCard.flipped = false;
@@ -156,7 +159,7 @@ function checkForMatch() {
 // 5. om nej -> vänd tillbaka
 
 // ──────────────────────────────────────────────────────────────────────────────────────
-// 🎧 Här sätts event-lyssnare
+// 🎧 Hevent-lyssnare
 // ──────────────────────────────────────────────────────────────────────────────────────
 
 function addEventForEachCard() {
