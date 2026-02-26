@@ -29,6 +29,7 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
 
     <button id="check-btn">Check Database</button>
     <button id="reset-btn">Reset Room</button>
+    <button id="back-to-lobby-btn">Back To Lobby</button>
 
     <button id="next-btn">
       Next
@@ -36,13 +37,16 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
   `;
 
   renderStorage();
-
+ 
   const addBtn = document.getElementById('add-btn');
   const removeBtn = document.getElementById('remove-btn');
   const checkBtn = document.getElementById('check-btn');
   const resetBtn = document.getElementById('reset-btn');
+  const toLobbyBtn = document.getElementById('back-to-lobby-btn');
   const nextBtn = document.getElementById('next-btn');
 
+  toLobbyBtn?.addEventListener('click', onComplete)
+  
   if (addBtn) addBtn.addEventListener('click', addOrUpdateItem);
   if (removeBtn) removeBtn.addEventListener('click', removeItem);
 
