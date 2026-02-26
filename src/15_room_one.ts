@@ -8,6 +8,8 @@
  * The player wins when all pairs of cards are matched.
  */
 
+import { showPlayerStats } from "./showPlayerStats";
+
 // ──────────────────────────────────────────────────────────────────────────────────────
 // 🔥 LOAD ROOM ONE
 // ──────────────────────────────────────────────────────────────────────────────────────
@@ -149,6 +151,7 @@ function checkForMatch() {
 
     // All cards are matched -> artefact
     if (memoryCards.every((card) => card.matched === true)) {
+      handleRoomComplete();
     }
   } else {
     setTimeout(function waitForIt() {
@@ -161,6 +164,21 @@ function checkForMatch() {
   console.log("Aktiva öppna:", flippedCards.length);
 
   // No match -> flip back
+}
+
+function handleRoomComplete() {
+  const playerItem = localStorage.getItem("player");
+  if (!playerItem) return;
+  const player = JSON.parse(playerItem);
+
+  // Om artefakt INTE finns..
+  if (!player.artifacts.includes("G")) {
+    // lägg till den
+    player.artifacts.push("G");
+    localStorage.setItem("player", JSON.stringify(player));
+    // rendera om sidan med collected artifakt
+    showPlayerStats();
+  }
 }
 
 // 4. om ja -> gör ingenting
