@@ -2,8 +2,8 @@ import { getPlayer } from "./fetchPlayerFromLs";
 import { goToLobby } from "./gotoLobby";
 import { addHighscore } from "./highscore";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { loadGameOverPage } from "./gameOverPage";
 
-const player = getPlayer();
 const memoryContainer = document.getElementById("destiny");
 
 export function loadFinalRoom(): void {
@@ -31,6 +31,10 @@ export function loadFinalRoom(): void {
       <span>Answer:</span>
       <input type="text" id="final-answer" />
       </label>
+
+      <button type="submit" id="submitFinalAnswer" class="btn-primary">
+        Submit
+      </button>
     </form>
     
     <button id="finalBackToRooms" class="btn-primary">Back</button>`
@@ -41,21 +45,25 @@ export function loadFinalRoom(): void {
     stopRoomTimer();
     goToLobby();
   });
-
-  if (checkAnswer()) {
-    if (!player) {
-      addHighscore({
-        name: player!.name,
-        score: player!.points,
-        date: new Date().toLocaleDateString(),
-      });
+  const submitButton = document.getElementById("submitFinalAnswer");
+  submitButton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (checkAnswer()) {
+      const player = getPlayer()
+      if (player) {
+        addHighscore({
+          name: player!.name,
+          score: player!.points,
+          date: new Date().toLocaleDateString(),
+        });
+        loadGameOverPage("Congratulations! You have successfully completed the game.", true);
+      }
     }
-  }
+  });
 }
 
 function checkAnswer(): boolean {
-  // const answerInput = document.getElementById('final-answer') as HTMLInputElement;
-  // const answer = answerInput.value.trim().toLowerCase();
-  // return answer === 'mars';
-  return true;
+  const answerInput = document.getElementById('final-answer') as HTMLInputElement;
+  const answer = answerInput.value.trim().toLowerCase();
+  return answer === 'github';
 }
