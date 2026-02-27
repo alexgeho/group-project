@@ -1,7 +1,7 @@
-import { startTotalTimer } from "./12_total_timer";
-import { loadRoomFive } from "./19_room_five";
-import { loadRoomOne } from "./15_room_one";
-import { loadRoomTwo } from "./16_room_two";
+import { startTotalTimer } from "./total_timer";
+import { loadRoomFive } from "./room_five";
+import { loadRoomOne } from "./room_one";
+import { loadRoomTwo } from "./room_two";
 import { goToLobby } from "./gotoLobby";
 import type { IRoom } from "./models/Room";
 import { getPlayer } from "./fetchPlayerFromLs";

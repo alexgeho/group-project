@@ -1,5 +1,5 @@
 import "./styles/style.scss";
-import { loginUser } from "./login2";
+import { loginUser } from "./login.ts";
 import { logout } from "./logout";
 import { fetchRooms } from "./fetchRooms";
 import { checkLoggedInPlayer } from "./checkLoggedInPlayer";
