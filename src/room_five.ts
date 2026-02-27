@@ -1,7 +1,7 @@
 import { goToLobby } from "./gotoLobby";
 import { loadGameOverPage } from "./gameOverPage";
-import { getPlayer } from "./fetchPlayerFromLs";
-import { startRoomTimer, stopRoomTimer, getTimeLeft } from "./roomTimer";
+import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { saveRoomProgress } from "./saveRoomProgress";
 
 const memoryContainer = document.getElementById("bug-room");
 const roomNumber = 5;
@@ -109,16 +109,7 @@ export function loadRoomFive(): void {
     if (checkAnswers()) {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
 
-      let player = getPlayer();
-      if (player) {
-        if (!player.artifacts.includes(roomArtifact) && !player.roomsCompleted.includes(roomNumber)) {
-          player.artifacts.push(roomArtifact);
-          player.roomsCompleted.push(roomNumber);
-          player.roomTimes.push({ roomId: roomNumber, time: getTimeLeft() });
-        }
-        localStorage.setItem("player", JSON.stringify(player));
-        stopRoomTimer();
-      }
+      saveRoomProgress(roomNumber, roomArtifact);
       loadGameOverPage(message, true);
 
     } else {
