@@ -5,7 +5,7 @@ import { loadRoomTwo } from "./room_two";
 import { goToLobby } from "./gotoLobby";
 import type { IRoom } from "./models/Room";
 import { getPlayer } from "./fetchPlayerFromLs";
-import { loadFinalRoom } from "./room-final";
+import { loadFinalRoom } from "./room_final";
 
 let roomLoaded = false;
  const playerData = getPlayer();

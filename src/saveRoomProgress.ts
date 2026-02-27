@@ -8,6 +8,7 @@ export function saveRoomProgress(roomNumber: number, roomArtifact: string): void
       player.artifacts.push(roomArtifact);
       player.roomsCompleted.push(roomNumber);
       player.roomTimes.push({ roomId: roomNumber, time: getTimeLeft() });
+      player.points += getTimeLeft();
     }
     localStorage.setItem("player", JSON.stringify(player));
     stopRoomTimer();
