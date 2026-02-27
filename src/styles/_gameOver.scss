@@ -1,0 +1,39 @@
+.game-over {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  gap: 30px;
+
+  .win, .lose{
+    width: 50%;
+    align-content: center;
+    align-self: center;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  p{
+    background-color: rgba(111, 106, 106, 0.24);
+    padding: 15px;
+    width: 40%;
+    align-self: center;
+    border-radius: 5px;
+    line-height: 1.5em;  
+  }
+  .win {
+      background-color: #4CAF50;
+    }
+  
+  .lose {
+    background-color: #f44336;
+  }
+  .p-message-win{
+    text-shadow: 1px 1px 17px green;
+  }
+  .p-message-lose{
+    text-shadow: 1px 1px 17px red;
+  }
+}

@@ -3,12 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="./public/favicon/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
     rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <title>Marauders Escape Room</title>
 </head>
 
@@ -17,11 +21,11 @@
     
     <section id="total-timer-display">Total: <span id="total-timer">00:00</span></section>
     <section id="artefact-display">Artefacts: <span id="collected-artefacts"></span></section>
-    <section id="progress-display">
-      Progress:
+    <section id="progress-display" class="progress-section">
+      <span>Progress:</span>
       <progress id="progress-bar" value="0" max="6"></progress>
     </section>
-    <button id="logoutBtn" class="btn-primary">Logga ut</button>
+    <button id="logoutBtn" class="btn-primary">Log out</button>
 
   </header>
 
@@ -82,7 +86,7 @@
     </section>
 
     <!-- GAME OVER -->
-    <section class="game-over box">
+    <section class="game-over">
       <h2 id="game-over-title">Game Over</h2>
       <p id="game-over-message"></p>
       <button id="play-again-btn">Play Again</button>

@@ -1,24 +1,40 @@
-let seconds = 0
-let intervalId: number | null = null 
+import { loadGameOverPage } from "./gameOverPage";
+let intervalId: number | null = null
+let timeLeft = 0;
 
-export function startRoomTimer(updateUI: (time: number) => void) {
-    if (intervalId !== null) {
+export function startRoomTimer(htmlElement: HTMLElement, seconds: number) {
+    timeLeft = seconds;
+    const timerElement = document.createElement("p") as HTMLParagraphElement;
+    timerElement.className = "room-timer";
+    htmlElement.appendChild(timerElement);
+    timerElement.innerHTML = `Time left: ${timeLeft}s`
+
+    intervalId = setInterval(() => {
+        timeLeft--;
+        timerElement.innerHTML = `Time left: ${timeLeft}s`;
+        console.log(timeLeft, " time left in room timer");
+        if (timeLeft <= 0) {
+            stopRoomTimer();
+            loadGameOverPage("Time's up! You Lose!", false);
+        }
+    }, 1000)
+}
+
+export function stopRoomTimer(): void {
+    if (intervalId === null) {
         return
     }
-        seconds = 0
 
-        intervalId = setInterval(() => {
-            seconds++;
-            updateUI(seconds);
-        }, 1000)
-    }
+    clearInterval(intervalId)
+    intervalId = null
+    // const player = getPlayer();
+    // if (player && player.roomsCompleted && player.roomsCompleted.length > 0) {
+    //     const currentRoom = roomNumber
+    //     player.roomTimes = player.roomTimes || { currentRoom: currentRoom, time: timeLeft } as any;
+    //     localStorage.setItem("player", JSON.stringify(player));
+    // }
+}
 
-    export function stopRoomTimer(): number {
-        if (intervalId === null) {
-            return 0
-        }
-
-        clearInterval(intervalId)
-        intervalId = null
-        return seconds
-    }
+export function getTimeLeft(): number {
+    return timeLeft;
+}
