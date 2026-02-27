@@ -1,0 +1,71 @@
+#logic-module {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    gap: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00b4d8;
+}
+
+#undoBtn, #checkBtn, #backToRooms {
+    background-color: transparent;
+    color: #00b4d8;
+    border: 1px solid #00b4d8;
+    border-radius: 4px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    margin: 5px;
+
+    &:hover {
+        background-color: #00b4d8;
+        color: #1a1a2e
+    }
+}    
+
+#fragments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+
+    button {
+        background-color: #1a1a2e;
+        color: #00b4d8;
+        border: 1px solid #00b4d8;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-family:'Courier New', monospace;
+        font-size: 0.9rem;
+
+        &:hover {
+            background-color: #00b4d8;
+            color: #1a1a2e
+        }
+
+    }
+}
+
+#selected {
+    min-height: 40px;
+    width: 40%;
+    background-color: #0d0d0d;
+    border: 1px solid #00b4d8;
+    border-radius: 4px;
+    padding: 10px;
+    color: #00b4d8;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.solution-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}

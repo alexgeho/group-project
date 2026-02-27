@@ -3,6 +3,7 @@ import type { IPlayer } from "./models/Player";
 import { showPlayerStats } from "./showPlayerStats";
 
 const memoryContainer = document.getElementById("logic-module");
+const roomNumber = 3;
 
 const correctSolution = [
 "if",
@@ -63,11 +64,13 @@ memoryContainer.innerHTML = `
     <h3>Available Fragments</h3>
     <div id="fragments"></div>
     </div>
-    <div>
+    <div class="solution-wrapper">
     <h3>Your Solution</h3>
     <div id="selected"></div>
+    <div class="btn-group">
     <button id="undoBtn">Undo</button>
     <button id="checkBtn">Check Solution</button>
+    </div>
     </div>
     <button id="backToRooms">Back</button>
   `;
@@ -116,11 +119,18 @@ const player = getCurrentPlayer();
 console.log("player:", player);
 
 if (player) {
-player.artifacts.push("t");
-savePlayer(player);
-showPlayerStats();
-console.log("artifacts:", player.artifacts);
-    }
+if (!player.artifacts.includes("t")) {
+  player.artifacts.push("t");
+}
+
+if (!player.roomsCompleted.includes(roomNumber)) {
+  player.roomsCompleted.push(roomNumber);
+}
+
+  savePlayer(player);
+  showPlayerStats();
+  console.log("Updating header");
+}
 alert("Correct! You solved the room! 🎉");
   } else {
 alert("Wrong solution, try again!");
