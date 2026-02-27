@@ -6,33 +6,33 @@ export function showPlayerStats(): void {
     console.log('No player data found in localStorage.');
     return;
   }
-  else {
-    let aretfactsList = '';
-    for (let i = 0; i < playerData.artifacts.length; i++) {
-      aretfactsList += `[${playerData.artifacts[i]}] `;
-    }
 
-    const artefactSection = document.querySelector('#collected-artefacts') as HTMLSpanElement
-    if (artefactSection) {
-      artefactSection.textContent = `${aretfactsList}`;
-    }
+  let aretfactsList = '';
+  for (let i = 0; i < playerData.artifacts.length; i++) {
+    aretfactsList += `[${playerData.artifacts[i]}] `;
+  }
 
-    const progress = document.querySelector('#progress-bar') as HTMLProgressElement;
-    if (progress) {
-      progress.value = Number(playerData.roomsCompleted.length);
-    }
+  const artefactSection = document.querySelector('#collected-artefacts') as HTMLSpanElement
+  if (artefactSection) {
+    artefactSection.textContent = `${aretfactsList}`;
+  }
+
+  const progress = document.querySelector('#progress-bar') as HTMLProgressElement;
+  if (progress) {
+    progress.value = Number(playerData.roomsCompleted.length);
+  }
 
 
-    if (!playerData.roomTimes) {
-      console.log('No roomTimes found for player');
-      return;
-    }
-    for (let i = 0; i < playerData.roomTimes.length; i++) {
-      const roomTime = playerData.roomTimes[i];
-      const roomElement = document.querySelector(`.room-${roomTime.roomId}`);
-      if (roomElement) {
-        roomElement.classList.add('completed');
-      }
+  if (!playerData.roomTimes) {
+    console.log('No roomTimes found for player');
+    return;
+  }
+  for (let i = 0; i < playerData.roomTimes.length; i++) {
+    const roomTime = playerData.roomTimes[i];
+    const roomElement = document.querySelector(`.room-${roomTime.roomId}`);
+    if (roomElement) {
+      roomElement.classList.add('completed');
     }
   }
+
 }
