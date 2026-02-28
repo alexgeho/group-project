@@ -6,24 +6,7 @@
     gap: 20px;
     font-family: 'Courier New', Courier, monospace;
     color: #00b4d8;
-}
-
-#undoBtn, #checkBtn, #backToRooms {
-    background-color: transparent;
-    color: #00b4d8;
-    border: 1px solid #00b4d8;
-    border-radius: 4px;
-    padding: 8px 20px;
-    cursor: pointer;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 2px;
-    margin: 5px;
-
-    &:hover {
-        background-color: #00b4d8;
-        color: #1a1a2e
-    }
-}    
+} 
 
 #fragments {
     display: flex;

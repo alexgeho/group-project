@@ -68,11 +68,11 @@ memoryContainer.innerHTML = `
     <h3>Your Solution</h3>
     <div id="selected"></div>
     <div class="btn-group">
-    <button id="undoBtn">Undo</button>
-    <button id="checkBtn">Check Solution</button>
+    <button id="checkBtn" class="btn-primary">Check Solution</button>
+    <button id="undoBtn" class="btn-primary">Undo</button>
     </div>
     </div>
-    <button id="backToRooms">Back</button>
+    <button id="backToRooms" class="btn-primary">Back</button>
   `;
 
 const fragmentsContainer = document.getElementById("fragments");
