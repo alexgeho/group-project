@@ -1,6 +1,8 @@
 import { goToLobby } from "./gotoLobby";
-import type { IPlayer } from "./models/Player";
+import { getPlayer } from "./fetchPlayerFromLs";
 import { showPlayerStats } from "./showPlayerStats";
+import { loadGameOverPage } from "./gameOverPage";
+import { startRoomTimer, stopRoomTimer } from "./28-roomTimer";
 
 const memoryContainer = document.getElementById("logic-module");
 const roomNumber = 3;
@@ -36,27 +38,10 @@ const fragments = [
 
 let selectedFragments: string[] = [];
 
-function getCurrentPlayer(): IPlayer | null {
-const playerData = localStorage.getItem('player');
-if (!playerData) return null;
-return JSON.parse(playerData);
-}
-
-function savePlayer(player: IPlayer): void {
-localStorage.setItem('player', JSON.stringify(player));
-}
-
 export function loadRoomThree(): void {
 selectedFragments = [];
 console.log("Room Three loaded");
 if (!memoryContainer) return;
-
-function updateSelectedView() {
-const selectedContainer = document.getElementById("selected");
-if (selectedContainer) {
-selectedContainer.textContent = selectedFragments.join(" ");
-    }
-  }
 
 memoryContainer.innerHTML = `
     <p>Welcome to Room Three – Logic Module</p>
@@ -74,6 +59,16 @@ memoryContainer.innerHTML = `
     </div>
     <button id="backToRooms" class="btn-primary">Back</button>
   `;
+
+    startRoomTimer(memoryContainer, 60);
+
+
+function updateSelectedView() {
+const selectedContainer = document.getElementById("selected");
+if (selectedContainer) {
+selectedContainer.textContent = selectedFragments.join(" ");
+    }
+  }
 
 const fragmentsContainer = document.getElementById("fragments");
 const buttonElements: HTMLButtonElement[] = [];
@@ -113,28 +108,32 @@ updateSelectedView();
 )
 const checkBtn = document.getElementById("checkBtn");
 checkBtn?.addEventListener("click", () => {
-const isCorrect = JSON.stringify(selectedFragments) === JSON.stringify(correctSolution); 
-if (isCorrect) {
-const player = getCurrentPlayer();
-console.log("player:", player);
+  const isCorrect = JSON.stringify(selectedFragments) === JSON.stringify(correctSolution); 
+  
+  if (isCorrect) {
+    stopRoomTimer();
+  const player = getPlayer();
+  
+  if (player) {
+    
+    if (!player.artifacts.includes("t")) player.artifacts.push("t");
+    if (!player.roomsCompleted.includes(roomNumber)) player.roomsCompleted.push(roomNumber);
 
-if (player) {
-if (!player.artifacts.includes("t")) {
-  player.artifacts.push("t");
-}
-
-if (!player.roomsCompleted.includes(roomNumber)) {
-  player.roomsCompleted.push(roomNumber);
-}
-
-  savePlayer(player);
-  showPlayerStats();
-  console.log("Updating header");
-}
-alert("Correct! You solved the room! 🎉");
-  } else {
-alert("Wrong solution, try again!");
+    // SPARA - detta gör att rutan kan bli grön senare
+    localStorage.setItem("player", JSON.stringify(player));
+    
+    showPlayerStats(); 
   }
-}
-)
-}
+    const message = "You deployed without testing… or did you? The logic holds. The system stabilizes. The letter T is yours."
+    
+    loadGameOverPage(message, true); 
+
+    } else {
+      stopRoomTimer();
+
+    const lossMessage = "Logic Error: The condition doesn’t hold. Production refuses to cooperate. Try again!";
+  
+    loadGameOverPage(lossMessage, false);
+  }
+  }
+)};
