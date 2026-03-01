@@ -1,0 +1,53 @@
+.high-score {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  animation: rotatingShadow 3s linear infinite;
+  border-radius: 30px;
+  background: #00000036;
+
+  th,
+  td {
+    padding: 10px;
+  }
+}
+
+@keyframes rotatingShadow {
+  0% {
+    box-shadow: -4px 0px 25px 4px #cfc9e2; 
+  }
+
+  12% {
+    box-shadow: -5px -5px 25px 4px #8bfa9d; 
+  }
+
+  25% {
+    box-shadow: 0px -4px 25px 4px #a78bfa; 
+  }
+
+  37% {
+    box-shadow: 5px -5px 25px 4px #faae8b; 
+  }
+
+  50% {
+    box-shadow: 4px 0px 25px 4px #a78bfa;
+  }
+
+  62% {
+    box-shadow: 5px 5px 25px 4px #e213e2; 
+  }
+
+  75% {
+    box-shadow: 0px 4px 25px 4px #e44a5f;
+  }
+
+  87% {
+    box-shadow: -5px 5px 25px 4px #2ae423;
+  }
+
+  100% {
+    box-shadow: -4px 0px 25px 4px #f1e42d;
+  }
+}
