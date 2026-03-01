@@ -1,10 +1,11 @@
 import { goToLobby } from "./gotoLobby";
 import { loadGameOverPage } from "./gameOverPage";
-import { getPlayer } from "./fetchPlayerFromLs";
-import { startRoomTimer, stopRoomTimer, getTimeLeft } from "./28-roomTimer";
+import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { saveRoomProgress } from "./saveRoomProgress";
 
 const memoryContainer = document.getElementById("bug-room");
 const roomNumber = 5;
+const roomArtifact = 'u';
 
 console.log(memoryContainer, " timer element in room 5");
 
@@ -108,21 +109,13 @@ export function loadRoomFive(): void {
     if (checkAnswers()) {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
 
-      let player = getPlayer();
-      if (player) {
-        if (!player.artifacts.includes('u') && !player.roomsCompleted.includes(roomNumber)) {
-          player.artifacts.push('u');
-          player.roomsCompleted.push(roomNumber);
-          player.roomTimes.push({ roomId: roomNumber, time: getTimeLeft() });
-        }
-        localStorage.setItem("player", JSON.stringify(player));
-        stopRoomTimer();
-      }
+      saveRoomProgress(roomNumber, roomArtifact);
       loadGameOverPage(message, true);
 
     } else {
       const message = "Incorrect answer. Please review the code and try again.";
       loadGameOverPage(message, false);
+      stopRoomTimer();
     }
   });
 }

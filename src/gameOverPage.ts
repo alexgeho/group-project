@@ -1,4 +1,5 @@
 import { goToLobby } from "./gotoLobby";
+import { stopRoomTimer } from "./roomTimer";
 
 export function loadGameOverPage(message: string, isWin: boolean): void {
 
@@ -13,7 +14,7 @@ export function loadGameOverPage(message: string, isWin: boolean): void {
     
     <button id="backToLobbyBtn" class="btn-primary">Back to lobby</button>
   `;
-
+  stopRoomTimer();
   const backButton = document.getElementById("backToLobbyBtn");
   backButton?.addEventListener("click", () => {
     goToLobby();

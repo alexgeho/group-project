@@ -1,4 +1,4 @@
-import { pauseTotalTimer } from "./12_total_timer";
+import { pauseTotalTimer } from "./total_timer";
 import { displayWelcomeMessage } from "./displayWelcomeMsg";
 import { showPlayerStats } from "./showPlayerStats";
 

@@ -1,93 +1,22 @@
-import type { IPlayer } from "./models/Player";
 import { goToLobby } from "./gotoLobby";
+import type { IPlayer } from "./models/Player";
 
-export function login(): void {
-    const form = document.querySelector<HTMLFormElement>('#login-form');
-    const input = document.querySelector<HTMLInputElement>('#player-name');
-    const logoutBtn = document.querySelector<HTMLButtonElement>('#logout-btn');
-    const enterBtn = document.querySelector<HTMLButtonElement>('#enter-btn');
-    const loggedIn = document.querySelector<HTMLElement>('#loggedIn');
-    const main = document.querySelector<HTMLElement>('main');
+export function loginUser(e: Event): void {
+  e.preventDefault();
+  const usernameInput = document.getElementById('player-name') as HTMLInputElement;
+  if(!usernameInput.value.trim()) {
+    alert('Please enter a valid name');
+    return;
+  }
+  const player: IPlayer = {
+    id: crypto.randomUUID(),
+    name: usernameInput.value.trim(),
+    points: 0,
+    artifacts: [],
+    roomTimes: [],
+    roomsCompleted: [],
+  };
 
-
-    form?.addEventListener('submit', createPlayer);
-    logoutBtn?.addEventListener('click', handleLogout);
-    goToLobby();
-    // Initial UI render on page load
-    renderPlayerInfo();
-
-    // Creates a new player and stores it in localStorage
-    function createPlayer(e: Event): void {
-        e.preventDefault();
-        if (!input) return;
-
-        const name = input.value;
-
-        console.log('name:::::', name);
-
-
-        if (!name) return;
-
-        const newPlayer: IPlayer = {
-            id: crypto.randomUUID(),
-            name,
-            points: 0,
-            artifacts: [],
-            roomTimes: [],
-            roomsCompleted: []
-        };
-
-        console.log('newPlayer:::::', newPlayer);
-
-        const players: IPlayer[] = JSON.parse(
-            localStorage.getItem('players') || '[]'
-        );
-
-        console.log('players:::::', players);
-
-
-        players.push(newPlayer);
-
-
-        localStorage.setItem('players', JSON.stringify(players));
-        localStorage.setItem('currentPlayerId', newPlayer.id);
-
-        renderPlayerInfo();
-    }
-
-    // Returns the currently logged-in player from localStorage
-    function getCurrentPlayer(): IPlayer | null {
-        const currentId = localStorage.getItem('currentPlayerId');
-        if (!currentId) return null;
-
-        const players: IPlayer[] = JSON.parse(
-            localStorage.getItem('players') || '[]'
-        );
-
-        return players.find(p => p.id === currentId) || null;
-    }
-
-    // Show/hide enter button and main based on player state
-    function renderPlayerInfo(): void {
-        const player = getCurrentPlayer();
-
-        if (!player) {
-
-            return;
-        }
-
-        loggedIn!.textContent = `${player.name} | Points: ${player.points} | Artifacts: ${player.artifacts.length}`;
-    }
-
-    // Add this inside login() with other event listeners
-    enterBtn?.addEventListener('click', function showMain(): void {
-        if (main) main.style.display = 'block';
-    });
-
-    // Logs out the current player and resets UI
-    function handleLogout(): void {
-        localStorage.removeItem('currentPlayerId');
-        if (input) input.value = '';
-        renderPlayerInfo();
-    }
+  localStorage.setItem("player", JSON.stringify(player));
+  goToLobby();
 }
