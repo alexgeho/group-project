@@ -3,6 +3,8 @@ import { getHighscoreList } from './highscore.ts';
 export function showHighscore(elementName: string): void {
   const element = document.querySelector(`.${elementName}`)
   if (element) {
+    element.innerHTML = '';
+    
     const highscoreList = getHighscoreList();
     let html = `  <section class="high-score">
       <h2 id="highscore-title">High Score</h2>
