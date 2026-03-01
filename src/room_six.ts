@@ -13,31 +13,56 @@ interface Portal {
   currentPower: number;
 }
 
-const portals: Portal[] = [
-  { name: "North", options: [18, 25, 40], currentPower: 0 },
-  { name: "South", options: [20, 30, 45], currentPower: 0 },
-  { name: "East", options: [15, 22, 28], currentPower: 0 },
-  { name: "West", options: [8, 23, 35], currentPower: 0 },
+interface PortalConfig {
+  name: string;
+  correctValue: number;
+  otherOptions: number[];
+}
+
+const portalConfigs: PortalConfig[] = [
+  { name: "North", correctValue: 25, otherOptions: [10, 15, 18, 20, 30, 35, 40, 45] },
+  { name: "South", correctValue: 30, otherOptions: [15, 20, 25, 35, 40, 45, 50] },
+  { name: "East", correctValue: 22, otherOptions: [10, 15, 18, 25, 28, 32, 35] },
+  { name: "West", correctValue: 23, otherOptions: [8, 12, 18, 28, 35, 40, 50] },
 ];
 
+let portals: Portal[] = [];
+
 const maxPower = 100;
+
+// Randomly generate the portal options each time the room is loaded
+function generateRandomPortals(): void {
+  portals = portalConfigs.map(config => {
+    // Pick 2 random other values from otherOptions
+    const shuffled = [...config.otherOptions].sort(() => Math.random() - 0.5);
+    const options = [config.correctValue, shuffled[0], shuffled[1]];
+    
+    // Shuffle so the correct value is not always in the same position
+    options.sort(() => Math.random() - 0.5);
+    return {
+      name: config.name,
+      options,
+      currentPower: 0
+    };
+  });
+}
 
 export function loadRoomSix(): void {
   if (!memoryContainer) return;
 
+  generateRandomPortals();
   portals.forEach(portal => portal.currentPower = 0);
 
   memoryContainer.innerHTML = `
     <h2>Portal Control - Energy Distribution</h2>
-    <div id="roomTimer"></div>
     <p>You must distribute exactly 100 energy units across the four portals to stabilize the system. Choose wisely.</p>
     
-    <div id="portal-grid" class="portal-grid"></div>
-    
-    <div id="power-summary">
+    <div class="portal-grid"></div>
+    <div class="power-summary">
       <p>Total Energy: ??? / ${maxPower}</p>
     </div>
-    
+    <div id="roomTimer"></div>
+
     <button id="submitPowerDistribution" class="btn-primary">Submit Distribution</button>
     <button id="sixBackToRooms" class="btn-primary">Back</button>
   `;
@@ -57,7 +82,7 @@ export function loadRoomSix(): void {
 }
 
 function renderPortals(): void {
-  const portalGrid = document.getElementById("portal-grid");
+  const portalGrid = document.querySelector(".portal-grid");
   if (!portalGrid) return;
 
   portalGrid.innerHTML = portals
@@ -75,7 +100,6 @@ function renderPortals(): void {
             )
             .join("")}
         </div>
-        <p>Selected: <span class="power-display">${portal.currentPower || "—"}</span> units</p>
       </div>
     `
     )
@@ -98,14 +122,6 @@ function handleOptionClick(event: Event): void {
     btn.classList.remove("active");
   });
   button.classList.add("active");
-
-  updatePowerDisplay();
-}
-
-function updatePowerDisplay(): void {
-  document.querySelectorAll(".power-display").forEach((display, index) => {
-    display.textContent = portals[index].currentPower.toString();
-  });
 }
 
 function checkPowerDistribution(): void {

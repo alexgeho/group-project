@@ -23,11 +23,6 @@
     opacity: 0.9;
     line-height: 1.6;
   }
-
-  strong {
-    color: #00ffd0;
-    text-shadow: 0 0 8px rgba(0, 255, 200, 0.8);
-  }
 }
 
 .portal-grid {
@@ -57,12 +52,6 @@
     font-size: 20px;
     color: #00ffd0;
     text-shadow: 0 0 8px rgba(0, 255, 200, 0.6);
-  }
-
-  p {
-    margin: 15px 0;
-    font-size: 14px;
-    opacity: 0.85;
   }
 }
 
@@ -98,24 +87,5 @@
     box-shadow: 0 0 20px rgba(0, 255, 200, 0.8), inset 0 0 8px rgba(0, 255, 200, 0.3);
     color: #ffffff;
     text-shadow: 0 0 6px rgba(0, 255, 200, 0.8);
-  }
-}
-
-#power-summary {
-  text-align: center;
-  margin: 30px 0;
-  padding: 20px;
-  background: rgba(0, 50, 100, 0.3);
-  border-radius: 8px;
-
-  p {
-    font-size: 18px;
-    margin: 0;
-    font-weight: bold;
-  }
-
-  span {
-    color: #00ffd0;
-    text-shadow: 0 0 8px rgba(0, 255, 200, 0.8);
   }
 }
