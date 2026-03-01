@@ -61,12 +61,12 @@
   text-shadow: 0 0 10px #a78bfa;
   background-color: #ffffff08;
   letter-spacing: 2px;
-  animation: flicker 4s infinite;
   i{
     font-style: italic;
   }
   h3{
     font-size: 1.8rem;
+      animation: flicker 4s infinite;
   }
   h4{
     font-size: 1.4rem;
@@ -107,7 +107,7 @@
   }
 
   93% {
-    opacity: 0.7;
+    opacity: 0.3;
   }
 
   94% {
@@ -115,7 +115,7 @@
   }
 
   96% {
-    opacity: 0.8;
+    opacity: 0.5;
   }
 
   97% {
