@@ -7,8 +7,39 @@
     gap: 20px;
     font-family: 'Courier New', Courier, monospace;
     color: #00b4d8;
-} 
 
+    h2 {
+  font-size: 2rem;
+  color: #00b4d8;
+  text-shadow: 0px 0px 10px #00b4d8;
+  font-weight: bold;
+  
+  &::after {
+    content: '_';
+    animation: blink 1s infinite;
+  }
+}
+
+    h3 {
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+}
+.game-instructions {
+  max-width: 650px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #00eaff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
 #fragments {
     display: flex;
     flex-wrap: wrap;
