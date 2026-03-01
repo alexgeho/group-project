@@ -26,20 +26,20 @@ export function loadFinalRoom(): void {
       What is the name of this tool?
     </div>
 
-    <form>
+    <form id="final-answer-form">
       <label>
       <span>Answer:</span>
       <input type="text" id="final-answer" />
       </label>
 
       <button type="submit" id="submitFinalAnswer" class="btn-primary">
-        Submit
+        Unlock portal
       </button>
     </form>
     
     <button id="finalBackToRooms" class="btn-primary">Back</button>`
 
-  startRoomTimer(memoryContainer, 360);
+  // startRoomTimer(memoryContainer, 360);
   const backButton = document.getElementById("finalBackToRooms");
   backButton?.addEventListener("click", () => {
     stopRoomTimer();
@@ -50,14 +50,18 @@ export function loadFinalRoom(): void {
     e.preventDefault();
     if (checkAnswer()) {
       const player = getPlayer()
-      if (player) {
-        addHighscore({
-          name: player!.name,
-          score: player!.points,
-          date: new Date().toLocaleDateString(),
-        });
-        loadGameOverPage("Congratulations! You have successfully completed the game.", true);
-      }
+      const formElement = document.querySelector("#final-answer-form");
+      formElement?.classList.add("correct-answer");
+      setTimeout(() => {
+        if (player) {
+          addHighscore({
+            name: player!.name,
+            score: player!.points,
+            date: new Date().toLocaleDateString(),
+          });
+          loadGameOverPage("Congratulations! You have successfully completed the game.", true);
+        }
+      }, 1600);
     }
   });
 }
