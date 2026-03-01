@@ -35,7 +35,7 @@ export function loadRoomSix(): void {
     <div id="portal-grid" class="portal-grid"></div>
     
     <div id="power-summary">
-      <p>Total Energy: <span id="total-power">0</span> / ${maxPower}</p>
+      <p>Total Energy: ??? / ${maxPower}</p>
     </div>
     
     <button id="submitPowerDistribution" class="btn-primary">Submit Distribution</button>
@@ -103,13 +103,6 @@ function handleOptionClick(event: Event): void {
 }
 
 function updatePowerDisplay(): void {
-  const totalUsed = portals.reduce((sum, portal) => sum + portal.currentPower, 0);
-  const totalPowerSpan = document.getElementById("total-power");
-  
-  if (totalPowerSpan) {
-    totalPowerSpan.textContent = totalUsed.toString();
-  }
-
   document.querySelectorAll(".power-display").forEach((display, index) => {
     display.textContent = portals[index].currentPower.toString();
   });
