@@ -34,5 +34,11 @@
     "name": "portal-control",
     "title": "Portal Control",
     "description": "This control unit monitors access to the portal. Complete the verification process to obtain a letter required to unlock the portal."
+  },
+  {
+    "id": 7,
+    "name": "destiny",
+    "title": "Destiny",
+    "description": "The final room holds the key to your destiny. Solve the ultimate puzzle to unlock the portal and escape the Code World."
   }
 ]

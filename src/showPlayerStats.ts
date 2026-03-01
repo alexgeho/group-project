@@ -34,5 +34,27 @@ export function showPlayerStats(): void {
       roomElement.classList.add('completed');
     }
   }
+  const finalRoomCard = document.querySelector('.room-7');
+  switch (playerData.roomsCompleted.length) {
+    case 1:
+      finalRoomCard?.classList.add('portal-progress1');
+      break;
+    case 2:
+      finalRoomCard?.classList.add('portal-progress2');
+      break;
+    case 3:
+      finalRoomCard?.classList.add('portal-progress3');
+      break;
+    case 4:
+      finalRoomCard?.classList.add('portal-progress4');
+      break;
+    case 5:
+      finalRoomCard?.classList.add('portal-progress5');
+      break;
+    case 6:
+      finalRoomCard?.classList.add('portal-progress6');
+      break;
+  }
+  
 
 }

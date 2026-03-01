@@ -1,0 +1,124 @@
+
+.room-final-content {
+  gap: 22px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 10px aqua;
+  }
+
+  label {
+    align-self: center;
+    display: flex;
+    height: 30px;
+  }
+
+  form{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    animation: portalGlow1 2s ease-in-out infinite;
+    width: fit-content;
+    align-self: center;
+    border-radius: 9px;
+    padding: 5px;
+    input{
+      padding: 10px;
+      border: 1px solid #6d7dbb;
+      border-radius: 5px;
+      background-color: #ffffff08;
+      color: #f9f7ff;
+      font-family: 'Iceland', monospace;
+      font-size: 1.2rem;
+      text-shadow: 0 0 10px #a78bfa;
+    }
+    span{
+      color: #a78bfa;
+      font-family: 'Iceland', monospace;
+      font-size: 1.7rem;
+      text-shadow: 0 0 10px #a78bfa;
+      margin: 0 6px;
+    }
+  }
+}
+
+.riddle-text {
+  max-width: 511px;
+  align-self: center;
+  line-height: 1.5rem;
+  border: 1px solid #6d7dbb;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  font-family: 'Iceland', monospace;
+  font-size: 1.2rem;
+  color: #a78bfa;
+  text-shadow: 0 0 10px #a78bfa;
+  background-color: #ffffff08;
+  letter-spacing: 2px;
+  i{
+    font-style: italic;
+  }
+  h3{
+    font-size: 1.8rem;
+      animation: flicker 4s infinite;
+  }
+  h4{
+    font-size: 1.4rem;
+  }
+}
+
+.correct-answer {
+  animation: portalGlow1 2s cubic-bezier(0.8, 0.1, 0.1, 30) infinite !important;
+}
+.portal-progress1{
+  animation: portalGlow1 2s ease-in-out infinite !important;
+}
+.portal-progress2{
+  animation: portalGlow2 2s ease-in-out infinite !important;
+}
+.portal-progress3{
+  animation: portalGlow3 2s ease-in-out infinite !important;
+}
+.portal-progress4{
+  animation: portalGlow4 2s ease-in-out infinite !important;
+}
+.portal-progress5{
+  animation: portalGlow5 2s ease-in-out infinite !important;
+}
+.portal-progress6{
+  animation: portalGlow6 2s ease-in-out infinite !important;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 0.3;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.5;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
