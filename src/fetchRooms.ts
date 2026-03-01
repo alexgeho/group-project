@@ -2,6 +2,7 @@ import { startTotalTimer } from "./total_timer";
 import { loadRoomFive } from "./room_five";
 import { loadRoomOne } from "./room_one";
 import { loadRoomTwo } from "./room_two";
+import { loadRoomSix } from "./room_six";
 import { goToLobby } from "./gotoLobby";
 import type { IRoom } from "./models/Room";
 import { getPlayer } from "./fetchPlayerFromLs";
@@ -81,6 +82,7 @@ function goToRoom(room: IRoom) {
   if (room.name === "firewall") loadRoomOne(() => goToLobby());
   if (room.name === "database") loadRoomTwo(() => goToLobby());
   if (room.name === "bug-room") loadRoomFive();
+  if (room.name === "portal-control") loadRoomSix();
   if (room.name === "destiny") loadFinalRoom();
 }
 
