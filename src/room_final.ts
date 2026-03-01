@@ -1,7 +1,7 @@
 import { getPlayer } from "./fetchPlayerFromLs";
 import { goToLobby } from "./gotoLobby";
 import { addHighscore } from "./highscore";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
 
 const memoryContainer = document.getElementById("destiny");
