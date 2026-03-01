@@ -25,10 +25,7 @@ const maxPower = 100;
 export function loadRoomSix(): void {
   if (!memoryContainer) return;
 
-  // Reset portals
-  portals.forEach(portal => {
-    portal.currentPower = 0;
-  });
+  portals.forEach(portal => portal.currentPower = 0);
 
   memoryContainer.innerHTML = `
     <h2>Portal Control - Energy Distribution</h2>
@@ -48,14 +45,12 @@ export function loadRoomSix(): void {
   renderPortals();
   startRoomTimer(memoryContainer, 60);
 
-  const backButton = document.getElementById("sixBackToRooms");
-  backButton?.addEventListener("click", () => {
+  document.getElementById("sixBackToRooms")?.addEventListener("click", () => {
     stopRoomTimer();
     goToLobby();
   });
 
-  const submitButton = document.getElementById("submitPowerDistribution");
-  submitButton?.addEventListener("click", (e) => {
+  document.getElementById("submitPowerDistribution")?.addEventListener("click", (e) => {
     e.preventDefault();
     checkPowerDistribution();
   });
@@ -65,67 +60,57 @@ function renderPortals(): void {
   const portalGrid = document.getElementById("portal-grid");
   if (!portalGrid) return;
 
-  let portalMarkup = "";
-
-  portals.forEach((portal, index) => {
-    const optionsMarkup = portal.options
-      .map(
-        (option) =>
-          `<button class="portal-option-btn" data-portal-index="${index}" data-value="${option}">
-            ${option}
-          </button>`
-      )
-      .join("");
-
-    portalMarkup += `
+  portalGrid.innerHTML = portals
+    .map(
+      (portal, index) => `
       <div class="portal-card">
         <h3>${portal.name} Portal</h3>
         <div class="portal-options">
-          ${optionsMarkup}
+          ${portal.options
+            .map(
+              (option) =>
+                `<button class="portal-option-btn" data-portal-index="${index}" data-value="${option}">
+                  ${option}
+                </button>`
+            )
+            .join("")}
         </div>
         <p>Selected: <span class="power-display">${portal.currentPower || "—"}</span> units</p>
       </div>
-    `;
-  });
+    `
+    )
+    .join("");
 
-  portalGrid.innerHTML = portalMarkup;
-
-  const buttons = document.querySelectorAll(".portal-option-btn");
-  buttons.forEach((button) => {
+  document.querySelectorAll(".portal-option-btn").forEach((button) => {
     button.addEventListener("click", handleOptionClick as EventListener);
   });
 }
 
 function handleOptionClick(event: Event): void {
   const button = event.target as HTMLButtonElement;
-  const portalIndex = parseInt(button.getAttribute("data-portal-index") || "0");
+  const index = parseInt(button.getAttribute("data-portal-index") || "0");
   const value = parseInt(button.getAttribute("data-value") || "0");
 
-  portals[portalIndex].currentPower = value;
+  portals[index].currentPower = value;
 
-  // Update button states - highlight active selection
-  const portalCard = button.closest(".portal-card");
-  if (portalCard) {
-    const buttons = portalCard.querySelectorAll(".portal-option-btn");
-    buttons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
-    button.classList.add("active");
-  }
+  // Update active button state
+  button.closest(".portal-card")?.querySelectorAll(".portal-option-btn").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  button.classList.add("active");
 
   updatePowerDisplay();
 }
 
 function updatePowerDisplay(): void {
-  const totalPowerSpan = document.getElementById("total-power");
-  if (!totalPowerSpan) return;
-
   const totalUsed = portals.reduce((sum, portal) => sum + portal.currentPower, 0);
-  totalPowerSpan.textContent = totalUsed.toString();
+  const totalPowerSpan = document.getElementById("total-power");
+  
+  if (totalPowerSpan) {
+    totalPowerSpan.textContent = totalUsed.toString();
+  }
 
-  // Update individual displays
-  const displays = document.querySelectorAll(".power-display");
-  displays.forEach((display, index) => {
+  document.querySelectorAll(".power-display").forEach((display, index) => {
     display.textContent = portals[index].currentPower.toString();
   });
 }
@@ -141,7 +126,7 @@ function checkPowerDistribution(): void {
     return;
   }
 
-  // Success! The puzzle is solved
+  // Success: puzzle solved
   const message =
     "Perfect! The energy is perfectly balanced across all portals. The system is now stabilized and ready for launch!";
   saveRoomProgress(roomNumber, roomArtifact);
