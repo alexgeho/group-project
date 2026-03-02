@@ -3,9 +3,9 @@ import { loadGameOverPage } from "./gameOverPage";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { saveRoomProgress } from "./saveRoomProgress";
 
-const memoryContainer = document.getElementById("portal-control");
+const portalContainer = document.getElementById("portal-control");
 const roomNumber = 6;
-const roomArtifact = 'b';
+const roomArtifact = 'U';
 
 interface Portal {
   name: string;
@@ -48,12 +48,12 @@ function generateRandomPortals(): void {
 }
 
 export function loadRoomSix(): void {
-  if (!memoryContainer) return;
+  if (!portalContainer) return;
 
   generateRandomPortals();
   portals.forEach(portal => portal.currentPower = 0);
 
-  memoryContainer.innerHTML = `
+  portalContainer.innerHTML = `
     <h2>Portal Control - Energy Distribution</h2>
     <p>You must distribute exactly 100 energy units across the four portals to stabilize the system. Choose wisely.</p>
     
@@ -61,14 +61,13 @@ export function loadRoomSix(): void {
     <div class="power-summary">
       <p>Total Energy: ??? / ${maxPower}</p>
     </div>
-    <div id="roomTimer"></div>
 
     <button id="submitPowerDistribution" class="btn-primary">Submit Distribution</button>
     <button id="sixBackToRooms" class="btn-primary">Back</button>
   `;
 
   renderPortals();
-  startRoomTimer(memoryContainer, 60);
+  startRoomTimer(portalContainer, 60);
 
   document.getElementById("sixBackToRooms")?.addEventListener("click", () => {
     stopRoomTimer();

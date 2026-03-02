@@ -7,7 +7,10 @@
   box-shadow: 0 0 40px rgba(0, 255, 200, 0.15);
   color: #e6faff;
   border: #00ffd0 2px solid;
-
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   h2 {
     text-align: center;
@@ -29,8 +32,6 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  margin: 40px 0;
-  padding: 0 20px;
 }
 
 .portal-card {
