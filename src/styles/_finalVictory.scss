@@ -1,0 +1,20 @@
+.final-puzzle-victory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  .lose-div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-content: center;
+      background-color: blueviolet;
+      padding: 20px;
+      
+      .lose {
+          align-self: center;
+        }
+    }
+}

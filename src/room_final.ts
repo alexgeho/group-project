@@ -2,7 +2,7 @@ import { getPlayer } from "./fetchPlayerFromLs";
 import { goToLobby } from "./gotoLobby";
 import { addHighscore } from "./highscore";
 import { stopRoomTimer } from "./roomTimer";
-import { loadGameOverPage } from "./gameOverPage";
+import { loadFinalVictoryPage } from "./room-final-victory";
 
 const memoryContainer = document.getElementById("destiny");
 
@@ -59,9 +59,16 @@ export function loadFinalRoom(): void {
             score: player!.points,
             date: new Date().toLocaleDateString(),
           });
-          loadGameOverPage("Congratulations! You have successfully completed the game.", true);
+          loadFinalVictoryPage("Congratulations! You have successfully completed the game.", true);
         }
-      }, 1600);
+      }, 1800);
+    } else {
+      const formElement = document.querySelector("#final-answer-form");
+      formElement?.classList.add("correct-answer");
+
+      setTimeout(() => {
+        loadFinalVictoryPage("Oh no! You destroyed the portal. You are stuck here now forever!", false);
+      }, 1800)
     }
   });
 }
