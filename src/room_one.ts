@@ -11,138 +11,132 @@
 import { goToLobby } from "./gotoLobby";
 
 export function loadRoomOne() {
-  interface MemoryCard {
-    emoji: string;
-    flipped: boolean;
-    matched: boolean;
-  }
+  renderFirewallRoom();
+}
 
-  const memoryCards: MemoryCard[] = [
-    { emoji: "🪐", flipped: false, matched: false },
-    { emoji: "🌙", flipped: false, matched: false },
-    { emoji: "🧠", flipped: false, matched: false },
-    { emoji: "👾", flipped: false, matched: false },
-    { emoji: "🛸", flipped: false, matched: false },
-    { emoji: "🌙", flipped: false, matched: false },
-    { emoji: "🛸", flipped: false, matched: false },
-    { emoji: "🌎", flipped: false, matched: false },
-    { emoji: "🧩", flipped: false, matched: false },
-    { emoji: "🌕", flipped: false, matched: false },
-    { emoji: "🌎", flipped: false, matched: false },
-    { emoji: "🧠", flipped: false, matched: false },
-    { emoji: "🦋", flipped: false, matched: false },
-    { emoji: "🪐", flipped: false, matched: false },
-    { emoji: "🦄", flipped: false, matched: false },
-    { emoji: "🧩", flipped: false, matched: false },
-    { emoji: "👾", flipped: false, matched: false },
-    { emoji: "🦋", flipped: false, matched: false },
-    { emoji: "🌕", flipped: false, matched: false },
-    { emoji: "🦄", flipped: false, matched: false },
-  ];
+const firewallContainer = document.querySelector("#firewall");
 
-  // 🖼 View - HTML Markup
-  // ──────────────────────────────────────────────────────────────────────────────────────
+interface MemoryCard {
+  id: number;
+  emoji: string;
+  flipped: boolean;
+  matched: boolean;
+}
 
-  function renderRoom() {
-    const firewallMarkup = document.querySelector("#firewall");
-    if (!firewallMarkup) return;
+const memoryCards: MemoryCard[] = [
+  { id: 1, emoji: "🪐", flipped: false, matched: false },
+  { id: 2, emoji: "🌙", flipped: false, matched: false },
+  { id: 3, emoji: "🧠", flipped: false, matched: false },
+  { id: 4, emoji: "👾", flipped: false, matched: false },
+  { id: 5, emoji: "🛸", flipped: false, matched: false },
+  { id: 6, emoji: "🌙", flipped: false, matched: false },
+  { id: 7, emoji: "🛸", flipped: false, matched: false },
+  { id: 8, emoji: "🌎", flipped: false, matched: false },
+  { id: 9, emoji: "🧩", flipped: false, matched: false },
+  { id: 10, emoji: "🌕", flipped: false, matched: false },
+  { id: 11, emoji: "🌎", flipped: false, matched: false },
+  { id: 12, emoji: "🧠", flipped: false, matched: false },
+  { id: 13, emoji: "🦋", flipped: false, matched: false },
+  { id: 14, emoji: "🪐", flipped: false, matched: false },
+  { id: 15, emoji: "🦄", flipped: false, matched: false },
+  { id: 16, emoji: "🧩", flipped: false, matched: false },
+  { id: 17, emoji: "👾", flipped: false, matched: false },
+  { id: 18, emoji: "🦋", flipped: false, matched: false },
+  { id: 19, emoji: "🌕", flipped: false, matched: false },
+  { id: 20, emoji: "🦄", flipped: false, matched: false },
+];
 
-    firewallMarkup.innerHTML = `
+// 🖼 View - HTML Markup
+// ──────────────────────────────────────────────────────────────────────────────────────
+
+function renderFirewallRoom() {
+  if (!firewallContainer) return;
+
+  firewallContainer.innerHTML = `
     <h2>You've entered a Firewall</h2>
     <p>It is your mission to break it!</p>
-    <div id="roomTimer"></div>
-    <div id="cardBoard" class="card-board"></div>
+    <div id="memoryContainer" class="memory-container"></div>
     <button id="back" class="btn-primary">Back</button>
   `;
-  }
 
-  function renderCards() {
-    const cards = document.querySelector("#cardBoard");
-    if (!cards) return;
+  addEventListenerForBackButton();
+  renderCards();
+}
 
-    let cardsMarkup = "";
+function renderCards() {
+  const cards = document.querySelector("#memoryContainer");
+  if (!cards) return;
 
-    for (let i = 0; i < memoryCards.length; i++) {
-      cardsMarkup += `
-      <button class="card">
-        ${memoryCards[i].flipped ? memoryCards[i].emoji : "🔥"}
-      </button>
-    `;
-    }
+  let html = "";
 
-    cards.innerHTML = cardsMarkup;
+  memoryCards.forEach((card) => {
+    html += `
+    <button class="card" data-id="${card.id}">
+    ${card.flipped ? card.emoji : "🔥"}
+    </button>`;
+  });
 
-    addEventListenerForEachCard();
-  }
+  cards.innerHTML = html;
 
-  // 🎮 GAME LOGIC
-  // ──────────────────────────────────────────────────────────────────────────────────────
+  addEventListenerForEachCard();
+}
 
-  function handleCardClick(index: number) {
-    const clickedCard = memoryCards[index];
-    if (!clickedCard) return;
+// 🎮 GAME LOGIC
+// ──────────────────────────────────────────────────────────────────────────────────────
 
-    if (clickedCard.flipped) return;
+function handleCardClick(id: number) {
+  const clickedCard = memoryCards.find((card) => card.id === id);
+  if (!clickedCard) return;
 
-    const flippedCards = memoryCards.filter(
-      (card) => card.flipped === true && card.matched === false,
-    );
+  clickedCard.flipped = true;
 
-    if (flippedCards.length >= 2) return;
+  renderCards();
+  checkForMatch();
+}
 
-    clickedCard.flipped = true;
+function getUnmatchedFlippedCards() {
+  return memoryCards.filter(
+    (card) => card.flipped && !card.matched, // { flipped: true, matched: false }
+  );
+}
 
-    console.log(memoryCards[index]);
+function checkForMatch() {
+  const flippedCards = getUnmatchedFlippedCards();
 
-    renderCards();
-    checkForMatch();
-  }
-
-  function checkForMatch() {
-    const flippedCards = memoryCards.filter(
-      (card) => card.flipped === true && card.matched === false,
-    );
-
-    if (flippedCards.length !== 2) return;
-
-    const firstCard = flippedCards[0];
-    const secondCard = flippedCards[1];
+  // When two cards are open, check if they match
+  if (flippedCards.length === 2) {
+    const [firstCard, secondCard] = flippedCards;
 
     if (firstCard.emoji === secondCard.emoji) {
       firstCard.matched = true;
       secondCard.matched = true;
     } else {
-      setTimeout(function waitForIt() {
+      // Allow player to see both cards before flipping them back
+      setTimeout(() => {
         firstCard.flipped = false;
         secondCard.flipped = false;
         renderCards();
       }, 500);
     }
   }
+}
 
-  // 🎧 event-listeners
-  // ──────────────────────────────────────────────────────────────────────────────────────
+// 🎧 event-listeners
+// ──────────────────────────────────────────────────────────────────────────────────────
 
-  function addEventListenerForEachCard() {
-    const cards = document.querySelectorAll<HTMLButtonElement>(".card");
+function addEventListenerForEachCard() {
+  const cards = document.querySelectorAll<HTMLButtonElement>(".card");
 
-    cards.forEach((button, index) => {
-      button.addEventListener("click", () => {
-        handleCardClick(index);
-      });
+  cards.forEach((button) => {
+    button.addEventListener("click", () => {
+      const id = Number(button.dataset.id);
+      handleCardClick(id);
     });
-  }
+  });
+}
 
-  function addEventListenerForBackButton() {
-    const backButton = document.querySelector("#back");
+function addEventListenerForBackButton() {
+  const backButton = document.querySelector<HTMLButtonElement>("#back");
 
-    backButton?.addEventListener("click", goToLobby);
-  }
-
-  //
-  // ──────────────────────────────────────────────────────────────────────────────────────
-
-  renderRoom();
-  renderCards();
-  addEventListenerForBackButton();
+  backButton?.addEventListener("click", goToLobby);
 }
