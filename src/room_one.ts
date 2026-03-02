@@ -8,8 +8,9 @@
  * The player wins when all pairs of cards are matched.
  */
 
-// receive a callback (onBack = goToLobby) from outside
-export function loadRoomOne(onBack: () => void) {
+import { goToLobby } from "./gotoLobby";
+
+export function loadRoomOne() {
   interface MemoryCard {
     emoji: string;
     flipped: boolean;
@@ -132,12 +133,10 @@ export function loadRoomOne(onBack: () => void) {
     });
   }
 
-  // receive a callback passed from loadRoomOne
-  function addEventListenerForBackButton(onBack: () => void) {
+  function addEventListenerForBackButton() {
     const backButton = document.querySelector("#back");
 
-    // attach the callback to run on click
-    backButton?.addEventListener("click", onBack);
+    backButton?.addEventListener("click", goToLobby);
   }
 
   //
@@ -145,5 +144,5 @@ export function loadRoomOne(onBack: () => void) {
 
   renderRoom();
   renderCards();
-  addEventListenerForBackButton(onBack);
+  addEventListenerForBackButton();
 }
