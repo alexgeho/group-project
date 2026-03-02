@@ -7,6 +7,16 @@ p {
   padding-block: 0.1rem;
 }
 
+.timer-container {
+  border: 2px solid red;
+  padding: 2rem;
+}
+
+.room-timer {
+  border: 2px solid red;
+  margin-top: 20rem;
+}
+
 .memory-container {
   display: grid;
   grid-template-columns: repeat(5, 120px);

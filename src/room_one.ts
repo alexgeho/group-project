@@ -9,12 +9,19 @@
  */
 
 import { goToLobby } from "./gotoLobby";
+import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+
+const firewallContainer = document.getElementById("firewall");
 
 export function loadRoomOne() {
-  renderFirewallRoom();
-}
+  if (!firewallContainer) return;
 
-const firewallContainer = document.querySelector("#firewall");
+  renderFirewallRoom();
+
+  const timer = document.getElementById("timerContainer");
+  if (!timer) return;
+  startRoomTimer(timer, 60);
+}
 
 interface MemoryCard {
   id: number;
@@ -53,9 +60,16 @@ function renderFirewallRoom() {
   if (!firewallContainer) return;
 
   firewallContainer.innerHTML = `
-    <h2>You've entered a Firewall</h2>
-    <p>It is your mission to break it!</p>
-    <div id="memoryContainer" class="memory-container"></div>
+    <div class="header">
+      <h2>You've entered a Firewall</h2>
+      <p>It is your mission to break it!</p>
+    </div>
+
+    <div class="game">
+      <div id="timerContainer" class="timer-container"></div>
+      <div id="memoryContainer" class="memory-container"></div>
+    </div>
+
     <button id="back" class="btn-primary">Back</button>
   `;
 
