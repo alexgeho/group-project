@@ -1,0 +1,94 @@
+.high-score {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  border-radius: 30px;
+  background: #00000036;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle),
+        transparent 0%,
+        transparent 15%,
+        #52d7e9 80%,
+        #ffffff 90%,
+        #52d7e9 95%,
+        transparent 100%);
+    animation: borderLight 2s linear infinite;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #312e2e;
+    border-radius: inherit;
+    z-index: -1;
+  }
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes borderLight {
+  0% {
+    --angle: 0deg;
+  }
+
+  100% {
+    --angle: 360deg;
+  }
+}
+
+@keyframes rotatingShadow {
+  0% {
+    box-shadow: -4px 0px 25px 4px #cfc9e2;
+  }
+
+  12% {
+    box-shadow: -5px -5px 25px 4px #8bfa9d;
+  }
+
+  25% {
+    box-shadow: 0px -4px 25px 4px #a78bfa;
+  }
+
+  37% {
+    box-shadow: 5px -5px 25px 4px #faae8b;
+  }
+
+  50% {
+    box-shadow: 4px 0px 25px 4px #a78bfa;
+  }
+
+  62% {
+    box-shadow: 5px 5px 25px 4px #e213e2;
+  }
+
+  75% {
+    box-shadow: 0px 4px 25px 4px #e44a5f;
+  }
+
+  87% {
+    box-shadow: -5px 5px 25px 4px #2ae423;
+  }
+
+  100% {
+    box-shadow: -4px 0px 25px 4px #f1e42d;
+  }
+}

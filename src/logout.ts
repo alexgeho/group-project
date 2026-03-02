@@ -1,3 +1,5 @@
+import { showHighscore } from "./highscoreDisplay";
+
 export function logout(): void {
   console.log('logout');
   localStorage.removeItem("player");
@@ -9,4 +11,5 @@ export function logout(): void {
   
   document.querySelector('.homepage-page')?.classList.remove('hidden');
   document.querySelectorAll('.room-card').forEach(card => card.classList.remove('completed'));
-};
+  showHighscore('high-score-start-page');
+  };
