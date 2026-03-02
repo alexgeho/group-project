@@ -1,12 +1,12 @@
 import { goToLobby } from "./gotoLobby";
-import { getPlayer } from "./fetchPlayerFromLs";
 import { showPlayerStats } from "./showPlayerStats";
 import { loadGameOverPage } from "./gameOverPage";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { saveRoomProgress } from "./saveRoomProgress";
 
 // Speldata
 //----------
-const memoryContainer = document.getElementById("logic-module");
+const memoryContainer = document.getElementById("logic-module") as HTMLAreaElement | null;
 const roomNumber = 3;
 
 const correctSolution = [
@@ -79,21 +79,24 @@ function updateSelectedView(): void {
 // Kontrollerar om spelaren har rätt lösning
 //------------------------------------------
 function checkSolution(): void {
-  const isCorrect = JSON.stringify(selectedFragments) === JSON.stringify(correctSolution);
 
-  stopRoomTimer();
-  if (isCorrect) {
-    const player = getPlayer ();
-    if (player) {
-      if (!player.artifacts.includes("t")) player.artifacts.push("t");
-      if (!player.roomsCompleted.includes(roomNumber)) player.roomsCompleted.push(roomNumber);
-      localStorage.setItem("player", JSON.stringify(player));
-      showPlayerStats();
+  let isCorrect = selectedFragments.length === correctSolution.length;
+
+  for (let i = 0; i < correctSolution.length && isCorrect; i++) {
+    if (selectedFragments[i] !== correctSolution[i]) {
+      isCorrect = false;
     }
+  }
+  if (isCorrect) {
+    saveRoomProgress(roomNumber, "B");
+    showPlayerStats();
 
-    const message = "You deployed without testing... or did you? The logic holds. The system stabilizes. The letter T is yours.";
+    const message = "You deployed without testing... or did you? The logic holds. The system stabilizes. The letter B is yours.";
     loadGameOverPage(message, true);
+
   } else {
+    stopRoomTimer();
+
     const message = "Logic Error: The condition doesn´t hold. Production refuses to cooperate. Try again!";
     loadGameOverPage(message, false);
   }
@@ -146,7 +149,7 @@ function checkSolution(): void {
     checkBtn?.addEventListener("click", checkSolution);
   }
 
-  // Startar rummer 
+  // Startar rummet 
   //----------------
   export function loadRoomThree(): void {
     selectedFragments = [];

@@ -3,6 +3,7 @@ import { loadRoomFive } from "./room_five";
 import { loadRoomOne } from "./room_one";
 import { loadRoomTwo } from "./room_two";
 import { loadRoomSix } from "./room_six";
+import { loadRoomThree } from "./room_three";
 import { goToLobby } from "./gotoLobby";
 import type { IRoom } from "./models/Room";
 import { getPlayer } from "./fetchPlayerFromLs";
@@ -83,6 +84,7 @@ function goToRoom(room: IRoom) {
   if (room.name === "database") loadRoomTwo(() => goToLobby());
   if (room.name === "bug-room") loadRoomFive();
   if (room.name === "portal-control") loadRoomSix();
+  if (room.name === "logic-module") loadRoomThree ();
   if (room.name === "destiny") loadFinalRoom();
 }
 
