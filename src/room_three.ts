@@ -6,7 +6,7 @@ import { saveRoomProgress } from "./saveRoomProgress";
 
 // Game data
 //---------- 
-const memoryContainer = document.getElementById("logic-module");
+const logicModuleContainer = document.getElementById("logic-module");
 const roomNumber = 3;
 
 const correctSolution = [
@@ -44,8 +44,8 @@ let selectedFragments: string [] = [];
 // ---------------------------------------------
 
 function renderRoom(): void {
-  if(!memoryContainer) return;
-  memoryContainer.innerHTML = `
+  if(!logicModuleContainer) return;
+  logicModuleContainer.innerHTML = `
   <h2>Welcome to Room Three – Logic Module</h2>
   <p class="game-instructions">
 The deployment gate is locked. <br>
@@ -57,7 +57,7 @@ Only correct logic will unlock it.
   </div>
   <div class="solution-wrapper">
     <h3>Your Solution</h3>
-    <div id="selected"></div>
+    <div id="selected">> _</div>
     <div>
      <button id="checkBtn" class="btn-primary">Submit</button>
      <button id="undoBtn" class="btn-primary">Undo</button>
@@ -72,10 +72,13 @@ Only correct logic will unlock it.
 function updateSelectedView(): void {
   const selectedContainer = document.getElementById("selected");
   if (selectedContainer) {
-    selectedContainer.textContent = selectedFragments.join(" ");
+    if (selectedFragments.length === 0) {
+      selectedContainer.textContent = "> _";
+    } else {
+      selectedContainer.textContent = "> " + selectedFragments.join(" ");
+    }
   }
 }
-
 // Checks if the player has the correct solution
 //------------------------------------------
 function checkSolution(): void {
@@ -154,9 +157,9 @@ function addButtonListeners(): void {
 export function loadRoomThree(): void {
 
   selectedFragments = [];
-  if (!memoryContainer) return;
+  if (!logicModuleContainer) return;
   renderRoom();
-  startRoomTimer( memoryContainer, 60);
+  startRoomTimer( logicModuleContainer, 60);
   fragments.sort(() => Math.random() - 0.5);
   addFragmentListeners();
   addButtonListeners();
