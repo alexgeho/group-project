@@ -106,9 +106,12 @@ export function loadRoomFive(): void {
 
   const submitButton = document.getElementById("submitBugFix");
 
+
+  ////////////////////////
+
   submitButton?.addEventListener("click", (e) => {
     e.preventDefault();
-    
+
     if (checkAnswers()) {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
 
@@ -122,6 +125,9 @@ export function loadRoomFive(): void {
     }
   });
 }
+
+/*  */
+
 function checkAnswers(): boolean {
   const bug1 = (document.querySelector('input[name="bug1"]') as HTMLInputElement).checked;
   const bug2 = (document.querySelector('input[name="bug2"]') as HTMLInputElement).checked;

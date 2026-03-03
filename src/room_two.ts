@@ -1,5 +1,7 @@
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { goToLobby } from "./gotoLobby";
+import { loadGameOverPage } from "./gameOverPage";
+
 
 
 const dataBaseContainer = document.getElementById("database");
@@ -165,7 +167,6 @@ function removeItem(): void {
 }
 /*  */
 
-
 /* Validate database configuration and check puzzle completion */
 function checkDatabase(): boolean {
   const k1 = localStorage.getItem("key1");
@@ -174,7 +175,7 @@ function checkDatabase(): boolean {
   const k4 = localStorage.getItem("key4");
 
   if (!k1 || !k2 || !k3 || !k4) {
-    alert("Database still corrupted.");
+    loadGameOverPage("Database still corrupted.", false);
     return false;
   }
 
@@ -182,19 +183,20 @@ function checkDatabase(): boolean {
     localStorage.getItem("temp") !== null ||
     localStorage.getItem("debug") !== null
   ) {
-    alert("Remove corrupted entries.");
+    loadGameOverPage("Remove corrupted entries.", false);
     return false;
   }
 
   if (k1 === "M" && k2 === "A" && k3 === "R" && k4 === "S") {
     localStorage.setItem("artifact_i", "true");
 
-    alert("ACCESS GRANTED\nArtifact 'I' collected!");
+    const message = "ACCESS GRANTED\nArtifact 'I' collected!";
+    loadGameOverPage(message, true);
 
     return true;
   }
 
-  alert("Incorrect configuration.");
+  loadGameOverPage("Incorrect configuration.", false);
   return false;
 }
 /*  */
