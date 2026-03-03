@@ -96,7 +96,8 @@ export function loadRoomFive(): void {
     <button id="fiveBackToRooms" class="btn-primary">Back</button>
   `;
 
-  startRoomTimer(memoryContainer, 60);
+  startRoomTimer(memoryContainer, 960);
+
   const backButton = document.getElementById("fiveBackToRooms");
   backButton?.addEventListener("click", () => {
     stopRoomTimer();

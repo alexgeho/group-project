@@ -1,13 +1,18 @@
+import { startRoomTimer } from "./roomTimer";
+
+const dataBaseContainer = document.getElementById("database");
+const roomNumber = 2;
+const roomArtifact = 'i';
+
 export async function loadRoomTwo(onComplete: () => void): Promise<void> {
-  const container = document.getElementById("database");
-  if (!container) return;
+  if (!dataBaseContainer) return;
 
   // Initialize only if puzzle not yet solved
   if (!localStorage.getItem("key1")) {
     initBrokenDatabase();
   }
 
-  container.innerHTML = `
+  dataBaseContainer.innerHTML = `
     <h2>Database Recovery</h2>
     <p>Restore the secret key: <strong>M A R S</strong></p>
 
@@ -18,22 +23,24 @@ export async function loadRoomTwo(onComplete: () => void): Promise<void> {
     <h3>Add / Update</h3>
     <input id="add-key" placeholder="Key" />
     <input id="add-value" placeholder="Value" />
-    <button id="add-btn">Save</button>
+    <button id="add-btn" class="btn-primary">Save</button>
 
     <h3>Remove</h3>
     <input id="remove-key" placeholder="Key" />
-    <button id="remove-btn">Delete</button>
+    <button id="remove-btn" class="btn-primary">Delete</button>
 
     <hr>
 
-    <button id="check-btn">Check Database</button>
-    <button id="reset-btn">Reset Room</button>
-    <button id="back-to-lobby-btn">Back To Lobby</button>
+    <button id="check-btn" class="btn-primary">Check Database</button>
+    <button id="reset-btn" class="btn-primary">Reset Room</button>
+    <button id="back-to-lobby-btn" class="btn-primary">Back To Lobby</button>
 
-    <button id="next-btn">
+    <button id="next-btn" class="btn-primary">
       Next
     </button>
   `;
+
+   startRoomTimer(dataBaseContainer, 960);
 
   renderStorage();
 
