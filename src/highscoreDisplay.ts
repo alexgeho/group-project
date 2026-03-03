@@ -1,6 +1,5 @@
-import { getHighscoreList, saveHighscoreList } from './highscore.ts';
-
-const RESET_HIGHSCORE_PASSWORD = 'marsmarauders'; // current password for resetting highscore list
+import { getHighscoreList } from './highscore.ts';
+import { handleResetHighscore } from './resetHighscore.ts';
 
 export function showHighscore(elementName: string): void {
   const element = document.querySelector(`.${elementName}`)
@@ -36,22 +35,11 @@ export function showHighscore(elementName: string): void {
     element.innerHTML = html;
 
     // Specialhack: double click on title to reset highscore
-    const highscoreReset = element.querySelector('#highscore-title');
-    if (highscoreReset) {
-      highscoreReset.addEventListener('dblclick', () => {
-        const password = prompt('🔐 It seems you have unlocked a secret! Please enter the password to reset highscores:');
-
-        if (password === RESET_HIGHSCORE_PASSWORD) {
-          saveHighscoreList([]); //reset highscore list in localStorage
-          alert('Highscores have been reset. It\'s time to go and achieve world domination!');
-          showHighscore(elementName);
-
-        } else if (password !== null) {
-          alert('Hmm... Maybe you are not worthy enough.');
-        }
+    const highscoreResetTrigger = element.querySelector('#highscore-title');
+    if (highscoreResetTrigger) {
+      highscoreResetTrigger.addEventListener('dblclick', () => {
+        handleResetHighscore(elementName);
       });
     }
-    //
-
   }
 }
