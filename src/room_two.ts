@@ -1,6 +1,8 @@
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { goToLobby } from "./gotoLobby";
 import { loadGameOverPage } from "./gameOverPage";
+import { saveRoomProgress } from "./saveRoomProgress";
+
 
 
 
@@ -188,9 +190,10 @@ function checkDatabase(): boolean {
   }
 
   if (k1 === "M" && k2 === "A" && k3 === "R" && k4 === "S") {
-    localStorage.setItem("artifact_i", "true");
+    localStorage.setItem("i", "true");
 
     const message = "ACCESS GRANTED\nArtifact 'I' collected!";
+    saveRoomProgress(roomNumber, roomArtifact);
     loadGameOverPage(message, true);
 
     return true;
