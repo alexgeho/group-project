@@ -6,7 +6,7 @@ import { saveRoomProgress } from "./saveRoomProgress";
 
 // Speldata
 //----------
-const memoryContainer = document.getElementById("logic-module") as HTMLAreaElement | null;
+const memoryContainer = document.getElementById("logic-module");
 const roomNumber = 3;
 
 const correctSolution = [
@@ -102,11 +102,11 @@ function checkSolution(): void {
   }
   }
 
-  // Lägger till fragment-knapparna i DOM:en
-  // ---------------------------------------
-  function addFragmentListeners(): void {
-    const fragmentsContainer = document.getElementById("fragments");
-    if (!fragmentsContainer) return;
+// Lägger till fragment-knapparna i DOM:en
+// ---------------------------------------
+function addFragmentListeners(): void {
+  const fragmentsContainer = document.getElementById("fragments");
+  if (!fragmentsContainer) return;
 
     fragments.forEach((fragment) => {
       const button = document.createElement("button");
@@ -124,13 +124,13 @@ function checkSolution(): void {
     })
   }
 
-  // Lägger till lyssnare på undo, check och back-knapparna
-  // -------------------------------------------------------
-   function addButtonListeners(): void {
-    const backButton = document.getElementById("backToRooms");
-    backButton?.addEventListener("click", () => {
-      stopRoomTimer();
-      goToLobby();
+// Lägger till lyssnare på undo, check och back-knapparna
+// -------------------------------------------------------
+function addButtonListeners(): void {
+  const backButton = document.getElementById("backToRooms");
+  backButton?.addEventListener("click", () => {
+    stopRoomTimer();
+    goToLobby();
     });
 
     const undoBtn = document.getElementById("undoBtn");
@@ -145,8 +145,8 @@ function checkSolution(): void {
       }
     });
 
-    const checkBtn = document.getElementById("checkBtn");
-    checkBtn?.addEventListener("click", checkSolution);
+  const checkBtn = document.getElementById("checkBtn");
+  checkBtn?.addEventListener("click", checkSolution);
   }
 
   // Startar rummet 
