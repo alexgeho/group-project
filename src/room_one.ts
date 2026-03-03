@@ -10,8 +10,7 @@
 
 import { goToLobby } from "./gotoLobby";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-
-const firewallContainer = document.getElementById("firewall");
+import { loadGameOverPage } from "./gameOverPage";
 
 export function loadRoomOne() {
   if (!firewallContainer) return;
@@ -20,8 +19,10 @@ export function loadRoomOne() {
 
   const timer = document.getElementById("timerContainer");
   if (!timer) return;
-  startRoomTimer(timer, 60);
+  startRoomTimer(timer, 120);
 }
+
+const firewallContainer = document.getElementById("firewall");
 
 interface MemoryCard {
   id: number;
@@ -101,7 +102,7 @@ function renderCards() {
 function handleCardClick(id: number) {
   const clickedCard = memoryCards.find((card) => card.id === id);
 
-  // Guards
+  // 🛑 Guards
   if (!clickedCard) return;
 
   if (clickedCard.flipped) return; // Already open
@@ -128,22 +129,35 @@ function checkForMatch() {
   const firstCard = flippedCards[0];
   const secondCard = flippedCards[1];
 
-  // Match
+  // ✅ Match
   if (firstCard.emoji === secondCard.emoji) {
     firstCard.matched = true;
     secondCard.matched = true;
 
     renderCards();
+
+    // All matched
+    if (memoryCards.every((card) => card.matched)) {
+      handleGameComplete();
+    }
+
     return;
   }
 
-  // No match
+  // ❌ No match
   setTimeout(() => {
     firstCard.flipped = false;
     secondCard.flipped = false;
 
     renderCards();
   }, 500); // Briefly show both cards
+}
+
+function handleGameComplete() {
+  stopRoomTimer();
+
+  const message = "Yey!";
+  loadGameOverPage(message, true);
 }
 
 // 🎧 event-listeners
