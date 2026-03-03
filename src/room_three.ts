@@ -4,8 +4,8 @@ import { loadGameOverPage } from "./gameOverPage";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { saveRoomProgress } from "./saveRoomProgress";
 
-// Speldata
-//----------
+// Game data
+//---------- 
 const memoryContainer = document.getElementById("logic-module");
 const roomNumber = 3;
 
@@ -40,7 +40,7 @@ const fragments = [
 
 let selectedFragments: string [] = [];
 
-// Renderar rummet - bygger upp HTML-strukturen
+// Renders the room - builds the HTML structure
 // ---------------------------------------------
 
 function renderRoom(): void {
@@ -67,7 +67,7 @@ Only correct logic will unlock it.
 `;
 }
 
-// Uppdaterar vad spelaren har valt hittills
+// Updates what the player has selected so far
 //------------------------------------------
 function updateSelectedView(): void {
   const selectedContainer = document.getElementById("selected");
@@ -76,7 +76,7 @@ function updateSelectedView(): void {
   }
 }
 
-// Kontrollerar om spelaren har rätt lösning
+// Checks if the player has the correct solution
 //------------------------------------------
 function checkSolution(): void {
 
@@ -100,31 +100,31 @@ function checkSolution(): void {
     const message = "Logic Error: The condition doesn´t hold. Production refuses to cooperate. Try again!";
     loadGameOverPage(message, false);
   }
-  }
+}
 
-// Lägger till fragment-knapparna i DOM:en
+// Adds the fragment buttons to the DOM
 // ---------------------------------------
 function addFragmentListeners(): void {
   const fragmentsContainer = document.getElementById("fragments");
   if (!fragmentsContainer) return;
-
-    fragments.forEach((fragment) => {
-      const button = document.createElement("button");
-      button.textContent = fragment;
-      button.dataset.fragment = fragment;
-      fragmentsContainer.appendChild(button);
-
-      button.addEventListener("click", () => {
-        if (!selectedFragments.includes(fragment)) {
-          selectedFragments.push(fragment);
-          button.style.display = "none";
-          updateSelectedView();
-        }
-      })
+  
+  fragments.forEach((fragment) => {
+    const button = document.createElement("button");
+    button.textContent = fragment;
+    button.dataset.fragment = fragment;
+    fragmentsContainer.appendChild(button);
+    
+    button.addEventListener("click", () => {
+      if (!selectedFragments.includes(fragment)) {
+        selectedFragments.push(fragment);
+        button.style.display = "none";
+        updateSelectedView();
+      }
     })
-  }
+  })
+}
 
-// Lägger till lyssnare på undo, check och back-knapparna
+// Adds listeners to the undo, check and back buttons
 // -------------------------------------------------------
 function addButtonListeners(): void {
   const backButton = document.getElementById("backToRooms");
@@ -133,29 +133,31 @@ function addButtonListeners(): void {
     goToLobby();
     });
 
-    const undoBtn = document.getElementById("undoBtn");
-    undoBtn?.addEventListener("click", () => {
-      const lastFragment = selectedFragments.pop();
-      if (lastFragment) {
-        const buttonToRestore = document.querySelector(`button[data-fragment="${lastFragment}"]`) as HTMLButtonElement;
-        if (buttonToRestore) {
-          buttonToRestore.style.display = "";
-        }
-        updateSelectedView();
+  const undoBtn = document.getElementById("undoBtn");
+  undoBtn?.addEventListener("click", () => {
+    const lastFragment = selectedFragments.pop();
+    if (lastFragment) {
+      const buttonToRestore = document.querySelector(`button[data-fragment="${lastFragment}"]`) as HTMLButtonElement;
+      if (buttonToRestore) {
+        buttonToRestore.style.display = "";
       }
-    });
+      updateSelectedView();
+    }
+  });
 
   const checkBtn = document.getElementById("checkBtn");
   checkBtn?.addEventListener("click", checkSolution);
-  }
+}
 
-  // Startar rummet 
-  //----------------
-  export function loadRoomThree(): void {
-    selectedFragments = [];
-    if (!memoryContainer) return;
-    renderRoom();
-    startRoomTimer( memoryContainer, 60);
-    addFragmentListeners();
-    addButtonListeners();
-  }
+// Starts the room
+//----------------
+export function loadRoomThree(): void {
+
+  selectedFragments = [];
+  if (!memoryContainer) return;
+  renderRoom();
+  startRoomTimer( memoryContainer, 60);
+  fragments.sort(() => Math.random() - 0.5);
+  addFragmentListeners();
+  addButtonListeners();
+}
