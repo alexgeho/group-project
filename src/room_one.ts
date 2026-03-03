@@ -8,27 +8,26 @@
  * The player wins when all pairs of cards are matched.
  */
 
-// Imports
 import { goToLobby } from "./gotoLobby";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
 import { saveRoomProgress } from "./saveRoomProgress";
+import { showPlayerStats } from "./showPlayerStats";
+
+export function loadRoomOne() {
+  if (!firewallContainer) return;
+  renderFirewallContainer();
+
+  const timerContainer = document.getElementById("timerContainer");
+  if (!timerContainer) return;
+
+  startRoomTimer(timerContainer, 120);
+}
 
 const firewallContainer = document.getElementById("firewall");
 const roomNumber = 1;
 const roomArtifact = "I";
 
-export function loadRoomOne() {
-  if (!firewallContainer) return;
-
-  renderFirewallRoom();
-
-  const timer = document.getElementById("timerContainer");
-  if (!timer) return;
-  startRoomTimer(timer, 120);
-}
-
-// Types
 interface MemoryCard {
   id: number;
   emoji: string;
@@ -36,7 +35,6 @@ interface MemoryCard {
   matched: boolean;
 }
 
-// State
 const memoryCards: MemoryCard[] = [
   { id: 1, emoji: "🪐", flipped: false, matched: false },
   { id: 2, emoji: "🌙", flipped: false, matched: false },
@@ -61,7 +59,7 @@ const memoryCards: MemoryCard[] = [
 ];
 
 // View
-function renderFirewallRoom() {
+function renderFirewallContainer() {
   if (!firewallContainer) return;
 
   firewallContainer.innerHTML = `
@@ -91,7 +89,7 @@ function renderCards() {
   memoryCards.forEach((card) => {
     html += `
     <button class="card" data-id="${card.id}">
-    ${card.flipped ? card.emoji : "🔥"}
+      ${card.flipped ? card.emoji : "🔥"}
     </button>`;
   });
 
@@ -100,20 +98,16 @@ function renderCards() {
   addEventListenerForEachCard();
 }
 
-// Game logic
 function handleCardClick(id: number) {
   const clickedCard = memoryCards.find((card) => card.id === id);
 
-  // 🛑 Guards
   if (!clickedCard) return;
-
   if (clickedCard.flipped) return; // Already open
   if (clickedCard.matched) return; // Already matched
 
   const flippedCards = getUnmatchedFlippedCards();
   if (flippedCards.length >= 2) return; // Two cards open
 
-  // Logic
   clickedCard.flipped = true;
 
   renderCards();
@@ -158,6 +152,13 @@ function checkForMatch() {
 function handleGameComplete() {
   stopRoomTimer();
   saveRoomProgress(roomNumber, roomArtifact);
+  console.log(
+    "About to save room number:",
+    roomNumber,
+    "room artefact:",
+    roomArtifact,
+  );
+  showPlayerStats();
 
   const message = "Yey!";
   loadGameOverPage(message, true);
