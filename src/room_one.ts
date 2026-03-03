@@ -1,16 +1,22 @@
 /**
  * FIREWALL - Memory Game 🃏🃏
  *
- * The player have to get pairs of cards with the same emoji.
+ * The player has to get pairs of cards with the same emoji.
  * The cards are placed face down and the player can flip two cards at a time.
  * If the cards match, they stay face up.
  * If they don't match, they are flipped back face down.
  * The player wins when all pairs of cards are matched.
  */
 
+// Imports
 import { goToLobby } from "./gotoLobby";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
+import { saveRoomProgress } from "./saveRoomProgress";
+
+const firewallContainer = document.getElementById("firewall");
+const roomNumber = 1;
+const roomArtifact = "I";
 
 export function loadRoomOne() {
   if (!firewallContainer) return;
@@ -22,8 +28,7 @@ export function loadRoomOne() {
   startRoomTimer(timer, 120);
 }
 
-const firewallContainer = document.getElementById("firewall");
-
+// Types
 interface MemoryCard {
   id: number;
   emoji: string;
@@ -31,6 +36,7 @@ interface MemoryCard {
   matched: boolean;
 }
 
+// State
 const memoryCards: MemoryCard[] = [
   { id: 1, emoji: "🪐", flipped: false, matched: false },
   { id: 2, emoji: "🌙", flipped: false, matched: false },
@@ -54,9 +60,7 @@ const memoryCards: MemoryCard[] = [
   { id: 20, emoji: "🦄", flipped: false, matched: false },
 ];
 
-// 🖼 View - HTML Markup
-// ──────────────────────────────────────────────────────────────────────────────────────
-
+// View
 function renderFirewallRoom() {
   if (!firewallContainer) return;
 
@@ -96,9 +100,7 @@ function renderCards() {
   addEventListenerForEachCard();
 }
 
-// 🎮 GAME LOGIC
-// ──────────────────────────────────────────────────────────────────────────────────────
-
+// Game logic
 function handleCardClick(id: number) {
   const clickedCard = memoryCards.find((card) => card.id === id);
 
@@ -155,14 +157,13 @@ function checkForMatch() {
 
 function handleGameComplete() {
   stopRoomTimer();
+  saveRoomProgress(roomNumber, roomArtifact);
 
   const message = "Yey!";
   loadGameOverPage(message, true);
 }
 
-// 🎧 event-listeners
-// ──────────────────────────────────────────────────────────────────────────────────────
-
+// Event listeners
 function addEventListenerForEachCard() {
   const cards = document.querySelectorAll<HTMLButtonElement>(".card");
 
