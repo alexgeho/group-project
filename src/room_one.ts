@@ -100,8 +100,17 @@ function renderCards() {
 
 function handleCardClick(id: number) {
   const clickedCard = memoryCards.find((card) => card.id === id);
+
+  // Guards
   if (!clickedCard) return;
 
+  if (clickedCard.flipped) return; // Already open
+  if (clickedCard.matched) return; // Already matched
+
+  const flippedCards = getUnmatchedFlippedCards();
+  if (flippedCards.length >= 2) return; // Two cards open
+
+  // Logic
   clickedCard.flipped = true;
 
   renderCards();
@@ -109,30 +118,32 @@ function handleCardClick(id: number) {
 }
 
 function getUnmatchedFlippedCards() {
-  return memoryCards.filter(
-    (card) => card.flipped && !card.matched, // { flipped: true, matched: false }
-  );
+  return memoryCards.filter((card) => card.flipped && !card.matched);
 }
 
 function checkForMatch() {
   const flippedCards = getUnmatchedFlippedCards();
+  if (flippedCards.length !== 2) return; // Require exactly two cards
 
-  // When two cards are open, check if they match
-  if (flippedCards.length === 2) {
-    const [firstCard, secondCard] = flippedCards;
+  const firstCard = flippedCards[0];
+  const secondCard = flippedCards[1];
 
-    if (firstCard.emoji === secondCard.emoji) {
-      firstCard.matched = true;
-      secondCard.matched = true;
-    } else {
-      // Allow player to see both cards before flipping them back
-      setTimeout(() => {
-        firstCard.flipped = false;
-        secondCard.flipped = false;
-        renderCards();
-      }, 500);
-    }
+  // Match
+  if (firstCard.emoji === secondCard.emoji) {
+    firstCard.matched = true;
+    secondCard.matched = true;
+
+    renderCards();
+    return;
   }
+
+  // No match
+  setTimeout(() => {
+    firstCard.flipped = false;
+    secondCard.flipped = false;
+
+    renderCards();
+  }, 500); // Briefly show both cards
 }
 
 // 🎧 event-listeners
