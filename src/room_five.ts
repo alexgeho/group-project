@@ -3,15 +3,15 @@ import { loadGameOverPage } from "./gameOverPage";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { saveRoomProgress } from "./saveRoomProgress";
 
-const memoryContainer = document.getElementById("bug-room");
+const bugRoomContainer = document.getElementById("bug-room");
 const roomNumber = 5;
-const roomArtifact = 'u';
+const roomArtifact = 'H';
 
-console.log(memoryContainer, " timer element in room 5");
+console.log(bugRoomContainer, " timer element in room 5");
 
 export function loadRoomFive(): void {
-  if (!memoryContainer) return;
-  memoryContainer.innerHTML = `
+  if (!bugRoomContainer) return;
+  bugRoomContainer.innerHTML = `
     <h2>Welcome to Room 5 - Bug Room</h2>
     <p>Warning! A rogue process has infiltrated the system. The bug is spreading and corrupting the portal's code. You must locate the error before it's too late.<br>–<br> <br>Analyze the code carefully <br> one wrong answer and the bug wins.</p>
     <div class="code-snippet">
@@ -96,7 +96,7 @@ export function loadRoomFive(): void {
     <button id="fiveBackToRooms" class="btn-primary">Back</button>
   `;
 
-  startRoomTimer(memoryContainer, 60);
+  startRoomTimer(bugRoomContainer, 60);
   const backButton = document.getElementById("fiveBackToRooms");
   backButton?.addEventListener("click", () => {
     stopRoomTimer();
@@ -104,8 +104,13 @@ export function loadRoomFive(): void {
   });
 
   const submitButton = document.getElementById("submitBugFix");
+
+
+  ////////////////////////
+
   submitButton?.addEventListener("click", (e) => {
     e.preventDefault();
+
     if (checkAnswers()) {
       const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
 
@@ -119,6 +124,9 @@ export function loadRoomFive(): void {
     }
   });
 }
+
+/*  */
+
 function checkAnswers(): boolean {
   const bug1 = (document.querySelector('input[name="bug1"]') as HTMLInputElement).checked;
   const bug2 = (document.querySelector('input[name="bug2"]') as HTMLInputElement).checked;

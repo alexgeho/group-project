@@ -3,6 +3,7 @@
  */
 
 export interface HighscoreEntry {
+  id: string
   name: string
   score: number
   date?: string
