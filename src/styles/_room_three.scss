@@ -1,0 +1,95 @@
+#logic-module {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 20px;
+  font-family: 'Courier New', monospace;
+  color: #00b4d8;
+  border: 1px solid #00b4d8;
+  border-radius: 8px;
+  animation: pulse 3s ease-in-out;
+
+  h2 {
+    font-size: 2rem;
+    color: #00b4d8;
+    text-shadow: 0px 0px 10px #00b4d8;
+    font-weight: bold;
+
+    &::after {
+      content: '_';
+      animation: blink 1s infinite;
+    }
+  }
+
+  h3 {font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0, 180, 216, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(0, 180, 216, 0.8); }
+}
+.game-instructions {
+  max-width: 650px;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 3px solid #00eaff;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+#fragments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+
+  button {
+    background-color: #1a1a2e;
+    color: #00b4d8;
+    border: 1px solid #00b4d8;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-shadow: 0 0 5px #00b4d8;
+
+    &:hover {
+      background-color: #00b4d8;
+      color: #1a1a2e;
+      box-shadow: 0 0 8px #00b4d8;
+    }
+  }
+}
+#selected {
+  min-height: 40px;
+  width: 40%;
+  background-color: #0d0d0d;
+  border: 1px solid #00b4d8;
+  border-radius: 5px;
+  padding: 10px;
+  color: #00b4d8;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+}
+.solution-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+#timer-wrapper {
+  align-self: flex-start;
+  margin-right: auto;
+}
