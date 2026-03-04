@@ -56,5 +56,12 @@ export function showPlayerStats(): void {
       break;
   }
   
+  const finishedRooms: number[] = playerData.roomsCompleted;
 
+  finishedRooms.forEach(element => {
+    const btn = document.getElementById(`enterRoom${element}`) as HTMLButtonElement
+    if(btn){
+      btn.disabled=true;
+    }
+  });
 }
