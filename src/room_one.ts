@@ -64,8 +64,10 @@ function renderFirewallContainer() {
 
   firewallContainer.innerHTML = `
     <div class="header">
-      <h2>You've entered a Firewall</h2>
-      <p>It is your mission to break it!</p>
+      <h2>The Firewall</h2>
+      <p>Match all pairs of cards to break the firewall</p>
+      <p>and collect the artifact needed for the password.</p> 
+      <p>Be quick — time is running out!</p>
     </div>
 
     <div class="game">
