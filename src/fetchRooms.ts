@@ -10,7 +10,7 @@ import { getPlayer } from "./fetchPlayerFromLs";
 import { loadFinalRoom } from "./room_final";
 
 let roomLoaded = false;
- const playerData = getPlayer();
+const playerData = getPlayer();
 
 export async function fetchRooms(): Promise<void> {
   // она false - тут как читать типо если она true тогда return?
@@ -53,7 +53,9 @@ export async function fetchRooms(): Promise<void> {
     roomBtn?.addEventListener("click", () => goToRoom(room));
   });
 
-  const finalRoomBtn = document.querySelector("#enterRoom7") as HTMLButtonElement;
+  const finalRoomBtn = document.querySelector(
+    "#enterRoom7",
+  ) as HTMLButtonElement;
   if (playerData) {
     if (finalRoomBtn) {
       finalRoomBtn.disabled = true;
@@ -64,7 +66,7 @@ export async function fetchRooms(): Promise<void> {
   } else {
     console.log("No player data found in localStorage.");
   }
- 
+
   roomLoaded = true;
 }
 
@@ -79,9 +81,8 @@ function goToRoom(room: IRoom) {
 
   startTotalTimer();
 
-  
   // если верно то включаем функцию и туда типо передаем параметр (() => goToLobby()) - тут я не понял
-  if (room.name === "firewall") loadRoomOne(() => goToLobby());
+  if (room.name === "firewall") loadRoomOne();
   if (room.name === "database") loadRoomTwo(() => goToLobby());
   if (room.name === "encryption") loadRoomFour();
   if (room.name === "bug-room") loadRoomFive();
