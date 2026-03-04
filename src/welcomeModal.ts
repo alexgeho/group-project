@@ -7,20 +7,17 @@ export function showWelcomeModal(): void {
     modal.innerHTML = `
     <div class="modal-content">
     <h2>Welcome to the Marauders Escape Room!</h2>
-    <p>A small digital creature from Cyberspace has crashed into our world.
-    The portal home is locked by a security system. To unlock the portal, you must
-    get through 6 digital obstacles. Each obstacle provides a letter together,
-    the letters form the password that opens the portal.</p>
+    <p>Your mission: solve 6 digital challenges, collect the letters, and unlock
+    the portal. The fate of the digital creature is in your hands. Good luck, agent!</p>
 
-    <h3>How to play</h3>
+    <h3>How to play:</h3>
     <ul>
-    <li>Solve each room to collect a letter</li>
+    <li>Complete each room to collect a letter</li>
     <li>The letters form the final password</li>
-    <li>You earn points based on how fast you solve each room</li>
-    <li>Your progress is saved automatically</li>
+    <li>You earn points based on how quickly you complete each room</li>
+    <li>Your progress is saved automatically!</li>
     </ul>
 
-    <p class="easter-egg">👾 Transmission received from Commander Keen</p>
     <p class="mission-tagline">Mission status: Mars Bound 🚀</p>
 
     <button id="close-modal">Let's go! 🚀</button>
@@ -28,11 +25,22 @@ export function showWelcomeModal(): void {
     `;
 
     document.body.appendChild(modal);
-    document.getElementById("close-modal")?.addEventListener("click", () => {
+    const closeBtn = modal.querySelector<HTMLButtonElement>("#close-modal");
+    if (!closeBtn) return;
+    closeBtn.focus();
+
+    function closeModal() {
         modal.classList.add("fade-out");
         setTimeout(() => {
             modal.remove();
             goToLobby();
         }, 500);
-        })
-};
+    }
+    closeBtn.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+            closeModal();
+        }
+    });
+}

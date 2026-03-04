@@ -25,30 +25,36 @@
     }
     h2 {
         margin-bottom: 1rem;
+        color: #cfd3ff;
     }
     p {
         margin-bottom: 1.5rem;
         line-height: 1.6;
     }
     h3 {
+        color: #00b4d8;
+        letter-spacing: 3px;
+        text-transform: uppercase;
         margin-bottom: 0.5rem;
+        font-size: 1.1rem;
     }
     ul {
-        text-align: left;
-        line-height: 2;
+        list-style: none;
+        text-align: center;
+        line-height: 2.2;
         margin-bottom: 1.5rem;
-        padding-left: 1.5rem;
-    }
-    .easter-egg {
-        font-size: 0.8rem;
-        color: rgba(0, 180, 216, 0.5);
-        margin-top: 1rem;
+        padding: 0;
+
+        li::before {
+            content: "▸ ";
+            color: #00b4d8;
+        }
     }
     .mission-tagline {
         margin-top: 1.5rem;
         font-size: 0.8rem;
         opacity: 0.7;
-        letter-spacing: 2px;
+        letter-spacing: 3px;
     }
     #close-modal {
         padding: 0.75rem 2rem;
@@ -62,5 +68,9 @@
         &:hover {
             background: #6a6aaa;
         }
+    }
+    #close-modal:focus {
+        outline: 2px solid #ffffff;
+        outline-offset: 3px;
     }
 }
