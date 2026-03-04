@@ -51,7 +51,7 @@ export async function fetchRooms(): Promise<void> {
   if (playerData) {
     if (finalRoomBtn) {
       finalRoomBtn.disabled = true;
-      if (playerData!.roomsCompleted && playerData!.roomsCompleted.length < 6) {
+      if (playerData!.roomsCompleted && playerData!.roomsCompleted.length >= 6) {
         finalRoomBtn.disabled = false;
       }
     }
@@ -72,7 +72,7 @@ function goToRoom(room: IRoom) {
   startTotalTimer();
 
   if (room.name === "firewall") loadRoomOne(() => goToLobby());
-  if (room.name === "database") loadRoomTwo(() => goToLobby());
+  if (room.name === "database") loadRoomTwo();
   if (room.name === "encryption") loadRoomFour();
   if (room.name === "bug-room") loadRoomFive();
   if (room.name === "portal-control") loadRoomSix();

@@ -96,7 +96,7 @@ export function loadRoomFive(): void {
     <button id="fiveBackToRooms" class="btn-primary">Back</button>
   `;
 
-  startRoomTimer(bugRoomContainer, 60);
+  startRoomTimer(bugRoomContainer, 260);
   const backButton = document.getElementById("fiveBackToRooms");
   backButton?.addEventListener("click", () => {
     stopRoomTimer();
@@ -105,14 +105,11 @@ export function loadRoomFive(): void {
 
   const submitButton = document.getElementById("submitBugFix");
 
-
-  ////////////////////////
-
   submitButton?.addEventListener("click", (e) => {
     e.preventDefault();
 
     if (checkAnswers()) {
-      const message = "Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable, and you can proceed to the next room.";
+      const message = `Congratulations! You've successfully debugged the code and eliminated the bug. The portal is now stable and your artifact is {roomArtifact}, and you can proceed to the next room.`;
 
       saveRoomProgress(roomNumber, roomArtifact);
       loadGameOverPage(message, true);
@@ -124,8 +121,6 @@ export function loadRoomFive(): void {
     }
   });
 }
-
-/*  */
 
 function checkAnswers(): boolean {
   const bug1 = (document.querySelector('input[name="bug1"]') as HTMLInputElement).checked;

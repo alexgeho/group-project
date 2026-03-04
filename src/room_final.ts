@@ -1,7 +1,7 @@
 import { getPlayer } from "./fetchPlayerFromLs";
 import { goToLobby } from "./gotoLobby";
 import { addHighscore, getHighscoreList } from "./highscore";
-import { stopRoomTimer } from "./roomTimer";
+import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadFinalVictoryPage } from "./room-final-victory";
 
 const memoryContainer = document.getElementById("destiny");
@@ -39,7 +39,7 @@ export function loadFinalRoom(): void {
     
     <button id="finalBackToRooms" class="btn-primary">Back</button>`
 
-  // startRoomTimer(memoryContainer, 360);
+  startRoomTimer(memoryContainer, 360);
   const backButton = document.getElementById("finalBackToRooms");
   backButton?.addEventListener("click", () => {
     stopRoomTimer();
