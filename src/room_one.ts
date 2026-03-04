@@ -21,7 +21,7 @@ export function loadRoomOne() {
   const timerContainer = document.getElementById("timerContainer");
   if (!timerContainer) return;
 
-  startRoomTimer(timerContainer, 120);
+  startRoomTimer(timerContainer, 100);
 }
 
 const firewallContainer = document.getElementById("firewall");
@@ -55,7 +55,15 @@ const memoryCards: MemoryCard[] = [
   { id: 17, emoji: "👾", flipped: false, matched: false },
   { id: 18, emoji: "🦋", flipped: false, matched: false },
   { id: 19, emoji: "🌕", flipped: false, matched: false },
-  { id: 20, emoji: "🦄", flipped: false, matched: false },
+  { id: 20, emoji: "🔑", flipped: false, matched: false },
+  { id: 21, emoji: "🎃", flipped: false, matched: false },
+  { id: 22, emoji: "🍄", flipped: false, matched: false },
+  { id: 23, emoji: "🦄", flipped: false, matched: false },
+  { id: 24, emoji: "🔑", flipped: false, matched: false },
+  { id: 25, emoji: "🎃", flipped: false, matched: false },
+  { id: 26, emoji: "🦠", flipped: false, matched: false },
+  { id: 27, emoji: "🦠", flipped: false, matched: false },
+  { id: 28, emoji: "🍄", flipped: false, matched: false },
 ];
 
 function renderFirewallContainer() {
