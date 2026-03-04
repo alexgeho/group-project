@@ -1,20 +1,14 @@
+.room-one-content {
+  position: relative;
+}
+
 h2 {
-  font-size: 1.5rem;
+  font-size: 2rem;
   padding-block: 0.5rem;
 }
 
 p {
-  padding-block: 0.1rem;
-}
-
-.timer-container {
-  border: 2px solid red;
-  padding: 2rem;
-}
-
-.room-timer {
-  border: 2px solid red;
-  margin-top: 20rem;
+  padding-block: 0.2rem;
 }
 
 .memory-container {
@@ -23,16 +17,12 @@ p {
   gap: 0.5rem;
   margin: 1rem;
   padding: 1rem;
-  //border: 1px solid green;
   justify-content: center;
   justify-items: center;
   text-align: center;
 }
 
 .card {
-  //grid-column: span 1;
-  //padding: 0.5rem;
-  //padding-block: 4rem;
   background-color: rgba(20, 20, 30, 0.95);
   border-radius: 1rem;
   border: 2px solid rgb(112, 112, 112);
