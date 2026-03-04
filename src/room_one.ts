@@ -58,7 +58,6 @@ const memoryCards: MemoryCard[] = [
   { id: 20, emoji: "🦄", flipped: false, matched: false },
 ];
 
-// View
 function renderFirewallContainer() {
   if (!firewallContainer) return;
 
@@ -134,7 +133,7 @@ function checkForMatch() {
 
     renderCards();
 
-    // All matched
+    // All matched?
     if (memoryCards.every((card) => card.matched)) {
       handleGameComplete();
     }
@@ -152,6 +151,7 @@ function checkForMatch() {
 }
 
 function handleGameComplete() {
+  console.log("GAME COMPLETE");
   stopRoomTimer();
   saveRoomProgress(roomNumber, roomArtifact);
   console.log(
@@ -162,11 +162,10 @@ function handleGameComplete() {
   );
   showPlayerStats();
 
-  const message = "Yey!";
+  const message = "You broke the firewall and collected artifact 'I'.";
   loadGameOverPage(message, true);
 }
 
-// Event listeners
 function addEventListenerForEachCard() {
   const cards = document.querySelectorAll<HTMLButtonElement>(".card");
 
