@@ -1,8 +1,8 @@
 import { getPlayer } from "./fetchPlayerFromLs";
 import { goToLobby } from "./gotoLobby";
-import { addHighscore } from "./highscore";
+import { addHighscore, getHighscoreList } from "./highscore";
 import { stopRoomTimer } from "./roomTimer";
-import { loadGameOverPage } from "./gameOverPage";
+import { loadFinalVictoryPage } from "./room-final-victory";
 
 const memoryContainer = document.getElementById("destiny");
 
@@ -13,7 +13,7 @@ export function loadFinalRoom(): void {
     <div class="riddle-text">
       <h3>⚠ DECRYPT SEQUENCE INITIATED ⚠</h3>
       <br>
-      <h4>Analyze the following transmission carefully. Hidden within lies the key to the portal. One wrong answer and the creature remains trapped forever...</h4>
+      <h4>Analyze the following transmission carefully. Hidden within lies the key to the portal. If entered wrong answer you'll remain trapped forever...</h4>
       <br>
       <i>"The portal's final lock requires a sacred word — a name known to all who dwell in the digital realm. This tool was forged by humans in the year 2005, crafted by a single mind — a legend who built the Linux kernel. It was born out of frustration, designed to bring order to chaos.
       <br>
@@ -50,18 +50,38 @@ export function loadFinalRoom(): void {
     e.preventDefault();
     if (checkAnswer()) {
       const player = getPlayer()
+      const highscoreList = getHighscoreList();
+
       const formElement = document.querySelector("#final-answer-form");
       formElement?.classList.add("correct-answer");
+
       setTimeout(() => {
         if (player) {
-          addHighscore({
-            name: player!.name,
-            score: player!.points,
-            date: new Date().toLocaleDateString(),
-          });
-          loadGameOverPage("Congratulations! You have successfully completed the game.", true);
+          const existingPlayer = highscoreList.find(item => item.id === player.id);
+          
+          if (existingPlayer) {
+            if (player.points > existingPlayer.score) {
+              existingPlayer.score = player.points;
+              addHighscore(existingPlayer);
+            }
+          } else {
+            addHighscore({
+              id: player.id,
+              name: player.name,
+              score: player.points,
+              date: new Date().toLocaleDateString(),
+            });
+          }
+          loadFinalVictoryPage("Congratulations! You have successfully completed the game.", true);
         }
-      }, 1600);
+      }, 1800);
+    } else {
+      const formElement = document.querySelector("#final-answer-form");
+      formElement?.classList.add("correct-answer");
+
+      setTimeout(() => {
+        loadFinalVictoryPage("Oh no! You destroyed the portal. You are stuck here now forever!", false);
+      }, 1800)
     }
   });
 }
