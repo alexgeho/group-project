@@ -1,5 +1,4 @@
 import { getPlayer } from "./fetchPlayerFromLs";
-import { goToLobby } from "./gotoLobby";
 import { ResetPlayerStats } from "./reset-player-stats";
 import { stopRoomTimer } from "./roomTimer";
 import { GetDataToShare } from "./share-result";
