@@ -1,5 +1,6 @@
 import { goToLobby } from "./gotoLobby";
 import type { IPlayer } from "./models/Player";
+import { resetUI } from "./reset-ui";
 
 export function loginUser(e: Event): void {
   e.preventDefault();
@@ -18,5 +19,6 @@ export function loginUser(e: Event): void {
   };
 
   localStorage.setItem("player", JSON.stringify(player));
+  resetUI()
   goToLobby();
 }
