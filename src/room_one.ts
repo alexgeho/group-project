@@ -1,13 +1,3 @@
-/**
- * FIREWALL - Memory Game 🃏🃏
- *
- * The player has to get pairs of cards with the same emoji.
- * The cards are placed face down and the player can flip two cards at a time.
- * If the cards match, they stay face up.
- * If they don't match, they are flipped back face down.
- * The player wins when all pairs of cards are matched.
- */
-
 import { goToLobby } from "./gotoLobby";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
@@ -162,12 +152,6 @@ function handleGameComplete() {
   console.log("GAME COMPLETE");
   stopRoomTimer();
   saveRoomProgress(roomNumber, roomArtifact);
-  console.log(
-    "About to save room number:",
-    roomNumber,
-    "room artefact:",
-    roomArtifact,
-  );
   showPlayerStats();
 
   const message = "You broke the firewall and collected artifact 'I'.";
