@@ -3,11 +3,12 @@
 @use "room_four";
 
 body {
-  font-family: 'Orbitron', 'Iceland', 'Courier', monospace, system-ui;
+  font-family: "Orbitron", "Iceland", "Courier", monospace, system-ui;
   letter-spacing: 2px;
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('/images/digiworld.jpg');
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/images/digiworld.jpg");
 }
 
 header {
@@ -64,18 +65,18 @@ section {
   margin-top: 20px;
   padding: 20px;
   button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-  &> :last-child {
-      grid-column: 2 / 3;
-      animation: portalGlow0 2s ease-in-out infinite;
-    }
-      
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  & > :last-child {
+    grid-column: 2 / 3;
+    animation: portalGlow0 2s ease-in-out infinite;
+  }
+
   @media (max-width: 768px) {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    }
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
 }
 
 .login-form {
@@ -218,99 +219,148 @@ progress {
   }
 }
 
-#total-timer-display{
+#total-timer-display {
   width: 180px;
 }
 
 @keyframes portalGlow0 {
   0% {
-    box-shadow: 0 0 2px #6dabbb, 0 0 2px #6dabbb;
+    box-shadow:
+      0 0 2px #6dabbb,
+      0 0 2px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 8px #e9e9ec, 0 0 8px #8ba5fa, 0 0 8px #8ba5fa;
+    box-shadow:
+      0 0 8px #e9e9ec,
+      0 0 8px #8ba5fa,
+      0 0 8px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 2px #6dabbb, 0 0 2px #6dabbb;
+    box-shadow:
+      0 0 2px #6dabbb,
+      0 0 2px #6dabbb;
   }
 }
 @keyframes portalGlow1 {
   0% {
-    box-shadow: 0 0 6px #6dabbb, 0 0 6px #6dabbb;
+    box-shadow:
+      0 0 6px #6dabbb,
+      0 0 6px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 22px #e9e9ec, 0 0 22px #8ba5fa, 0 0 22px #8ba5fa;
+    box-shadow:
+      0 0 22px #e9e9ec,
+      0 0 22px #8ba5fa,
+      0 0 22px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 6px #6dabbb, 0 0 6px #6dabbb;
+    box-shadow:
+      0 0 6px #6dabbb,
+      0 0 6px #6dabbb;
   }
 }
 @keyframes portalGlow2 {
   0% {
-    box-shadow: 0 0 10px #6dabbb, 0 0 10px #6dabbb;
+    box-shadow:
+      0 0 10px #6dabbb,
+      0 0 10px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 36px #e9e9ec, 0 0 36px #8ba5fa, 0 0 36px #8ba5fa;
+    box-shadow:
+      0 0 36px #e9e9ec,
+      0 0 36px #8ba5fa,
+      0 0 36px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 10px #6dabbb, 0 0 10px #6dabbb;
+    box-shadow:
+      0 0 10px #6dabbb,
+      0 0 10px #6dabbb;
   }
 }
 @keyframes portalGlow3 {
   0% {
-    box-shadow: 0 0 14px #6dabbb, 0 0 14px #6dabbb;
+    box-shadow:
+      0 0 14px #6dabbb,
+      0 0 14px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 48px #e9e9ec, 0 0 48px #8ba5fa, 0 0 48px #8ba5fa;
+    box-shadow:
+      0 0 48px #e9e9ec,
+      0 0 48px #8ba5fa,
+      0 0 48px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 14px #6dabbb, 0 0 14px #6dabbb;
+    box-shadow:
+      0 0 14px #6dabbb,
+      0 0 14px #6dabbb;
   }
 }
 @keyframes portalGlow4 {
   0% {
-    box-shadow: 0 0 18px #6dabbb, 0 0 18px #6dabbb;
+    box-shadow:
+      0 0 18px #6dabbb,
+      0 0 18px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 60px #e9e9ec, 0 0 60px #8ba5fa, 0 0 60px #8ba5fa;
+    box-shadow:
+      0 0 60px #e9e9ec,
+      0 0 60px #8ba5fa,
+      0 0 60px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 18px #6dabbb, 0 0 18px #6dabbb;
+    box-shadow:
+      0 0 18px #6dabbb,
+      0 0 18px #6dabbb;
   }
 }
 @keyframes portalGlow5 {
   0% {
-    box-shadow: 0 0 22px #6dabbb, 0 0 22px #6dabbb;
+    box-shadow:
+      0 0 22px #6dabbb,
+      0 0 22px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 72px #e9e9ec, 0 0 72px #8ba5fa, 0 0 72px #8ba5fa;
+    box-shadow:
+      0 0 72px #e9e9ec,
+      0 0 72px #8ba5fa,
+      0 0 72px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 22px #6dabbb, 0 0 22px #6dabbb;
+    box-shadow:
+      0 0 22px #6dabbb,
+      0 0 22px #6dabbb;
   }
 }
 @keyframes portalGlow6 {
   0% {
-    box-shadow: 0 0 30px #6dabbb, 0 0 30px #6dabbb;
+    box-shadow:
+      0 0 30px #6dabbb,
+      0 0 30px #6dabbb;
   }
 
   50% {
-    box-shadow: 0 0 90px #e9e9ec, 0 0 90px #8ba5fa, 0 0 90px #8ba5fa;
+    box-shadow:
+      0 0 90px #e9e9ec,
+      0 0 90px #8ba5fa,
+      0 0 90px #8ba5fa;
   }
 
   100% {
-    box-shadow: 0 0 30px #6dabbb, 0 0 30px #6dabbb;
+    box-shadow:
+      0 0 30px #6dabbb,
+      0 0 30px #6dabbb;
   }
 }
 #firewall,

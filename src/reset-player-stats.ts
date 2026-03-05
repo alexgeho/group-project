@@ -1,4 +1,6 @@
 import { getPlayer } from "./fetchPlayerFromLs"
+import { goToLobby } from "./gotoLobby";
+import { resetUI } from "./reset-ui";
 
 export function ResetPlayerStats(){
   const player = getPlayer();
@@ -9,5 +11,6 @@ export function ResetPlayerStats(){
       player.roomsCompleted = []
   }
   localStorage.setItem('player', JSON.stringify(player))
-  window.location.reload();
+  resetUI();
+  goToLobby();
 }
