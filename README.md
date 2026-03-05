@@ -1,2 +1,48 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PLwZQtiP)
-# group-project
+# 🪐 The Mars Bound Maruders
+Describe the project / Beskriv projektet *(TO DO)*
+
+## 💾 Demo 
+Click here to view our demo / Spana in demot [här](https://) *(TO DO)*
+
+## 📸 Screenshots 
+*(TO DO)*
+<p align="center">
+  <img src="public/start_page_login" width="200"/>
+  <img src="public/lobby" width="200"/>
+  <img src="public/popup" width="200"/>
+  <img src="public/some_room" width="200"/>
+  <img src="public/win_page" width="200"/>
+  <img src="public/game_over_page" width="200"/>
+</p>
+
+## ⚙️ Tech / Tekniker
+`TYPESCRIPT` `HTML` `SCSS`
+
+## 🛠 Tools / Verktyg
+`VITE` `ESLINT` `PRETTIER` `NPM`
+
+## 🔎 Validering 
+Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
+- [W3C HTML Validator](https://validator.w3.org/) 
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+
+## 🚦 Accessibility / Tillgänglighet 
+### Firefox Accessibility Inspector *(TO DO)*
+<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
+<img src="public/some_screenshot" width="200"/>
+
+### Chrome Lighthouse *(TO DO)*
+<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
+<img src="public/some_screenshot" width="200"/>
+
+## ✍️ Creators / The team 
+*(TO DO)*
+- 👩‍🎤 **Förnamn Efternamn**
+- 🧝‍♀️ **Förnamn Efternamn**
+- 🧙 **Förnamn Efternamn**
+- 🧑‍🎤 **Förnamn Efternamn**
+- 🦹‍♀️ **Förnamn Efternamn**
+- 👨‍🎤 **Förnamn Efternamn**
+
+
