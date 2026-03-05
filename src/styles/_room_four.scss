@@ -1,26 +1,4 @@
 // Rum 4 – The Encryption (krypterat meddelande)
-.room-four-content.box {
-  position: relative;
-  padding: 20px;
-}
-
-// Timer innanför den grå rutan, uppe i vänstra hörnet intill kanten
-#encryption-timer {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  margin: 0;
-  padding: 0;
-  text-align: right;
-
-  .room-timer {
-    position: static;
-    margin: 0;
-    padding: 0;
-    width: auto;
-  }
-}
-
 .encrypted-message {
   margin: 20px auto;
   max-width: 600px;
