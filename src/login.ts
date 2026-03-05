@@ -1,5 +1,6 @@
 import { goToLobby } from "./gotoLobby";
 import type { IPlayer } from "./models/Player";
+import { showWelcomeModal } from "./welcomeModal";
 
 export function loginUser(e: Event): void {
   e.preventDefault();
@@ -19,4 +20,5 @@ export function loginUser(e: Event): void {
 
   localStorage.setItem("player", JSON.stringify(player));
   goToLobby();
+  showWelcomeModal();
 }
