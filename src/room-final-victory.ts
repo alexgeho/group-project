@@ -13,7 +13,8 @@ export function loadFinalVictoryPage(message: string, isWin: boolean): void {
   gameOverContainer.classList.remove('hidden');
 
   gameOverContainer.innerHTML = `
-    ${isWin ? `<div class="win-div">
+    ${isWin ? `<div class="portale"></div>
+              <div class="win-div">
                 <h2 class="win">Congratulations!</h2> 
                 <p class="p-message-win">${message}</p>
               </div>` : 
