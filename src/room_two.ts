@@ -190,7 +190,7 @@ function checkDatabase(): boolean {
   }
 
   if (k1 === "M" && k2 === "A" && k3 === "R" && k4 === "S") {
-    localStorage.setItem("i", "true");
+    localStorage.setItem("T", "true");
 
     const message = "ACCESS GRANTED\nArtifact 'I' collected!";
     saveRoomProgress(roomNumber, roomArtifact);
