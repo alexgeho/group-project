@@ -18,10 +18,15 @@ export function resetUI(): void {
 
   const finalRoomCard = document.querySelector('.room-7');
   if(finalRoomCard){
-    finalRoomCard?.classList.remove('portal-progress6');
-    finalRoomCard?.classList.add('portal-progress1');
-  } 
+    if (finalRoomCard) {
+      const classesToDelete = Array.from(finalRoomCard.classList)
+        .filter(className => className.startsWith('portal-progress'));
 
+      finalRoomCard.classList.remove(...classesToDelete);
+
+      finalRoomCard.classList.add('portal-progress1');
+    } 
+  }
   resetTotalTimer()
   SetFinalRoomBtnStatus();
 }
