@@ -42,9 +42,9 @@ section {
 }
 
 .room-card {
-  background-color: #312e2e;
+  background-color: #3a3a3a80;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(194, 187, 187, 0.89);
   padding: 20px;
   text-align: center;
   display: flex;
@@ -375,9 +375,10 @@ progress {
 #bug-room,
 #portal-control,
 #destiny {
-  background-color: #312e2e;
+  background-color: rgba(20, 20, 30, 0.95);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 40px rgba(0, 255, 200, 0.15);
+  border: #00ffd0 2px solid;
   min-height: 300px;
   margin: 20px;
   text-align: center;
