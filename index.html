@@ -1,20 +1,21 @@
 <!doctype html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="./favicon/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
-    rel="stylesheet">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <title>Marauders Escape Room</title>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Iceland&family=Orbitron&family=Rubik+Dirt&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Marauders Escape Room</title>
+  </head>
 
 <body>
   <header>
@@ -30,77 +31,80 @@
 
   </header>
 
-  <main>
-    <!-- WELCOME / LOGIN -->
-    <section class="homepage-page">
-      <div class="homepage-text">
-        <h1>Welcome to the Marauders Escape Room</h1>
-        <p>
-          A small digital creature from Cyberspace has crashed into our world.
-          The portal home is locked by a security system. To unlock the
-          portal, you must get through 6 digital obstacles. Each obstacle
-          provides a letter. Together, the letters form the password that
-          opens the portal. Good luck!
-        </p>
-      </div>
+    <main>
+      <!-- WELCOME / LOGIN -->
+      <section class="homepage-page">
+        <div class="homepage-text">
+          <h1>Welcome to the Marauders Escape Room</h1>
+          <p>
+            A small digital creature from Cyberspace has crashed into our world.
+            The portal home is locked by a security system. To unlock the
+            portal, you must get through 6 digital obstacles. Each obstacle
+            provides a letter. Together, the letters form the password that
+            opens the portal. Good luck!
+          </p>
+        </div>
 
-      <div class="login-form">
-        <form id="login-form">
-          <label for="player-name">
-            <span>Player Name:</span>
-            <input type="text" id="player-name" name="player-name" required />
+        <div class="login-form">
+          <form id="login-form">
+            <label for="player-name">
+              <span>Player Name:</span>
+              <input type="text" id="player-name" name="player-name" required />
+            </label>
+            <button id="start-game-btn" type="submit">Start Game</button>
+          </form>
+        </div>
+        <div class="high-score-start-page"></div>
+      </section>
+
+      <!-- WELCOME MESSAGE (to show after login) -->
+      <section class="welcome-message">
+        <h2 id="welcome-message-text">
+          Welcome to the Marauders Escape Room!
+          <span id="player-name-display"></span>
+        </h2>
+        <button id="about-page-btn" class="btn-primary">About the game</button>
+      </section>
+
+      <!-- ALL ROOMS -->
+      <section id="rooms" class="rooms"></section>
+
+      <!-- ROOM 1-6 CONTENT -->
+      <section id="firewall" class="room-one-content"></section>
+      <section id="database" class="room-two-content"></section>
+      <section id="logic-module" class="room-three-content"></section>
+      <section id="encryption" class="room-four-content"></section>
+      <section id="bug-room" class="room-five-content"></section>
+      <section id="portal-control" class="room-six-content"></section>
+      <section id="destiny" class="room-final-content"></section>
+
+      <!-- FINAL PUZZEL -->
+      <section class="final-puzzle-victory"></section>
+      <section class="final-puzzle box">
+        <h2>Final Puzzle</h2>
+        <p>You have collected the following letters:</p>
+        <div id="puzzle-letters"></div>
+        <form id="puzzle-form">
+          <label for="puzzle-answer">
+            Enter the password:
+            <input type="text" id="puzzle-answer" required />
           </label>
-          <button id="start-game-btn" type="submit">Start Game</button>
+          <button type="submit">Unlock Portal</button>
         </form>
-      </div>
-      <div class="high-score-start-page"></div>
-    </section>
+        <p id="puzzle-feedback"></p>
+      </section>
 
-    <!-- WELCOME MESSAGE (to show after login) -->
-    <section class="welcome-message">
-      <h2 id="welcome-message-text">Welcome to the Marauders Escape Room! <span id="player-name-display"></span></h2>
-    </section>
+      <section class="game-over"></section>
 
-    <!-- ALL ROOMS -->
-    <section id="rooms" class="rooms"></section>
+      <section class="high-score-section"></section>
 
-    <!-- ROOM 1-6 CONTENT -->
-    <section id="firewall" class="room-one-content"></section>
-    <section id="database" class="room-two-content"></section>
-    <section id="logic-module" class="room-three-content"></section>
-    <section id="encryption" class="room-four-content"></section>
-    <section id="bug-room" class="room-five-content"></section>
-    <section id="portal-control" class="room-six-content"></section>
-    <section id="destiny" class="room-final-content"></section>
+      <!-- AbOUT USS -->
+      <section id="about" class="about box">
+        <h2>About Us</h2>
+        <p>Info om teamet kommer här...</p>
+      </section>
+    </main>
 
-    <!-- FINAL PUZZEL -->
-     <section class="final-puzzle-victory"></section>
-    <section class="final-puzzle box">
-      <h2>Final Puzzle</h2>
-      <p>You have collected the following letters:</p>
-      <div id="puzzle-letters"></div>
-      <form id="puzzle-form">
-        <label for="puzzle-answer">
-          Enter the password:
-          <input type="text" id="puzzle-answer" required />
-        </label>
-        <button type="submit">Unlock Portal</button>
-      </form>
-      <p id="puzzle-feedback"></p>
-    </section>
-
-    <section class="game-over"></section>
-
-    <section class="high-score-section"></section>
-
-    <!-- AbOUT USS -->
-    <section class="about box">
-      <h2>About Us</h2>
-      <p>Info om teamet kommer här...</p>
-    </section>
-  </main>
-
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

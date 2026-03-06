@@ -1,0 +1,73 @@
+.about {
+  background: rgba(20, 20, 30, 0.95);
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  min-height: 55vh;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.about h3 {
+  font-size: 1.3rem;
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about p {
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  line-height: 1.5rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about li {
+  font-size: 0.8rem;
+  letter-spacing: 0.2rem;
+  line-height: 1rem;
+  margin-top: 0.3rem;
+}
+
+.tech-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tech-list li {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  opacity: 0.85;
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.5rem 4rem;
+  justify-content: center;
+}
+
+.team-list li {
+  opacity: 0.85;
+}
+
+.about button {
+  margin-top: 4rem;
+  align-self: center;
+}
