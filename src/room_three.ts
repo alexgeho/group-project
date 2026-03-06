@@ -13,8 +13,6 @@ const correctSolution = [
   "if",
   "(",
   "worksOnMyMachine",
-  "&&",
-  "noBugsFound",
   ")",
   "{",
   "deployToProduction();",
@@ -22,19 +20,16 @@ const correctSolution = [
 ]
 
 const fragments = [
-  "while",
+  "true",
   "if",
   "(",
   "noBugsFound",
-  "true",
   "worksOnMyMachine",
   "&&",
   "console.log('it works')",
   ")",
   "{",
   "deployToProduction();",
-  "false",
-  "||",
   "}"
 ]
 
