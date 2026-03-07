@@ -36,6 +36,24 @@ Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
 <img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
 <img src="public/some_screenshot" width="200"/>
 
+
+## Specialhack (Reset Highscore List)
+
+Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhack:
+
+### Hur man gör:
+1. Gå till highscore-listan
+2. **Dubbelklicka** på rubriken "High Score"
+3. En prompt dyker upp och frågar efter lösenord
+4. Skriv in: **`marsmarauders`**
+5. Highscore-listan rensas
+
+### Tips:
+- Lösenordet är **skiftlägeskänsligt** (versaler). Se till att skriva med korrekta gemener
+- Om användaren skriver fel lösenord får du ett felmeddelande
+- Om användaren avbryter prompten händer inget
+
+
 ## ✍️ Creators / The team 
 *(TO DO)*
 - 👩‍🎤 **Förnamn Efternamn**
