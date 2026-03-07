@@ -17,6 +17,10 @@ export function showPlayerStats(): void {
     artefactSection.textContent = `${aretfactsList}`;
   }
 
+  const score = document.querySelector("#score") as HTMLSpanElement
+  if(score){
+    score.textContent = `${playerData.points}`;
+  }
   const progress = document.querySelector('#progress-bar') as HTMLProgressElement;
   if (progress) {
     progress.value = Number(playerData.roomsCompleted.length);

@@ -1,6 +1,7 @@
 import { goToLobby } from "./gotoLobby";
 import { showPlayerStats } from "./showPlayerStats";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { loadGameOverPage } from "./gameOverPage";
 import type { IPlayer } from "./models/Player";
 
 // Krypterad text (Caesar shift 1). Dekoderad blir: "The portal letter is G"
@@ -156,18 +157,14 @@ export function loadRoomFour(): void {
       stopRoomTimer();
       addLetterToPlayer(portalLetter);
 
-      feedback.textContent =
+      const message =
         'Correct! The message means: "' +
         decodedMessage +
         '" You collected the letter "' +
         portalLetter +
         '" for the portal password.';
-      feedback.classList.remove("error");
-      feedback.classList.add("success");
 
-      form.classList.add("hidden");
-      backBtnEarly.classList.add("hidden");
-      backBtn.classList.remove("hidden");
+      loadGameOverPage(message, true);
     } else {
       feedback.textContent = "Not quite. Check the shift and try again.";
       feedback.classList.add("error");

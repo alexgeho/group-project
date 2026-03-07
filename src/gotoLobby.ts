@@ -1,6 +1,7 @@
 import { pauseTotalTimer } from "./total_timer";
 import { displayWelcomeMessage } from "./displayWelcomeMsg";
 import { showPlayerStats } from "./showPlayerStats";
+import { SetFinalRoomBtnStatus } from "./final-room-btn-access";
 
 export function goToLobby() {
   console.log('lobb');
@@ -14,5 +15,6 @@ export function goToLobby() {
 
   pauseTotalTimer();
   showPlayerStats();
+  SetFinalRoomBtnStatus();
   displayWelcomeMessage();
 }

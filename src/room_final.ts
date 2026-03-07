@@ -8,6 +8,8 @@ const memoryContainer = document.getElementById("destiny");
 
 export function loadFinalRoom(): void {
   if (!memoryContainer) return;
+  const player = getPlayer();
+  const artifacts = player?.artifacts;
   memoryContainer.innerHTML = `
 <h2>Final Room - The Destiny</h2>
     <div class="riddle-text">
@@ -24,6 +26,7 @@ export function loadFinalRoom(): void {
       You have collected the fragments. Now assemble them."</i>
       <br><br>
       What is the name of this tool?
+      <p>Collected artifacts: ${artifacts}</p>
     </div>
 
     <form id="final-answer-form">

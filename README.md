@@ -1,29 +1,48 @@
-![HTML badge](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS-563d7c?&style=for-the-badge&logo=css3&logoColor=white)
-![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/prettier-%23F7B93E.svg?style=for-the-badge&logo=prettier&logoColor=black)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PLwZQtiP)
+<h1 align="center">🪐 The Mars Bound Maruders</h1>
+<p align="center">Describe the project / Beskriv projektet *(TO DO)*</p>
 
-# The Mars Marauders Escape Room
+## 💾 Demo 
+Click here to view our demo / Spana in demot [här](https://) *(TO DO)*
 
-...
+## 📸 Screenshots 
+*(TO DO)*
+<p align="center">
+  <img src="public/start_page_login" width="200"/>
+  <img src="public/lobby" width="200"/>
+  <img src="public/popup" width="200"/>
+  <img src="public/some_room" width="200"/>
+  <img src="public/win_page" width="200"/>
+  <img src="public/game_over_page" width="200"/>
+</p>
 
-## Specialhack - Reset Highscore List
+## ⚙️ Tech / Tekniker
+`TYPESCRIPT` `HTML` `SCSS`
 
-Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhack:
+## 🛠 Tools / Verktyg
+`VITE` `ESLINT` `PRETTIER` `NPM`
 
-### Hur man gör:
-1. Gå till highscore-listan
-2. **Dubbelklicka** på rubriken "High Score"
-3. En prompt dyker upp och frågar efter lösenord
-4. Skriv in: **`marsmarauders`**
-5. Highscore-listan rensas
+## 🔎 Validering 
+Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
+- [W3C HTML Validator](https://validator.w3.org/) 
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
-### Tips:
-- Lösenordet är **skiftlägeskänsligt** (versaler). Se till att skriva med korrekta gemener
-- Om du skriver fel lösenord får du ett felmeddelande
-- Om du avbryter prompten händer inget
+## 🚦 Accessibility / Tillgänglighet 
+### Firefox Accessibility Inspector *(TO DO)*
+<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
+<img src="public/some_screenshot" width="200"/>
+
+### Chrome Lighthouse *(TO DO)*
+<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
+<img src="public/some_screenshot" width="200"/>
+
+## ✍️ Creators / The team 
+*(TO DO)*
+- 👩‍🎤 **Förnamn Efternamn**
+- 🧝‍♀️ **Förnamn Efternamn**
+- 🧙 **Förnamn Efternamn**
+- 🧑‍🎤 **Förnamn Efternamn**
+- 🦹‍♀️ **Förnamn Efternamn**
+- 👨‍🎤 **Förnamn Efternamn**
+
+

@@ -6,11 +6,10 @@ import { loadRoomFour } from "./room_four";
 import { loadRoomSix } from "./room_six";
 import { loadRoomThree } from "./room_three";
 import type { IRoom } from "./models/Room";
-import { getPlayer } from "./fetchPlayerFromLs";
 import { loadFinalRoom } from "./room_final";
+import { SetFinalRoomBtnStatus } from "./final-room-btn-access";
 
 let roomLoaded = false;
-const playerData = getPlayer();
 
 export async function fetchRooms(): Promise<void> {
   if (roomLoaded) return;
@@ -42,23 +41,7 @@ export async function fetchRooms(): Promise<void> {
 
     roomBtn?.addEventListener("click", () => goToRoom(room));
   });
-
-  const finalRoomBtn = document.querySelector(
-    "#enterRoom7",
-  ) as HTMLButtonElement;
-  if (playerData) {
-    if (finalRoomBtn) {
-      finalRoomBtn.disabled = true;
-      if (
-        playerData!.roomsCompleted &&
-        playerData!.roomsCompleted.length >= 6
-      ) {
-        finalRoomBtn.disabled = false;
-      }
-    }
-  } else {
-    console.log("No player data found in localStorage.");
-  }
+  SetFinalRoomBtnStatus();
 
   roomLoaded = true;
 }
@@ -72,7 +55,6 @@ function goToRoom(room: IRoom) {
 
   startTotalTimer();
 
-  // если верно то включаем функцию и туда типо передаем параметр (() => goToLobby()) - тут я не понял
   if (room.name === "firewall") loadRoomOne();
   if (room.name === "database") loadRoomTwo();
   if (room.name === "encryption") loadRoomFour();
