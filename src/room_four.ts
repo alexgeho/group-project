@@ -10,7 +10,7 @@ const roomNumber = 4;
 // Krypterad text (Caesar shift 1). Dekoderad blir: "The portal letter is G"
 const encryptedMessage = "Uif qpsubm mfuufs jt H.";
 const shift = 1;
-const portalLetter = "G";
+const roomArtifact = "G";
 
 // Dekoderar en text med Caesar-chiffer. Varje bokstav flyttas 1 'shift' steg bakåt i alfabetet.
  
@@ -70,11 +70,11 @@ export function loadRoomFour(): void {
       player.roomsCompleted && player.roomsCompleted.includes(4);
     if (
       player.artifacts &&
-      player.artifacts.includes(portalLetter) &&
+      player.artifacts.includes(roomArtifact) &&
       !hasRoomFourCompleted
     ) {
       player.artifacts = player.artifacts.filter(function (a) {
-        return a !== portalLetter;
+        return a !== roomArtifact;
       });
       localStorage.setItem("player", JSON.stringify(player));
       showPlayerStats();
@@ -133,14 +133,14 @@ export function loadRoomFour(): void {
     const trimmedAnswer = answer.trim();
 
     if (isCorrectAnswer(trimmedAnswer)) {
-      saveRoomProgress(roomNumber, portalLetter);
+      saveRoomProgress(roomNumber, roomArtifact);
       showPlayerStats();
 
       const message =
         'Correct! The message means: "' +
         decodedMessage +
         '" You collected the letter "' +
-        portalLetter +
+        roomArtifact +
         '" for the portal password.';
 
       loadGameOverPage(message, true);
