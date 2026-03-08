@@ -2,7 +2,10 @@ import { goToLobby } from "./gotoLobby";
 import { showPlayerStats } from "./showPlayerStats";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
+import { saveRoomProgress } from "./saveRoomProgress";
 import type { IPlayer } from "./models/Player";
+
+const roomNumber = 4;
 
 // Krypterad text (Caesar shift 1). Dekoderad blir: "The portal letter is G"
 const encryptedMessage = "Uif qpsubm mfuufs jt H.";
@@ -39,30 +42,6 @@ function caesarDecode(text: string, shift: number): string {
 }
 
 const decodedMessage = caesarDecode(encryptedMessage, shift);
-
-// Lägger till en bokstav i spelarens artefakter och sparar i localStorage.
-
-function addLetterToPlayer(letter: string): void {
-  const playerJson = localStorage.getItem("player");
-  if (playerJson === null) {
-    return;
-  }
-
-  const player: IPlayer = JSON.parse(playerJson);
-
-  if (player.artifacts.includes(letter)) {
-    return;
-  }
-
-  player.artifacts.push(letter);
-
-  if (player.roomsCompleted.includes(4) === false) {
-    player.roomsCompleted.push(4);
-  }
-
-  localStorage.setItem("player", JSON.stringify(player));
-  showPlayerStats();
-}
 
 // Kontrollerar om spelarens svar är rätt. 
  
@@ -154,8 +133,8 @@ export function loadRoomFour(): void {
     const trimmedAnswer = answer.trim();
 
     if (isCorrectAnswer(trimmedAnswer)) {
-      stopRoomTimer();
-      addLetterToPlayer(portalLetter);
+      saveRoomProgress(roomNumber, portalLetter);
+      showPlayerStats();
 
       const message =
         'Correct! The message means: "' +
