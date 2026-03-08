@@ -85,18 +85,33 @@ section {
 }
 
 .login-form {
-  background-color: #ffffff12;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding: 0.8rem;
   text-align: center;
+  background: rgba(16, 27, 33, 0.797);
+  border: 1px solid rgba(120, 233, 230, 0.6);
+  box-shadow: 0 0 12px rgba(0, 200, 255, 0.3);
+  border-radius: 12px;
 
-  span {
-    color: #fff;
+  input {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(24, 31, 38, 0.7);
+    border: 1px solid rgba(120, 233, 230, 0.3);
+    border-radius: 8px;
+    font-family: inherit;
+    color: #6cfff3;
+    letter-spacing: inherit;
+    width: auto;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #6cfff3;
+    box-shadow: 0 0 8px rgba(108, 168, 255, 0.6);
   }
 
   button {
-    margin-top: 10px;
+    margin: 0.5rem;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -105,13 +120,6 @@ section {
     cursor: pointer;
     font-family: inherit;
     letter-spacing: inherit;
-  }
-
-  input {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
   }
 }
 
