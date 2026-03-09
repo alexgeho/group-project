@@ -1,12 +1,12 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PLwZQtiP)
-<h1 align="center">🪐 The Mars Bound Maruders</h1>
-<p align="center">Describe the project / Beskriv projektet *(TO DO)*</p>
+<h1 align="center">🪐 The Mars Bound Marauders</h1>
+
+Mars Bound Marauders is a browser-based escape room game where players must solve different challenges to collect artifacts for the final puzzle.
 
 ## 💾 Demo 
-Click here to view our demo / Spana in demot [här](https://) *(TO DO)*
+Click here to view our demo / Spana in demot [här](https://github.io/.../)
 
 ## 📸 Screenshots 
-*(TO DO)*
 <p align="center">
   <img src="public/start_page_login" width="200"/>
   <img src="public/lobby" width="200"/>
@@ -15,6 +15,24 @@ Click here to view our demo / Spana in demot [här](https://) *(TO DO)*
   <img src="public/win_page" width="200"/>
   <img src="public/game_over_page" width="200"/>
 </p>
+
+## 🎮 About the Project
+This project was developed as part of the JavaScript & Agile course during the first semester of the Frontend Developer program at Medieinstitutet. Some of the project goals were to use tools that support an agile workflow and to develop JavaScript systems based on a requirements specification.
+
+## 🔐 Special Hack - Reset Highscore List
+One technical feature in this project is a hidden special hack that allows the player to reset the highscore list.
+
+### How to use it
+1. Go to the highscore list
+2. **Double-click** the "High Score" title
+3. A prompt will appear asking for a password
+4. Enter: **`marsmarauders`**
+5. The highscore list will be cleared
+
+### Notes
+- The password is **case-sensitive**, so make sure to enter it exactly as written (lowercases)
+- If the wrong password is entered, an error message will appear
+- If the user cancels the prompt, nothing will happen
 
 ## ⚙️ Tech / Tekniker
 `TYPESCRIPT` `HTML` `SCSS`
@@ -35,24 +53,6 @@ Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
 ### Chrome Lighthouse *(TO DO)*
 <img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
 <img src="public/some_screenshot" width="200"/>
-
-
-## Specialhack (Reset Highscore List)
-
-Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhack:
-
-### Hur man gör:
-1. Gå till highscore-listan
-2. **Dubbelklicka** på rubriken "High Score"
-3. En prompt dyker upp och frågar efter lösenord
-4. Skriv in: **`marsmarauders`**
-5. Highscore-listan rensas
-
-### Tips:
-- Lösenordet är **skiftlägeskänsligt** (versaler). Se till att skriva med korrekta gemener
-- Om användaren skriver fel lösenord får du ett felmeddelande
-- Om användaren avbryter prompten händer inget
-
 
 ## ✍️ Creators
 Click to visit our GitHub profiles.
