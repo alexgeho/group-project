@@ -41,7 +41,7 @@ let selectedFragments: string [] = [];
 function renderRoom(): void {
   if(!logicModuleContainer) return;
   logicModuleContainer.innerHTML = `
-  <h2>Welcome to Room Three – Logic Module</h2>
+  <h2>Logic Module</h2>
   <p class="game-instructions">
 The deployment gate is locked. <br>
 Only correct logic will unlock it.
