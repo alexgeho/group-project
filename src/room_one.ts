@@ -5,13 +5,12 @@ import { saveRoomProgress } from "./saveRoomProgress";
 import { showPlayerStats } from "./showPlayerStats";
 
 export function loadRoomOne() {
-  if (!firewallContainer) return;
   renderFirewallContainer();
 
-  const timerContainer = document.getElementById("timerContainer");
-  if (!timerContainer) return;
+  const firewallContainer = document.getElementById("firewall");
+  if (!firewallContainer) return;
 
-  startRoomTimer(timerContainer, 100);
+  startRoomTimer(firewallContainer, 100);
 }
 
 const firewallContainer = document.getElementById("firewall");
@@ -68,7 +67,6 @@ function renderFirewallContainer() {
     </div>
 
     <div class="game">
-      <div id="timerContainer" class="timer-container"></div>
       <div id="memoryContainer" class="memory-container"></div>
     </div>
 
@@ -149,7 +147,6 @@ function checkForMatch() {
 }
 
 function handleGameComplete() {
-  console.log("GAME COMPLETE");
   stopRoomTimer();
   saveRoomProgress(roomNumber, roomArtifact);
   showPlayerStats();
