@@ -4,20 +4,16 @@
   padding: 20px;
 }
 
-// Timer innanför den grå rutan, uppe i vänstra hörnet intill kanten
+// Timer innanför den grå rutan, i linje med innerkanten
 #encryption-timer {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  margin: 0;
+  margin: 0 0 1rem 0;
   padding: 0;
-  text-align: right;
+  text-align: left;
 
   .room-timer {
     position: static;
     margin: 0;
     padding: 0;
-    width: auto;
   }
 }
 

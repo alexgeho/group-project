@@ -1,12 +1,16 @@
 import { goToLobby } from "./gotoLobby";
 import { showPlayerStats } from "./showPlayerStats";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { loadGameOverPage } from "./gameOverPage";
+import { saveRoomProgress } from "./saveRoomProgress";
 import type { IPlayer } from "./models/Player";
+
+const roomNumber = 4;
 
 // Krypterad text (Caesar shift 1). Dekoderad blir: "The portal letter is G"
 const encryptedMessage = "Uif qpsubm mfuufs jt H.";
 const shift = 1;
-const portalLetter = "G";
+const roomArtifact = "G";
 
 // Dekoderar en text med Caesar-chiffer. Varje bokstav flyttas 1 'shift' steg bakåt i alfabetet.
  
@@ -39,30 +43,6 @@ function caesarDecode(text: string, shift: number): string {
 
 const decodedMessage = caesarDecode(encryptedMessage, shift);
 
-// Lägger till en bokstav i spelarens artefakter och sparar i localStorage.
-
-function addLetterToPlayer(letter: string): void {
-  const playerJson = localStorage.getItem("player");
-  if (playerJson === null) {
-    return;
-  }
-
-  const player: IPlayer = JSON.parse(playerJson);
-
-  if (player.artifacts.includes(letter)) {
-    return;
-  }
-
-  player.artifacts.push(letter);
-
-  if (player.roomsCompleted.includes(4) === false) {
-    player.roomsCompleted.push(4);
-  }
-
-  localStorage.setItem("player", JSON.stringify(player));
-  showPlayerStats();
-}
-
 // Kontrollerar om spelarens svar är rätt. 
  
 function isCorrectAnswer(answer: string): boolean {
@@ -90,11 +70,11 @@ export function loadRoomFour(): void {
       player.roomsCompleted && player.roomsCompleted.includes(4);
     if (
       player.artifacts &&
-      player.artifacts.includes(portalLetter) &&
+      player.artifacts.includes(roomArtifact) &&
       !hasRoomFourCompleted
     ) {
       player.artifacts = player.artifacts.filter(function (a) {
-        return a !== portalLetter;
+        return a !== roomArtifact;
       });
       localStorage.setItem("player", JSON.stringify(player));
       showPlayerStats();
@@ -153,21 +133,17 @@ export function loadRoomFour(): void {
     const trimmedAnswer = answer.trim();
 
     if (isCorrectAnswer(trimmedAnswer)) {
-      stopRoomTimer();
-      addLetterToPlayer(portalLetter);
+      saveRoomProgress(roomNumber, roomArtifact);
+      showPlayerStats();
 
-      feedback.textContent =
+      const message =
         'Correct! The message means: "' +
         decodedMessage +
         '" You collected the letter "' +
-        portalLetter +
+        roomArtifact +
         '" for the portal password.';
-      feedback.classList.remove("error");
-      feedback.classList.add("success");
 
-      form.classList.add("hidden");
-      backBtnEarly.classList.add("hidden");
-      backBtn.classList.remove("hidden");
+      loadGameOverPage(message, true);
     } else {
       feedback.textContent = "Not quite. Check the shift and try again.";
       feedback.classList.add("error");

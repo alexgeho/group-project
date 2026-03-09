@@ -25,6 +25,7 @@
       <section id="artefact-display">
         Artefacts: <span id="collected-artefacts"></span>
       </section>
+      <section id="score-display">Score: <span id="score"></span></section>
       <section id="progress-display" class="progress-section">
         <span>Progress:</span>
         <progress id="progress-bar" value="0" max="6"></progress>
@@ -36,21 +37,25 @@
       <!-- WELCOME / LOGIN -->
       <section class="homepage-page">
         <div class="homepage-text">
-          <h1>Welcome to the Marauders Escape Room</h1>
+          <h1>Mars Bound Marauders</h1>
           <p>
-            A small digital creature from Cyberspace has crashed into our world.
-            The portal home is locked by a security system. To unlock the
-            portal, you must get through 6 digital obstacles. Each obstacle
-            provides a letter. Together, the letters form the password that
-            opens the portal. Good luck!
+            A digital creature from cyberspace has crashed into our world. The
+            portal home is protected by a security system. To unlock it, you
+            must pass six digital obstacles. Each obstacle provides a letter.
+            Together, the letters form the password that opens the portal.
           </p>
         </div>
 
         <div class="login-form">
           <form id="login-form">
             <label for="player-name">
-              <span>Player Name:</span>
-              <input type="text" id="player-name" name="player-name" required />
+              <input
+                type="text"
+                id="player-name"
+                name="player-name"
+                placeholder="Player Name"
+                required
+              />
             </label>
             <button id="start-game-btn" type="submit">Start Game</button>
           </form>
