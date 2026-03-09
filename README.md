@@ -7,7 +7,7 @@
   </a>
 </p>
 
-The Mars Bound Marauders is a browser-based escape room game where players must solve different challenges to collect artifacts for the final puzzle.
+The Mars Bound Marauders is a browser-based escape room game where players solve a series of challenges to collect artifacts needed to complete the final puzzle.
 
 ## 📸 Screenshots 
 <p align="center">
