@@ -3,23 +3,18 @@ import { goToLobby } from "./gotoLobby";
 import { loadGameOverPage } from "./gameOverPage";
 import { saveRoomProgress } from "./saveRoomProgress";
 
-
-
-
 const dataBaseContainer = document.getElementById("database");
 const roomNumber = 2;
-const roomArtifact = 'i';
-
+const roomArtifact = "i";
 
 export function loadRoomTwo(): void {
-
-  initBrokenDatabase()
+  initBrokenDatabase();
 
   /* Render room layout and inject HTML structure */
   if (!dataBaseContainer) return;
 
   dataBaseContainer.innerHTML = `
-    <h2>Database Recovery</h2>
+    <h2>The Database</h2>
     <p>Restore the secret key: <strong>M A R S</strong></p>
 
     <div id="storage-view"></div>
@@ -53,8 +48,6 @@ export function loadRoomTwo(): void {
   // Render current localStorage state in the UI
   renderStorageView();
 
-
-
   // Get room control buttons from DOM
   const addBtn = document.getElementById("add-btn");
   const removeBtn = document.getElementById("remove-btn");
@@ -69,12 +62,9 @@ export function loadRoomTwo(): void {
     goToLobby();
   });
 
-
   /* Attach event listeners to room action buttons */
-  if (addBtn)
-    addBtn.addEventListener("click", addOrUpdateItem);
-  if (removeBtn)
-    removeBtn.addEventListener("click", removeItem);
+  if (addBtn) addBtn.addEventListener("click", addOrUpdateItem);
+  if (removeBtn) removeBtn.addEventListener("click", removeItem);
   if (checkBtn) {
     checkBtn.addEventListener("click", function () {
       const success = checkDatabase();
@@ -99,7 +89,6 @@ export function loadRoomTwo(): void {
 }
 /* END function loadRoomTwo() */
 
-
 /* Reset storage and initialize corrupted database state for the puzzle
  */
 function initBrokenDatabase(): void {
@@ -116,7 +105,6 @@ function initBrokenDatabase(): void {
   localStorage.setItem("debug", "true");
 }
 /*  */
-
 
 /* Display puzzle-related localStorage entries inside the storage view container
  */
@@ -154,7 +142,6 @@ function addOrUpdateItem(): void {
   renderStorageView();
 }
 /*  */
-
 
 /* Remove specified key from localStorage and refresh UI */
 function removeItem(): void {

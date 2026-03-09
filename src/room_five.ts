@@ -5,14 +5,14 @@ import { saveRoomProgress } from "./saveRoomProgress";
 
 const bugRoomContainer = document.getElementById("bug-room");
 const roomNumber = 5;
-const roomArtifact = 'H';
+const roomArtifact = "H";
 
 console.log(bugRoomContainer, " timer element in room 5");
 
 export function loadRoomFive(): void {
   if (!bugRoomContainer) return;
   bugRoomContainer.innerHTML = `
-    <h2>Welcome to Room 5 - Bug Room</h2>
+    <h2>The Bug Room</h2>
     <p>Warning! A rogue process has infiltrated the system. The bug is spreading and corrupting the portal's code. You must locate the error before it's too late.<br>–<br> <br>Analyze the code carefully <br> one wrong answer and the bug wins.</p>
     <div class="code-snippet">
       <pre><code>
@@ -113,7 +113,6 @@ export function loadRoomFive(): void {
 
       saveRoomProgress(roomNumber, roomArtifact);
       loadGameOverPage(message, true);
-
     } else {
       const message = "Incorrect answer. Please review the code and try again.";
       loadGameOverPage(message, false);
@@ -123,11 +122,21 @@ export function loadRoomFive(): void {
 }
 
 function checkAnswers(): boolean {
-  const bug1 = (document.querySelector('input[name="bug1"]') as HTMLInputElement).checked;
-  const bug2 = (document.querySelector('input[name="bug2"]') as HTMLInputElement).checked;
-  const bug3 = (document.querySelector('input[name="bug3"]') as HTMLInputElement).checked;
-  const bug4 = (document.querySelector('input[name="bug4"]') as HTMLInputElement).checked;
-  const bug5 = (document.querySelector('input[name="bug5"]') as HTMLInputElement).checked;
+  const bug1 = (
+    document.querySelector('input[name="bug1"]') as HTMLInputElement
+  ).checked;
+  const bug2 = (
+    document.querySelector('input[name="bug2"]') as HTMLInputElement
+  ).checked;
+  const bug3 = (
+    document.querySelector('input[name="bug3"]') as HTMLInputElement
+  ).checked;
+  const bug4 = (
+    document.querySelector('input[name="bug4"]') as HTMLInputElement
+  ).checked;
+  const bug5 = (
+    document.querySelector('input[name="bug5"]') as HTMLInputElement
+  ).checked;
 
   return bug1 && bug3 && !bug2 && !bug4 && !bug5;
 }
