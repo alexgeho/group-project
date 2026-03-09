@@ -54,13 +54,18 @@ Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhac
 - Om användaren avbryter prompten händer inget
 
 
-## ✍️ Creators / The team 
-*(TO DO)*
-- 👩‍🎤 **Förnamn Efternamn**
-- 🧝‍♀️ **Förnamn Efternamn**
-- 🧙 **Förnamn Efternamn**
-- 🧑‍🎤 **Förnamn Efternamn**
-- 🦹‍♀️ **Förnamn Efternamn**
-- 👨‍🎤 **Förnamn Efternamn**
+## ✍️ Creators
+Klick on the names to visit our GitHub profiles.
+- 👤 [Tilda Egland](https://github.com/tildaegland)
+- 👤 [Alexander Gerhard](https://github.com/alexgeho)
+- 👤 [Harez Sait](https://github.com/CharikliaA)
+- 👤 [Jenny Gustafsson](https://github.com/jennygustafsson)
+- 👤 [Mojtaba Mobasheri](https://github.com/mmxzps)
+- 👤 [Angelie Ångman](https://github.com/ngeliecode)
+
+
+
+
+
 
 
