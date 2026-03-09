@@ -1,10 +1,13 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/PLwZQtiP)
 <h1 align="center">🪐 The Mars Bound Marauders</h1>
 
-Mars Bound Marauders is a browser-based escape room game where players must solve different challenges to collect artifacts for the final puzzle.
+<p align="center">
+  💾 <a href="https://medieinstitutet.github.io/fed25d-js-intro-grupparbete-the-mars-bound-marauders/">
+  Play the demo
+  </a>
+</p>
 
-## 💾 Demo 
-Click here to view our demo / Spana in demot [här](https://github.io/.../)
+The Mars Bound Marauders is a browser-based escape room game where players must solve different challenges to collect artifacts for the final puzzle.
 
 ## 📸 Screenshots 
 <p align="center">
@@ -20,7 +23,7 @@ Click here to view our demo / Spana in demot [här](https://github.io/.../)
 This project was developed as part of the JavaScript & Agile course during the first semester of the Frontend Developer program at Medieinstitutet. Some of the project goals were to use tools that support an agile workflow and to develop JavaScript systems based on a requirements specification.
 
 ## 🔐 Special Hack - Reset Highscore List
-One technical feature in this project is a hidden special hack that allows the player to reset the highscore list.
+One technical feature in this project is a hidden special hack that allows players to reset the highscore list.
 
 ### How to use it
 1. Go to the highscore list
@@ -30,32 +33,15 @@ One technical feature in this project is a hidden special hack that allows the p
 5. The highscore list will be cleared
 
 ### Notes
-- The password is **case-sensitive**, so make sure to enter it exactly as written (lowercases)
+- The password is **case-sensitive**, so make sure to enter it exactly as written (lowercase)
 - If the wrong password is entered, an error message will appear
 - If the user cancels the prompt, nothing will happen
 
-## ⚙️ Tech / Tekniker
-`TYPESCRIPT` `HTML` `SCSS`
-
-## 🛠 Tools / Verktyg
-`VITE` `ESLINT` `PRETTIER` `NPM`
-
-## 🔎 Validering 
-Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
-- [W3C HTML Validator](https://validator.w3.org/) 
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-
-## 🚦 Accessibility / Tillgänglighet 
-### Firefox Accessibility Inspector *(TO DO)*
-<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
-<img src="public/some_screenshot" width="200"/>
-
-### Chrome Lighthouse *(TO DO)*
-<img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
-<img src="public/some_screenshot" width="200"/>
+## 🛠 Tech & Tools
+`TypeScript` `HTML` `SCSS` `Vite` `ESLint` `Prettier` `npm`
 
 ## ✍️ Creators
-Click to visit our GitHub profiles.
+Click the names below to visit our GitHub profiles.
 - 👤 [Tilda Egland](https://github.com/tildaegland)
 - 👤 [Alexander Gerhard](https://github.com/alexgeho)
 - 👤 [Harez Sait](https://github.com/CharikliaA)
