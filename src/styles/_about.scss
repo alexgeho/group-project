@@ -16,29 +16,26 @@
 
 .about h3 {
   font-size: 1.3rem;
-  margin-top: 3rem;
-  margin-bottom: 0.5rem;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0.5rem;
 }
 
 .about p {
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
   line-height: 1.5rem;
-  margin-top: 0.3rem;
-  margin-bottom: 1rem;
   max-width: 650px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2rem;
 }
 
 .about li {
   font-size: 0.8rem;
   letter-spacing: 0.2rem;
   line-height: 1rem;
-  margin-top: 0.3rem;
 }
 
 .tech-list {
@@ -46,6 +43,7 @@
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .tech-list li {
@@ -61,6 +59,7 @@
   grid-template-columns: repeat(2, max-content);
   gap: 0.5rem 4rem;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .team-list li {
@@ -68,6 +67,5 @@
 }
 
 .about button {
-  margin-top: 4rem;
   align-self: center;
 }

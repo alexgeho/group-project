@@ -1,31 +1,32 @@
 .high-score {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: center;
   border-radius: 30px;
-  background: #00000036;
+  background: rgba(16, 27, 33, 0.797);
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: -2px;
     border-radius: inherit;
-    background: conic-gradient(from var(--angle),
-        transparent 0%,
-        transparent 15%,
-        #52d7e9 80%,
-        #ffffff 90%,
-        #52d7e9 95%,
-        transparent 100%);
+    background: conic-gradient(
+      from var(--angle),
+      transparent 0%,
+      transparent 15%,
+      #52d7e9 80%,
+      #ffffff 90%,
+      #52d7e9 95%,
+      transparent 100%
+    );
     animation: borderLight 2s linear infinite;
     z-index: -1;
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 2px;
     background: #312e2e;
@@ -40,7 +41,7 @@ td {
 }
 
 @property --angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }

@@ -36,13 +36,36 @@ Dessa verktyg 👇 har vi använt för validera våran kod *(TO DO)*
 <img src="public/some_screenshot" width="200"/>&nbsp;&nbsp;
 <img src="public/some_screenshot" width="200"/>
 
-## ✍️ Creators / The team 
-*(TO DO)*
-- 👩‍🎤 **Förnamn Efternamn**
-- 🧝‍♀️ **Förnamn Efternamn**
-- 🧙 **Förnamn Efternamn**
-- 🧑‍🎤 **Förnamn Efternamn**
-- 🦹‍♀️ **Förnamn Efternamn**
-- 👨‍🎤 **Förnamn Efternamn**
+
+## Specialhack (Reset Highscore List)
+
+Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhack:
+
+### Hur man gör:
+1. Gå till highscore-listan
+2. **Dubbelklicka** på rubriken "High Score"
+3. En prompt dyker upp och frågar efter lösenord
+4. Skriv in: **`marsmarauders`**
+5. Highscore-listan rensas
+
+### Tips:
+- Lösenordet är **skiftlägeskänsligt** (versaler). Se till att skriva med korrekta gemener
+- Om användaren skriver fel lösenord får du ett felmeddelande
+- Om användaren avbryter prompten händer inget
+
+
+## ✍️ Creators
+Click to visit our GitHub profiles.
+- 👤 [Tilda Egland](https://github.com/tildaegland)
+- 👤 [Alexander Gerhard](https://github.com/alexgeho)
+- 👤 [Harez Sait](https://github.com/CharikliaA)
+- 👤 [Jenny Gustafsson](https://github.com/jennygustafsson)
+- 👤 [Mojtaba Mobasheri](https://github.com/mmxzps)
+- 👤 [Angelie Ångman](https://github.com/ngeliecode)
+
+
+
+
+
 
 

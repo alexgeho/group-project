@@ -19,19 +19,19 @@ you can unlock the final room and enter the password that opens the portal to vi
 
 <h3>Technologies</h3>
 <ul class="tech-list">
-<li>TypeScript</li>
-<li>HTML</li>
-<li>SCSS</li>
+  <li>TypeScript</li>
+  <li>HTML</li>
+  <li>SCSS</li>
 </ul>
 
 <h3>The Team</h3>
 <ul class="team-list">
-  <li>Firstname Lastname</li>
-  <li>Firstname Lastname</li>
-  <li>Firstname Lastname</li>
-  <li>Firstname Lastname</li>
-  <li>Firstname Lastname</li>
-  <li>Firstname Lastname</li>
+<li>Alexander Gerhard</li>
+  <li>Tilda Egland</li>
+  <li>Jenny Gustafsson</li>
+  <li>Harez Sait</li>
+  <li>Mojtaba Mobasheri</li>
+  <li>Angelie Ångman</li>
 </ul>
 
 <button id="backFromAbout" class="btn-primary">Back</button>`;

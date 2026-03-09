@@ -9,6 +9,10 @@ body {
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/images/digiworld.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
 }
 
 header {
@@ -56,7 +60,7 @@ section {
   h2 {
     font-size: 2.5rem;
   }
-  span{
+  span {
     font-size: 1rem;
     line-height: 1.5rem;
     width: 70%;
@@ -85,33 +89,48 @@ section {
 }
 
 .login-form {
-  background-color: #ffffff12;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  margin-bottom: 3rem;
+  padding: 0.8rem;
   text-align: center;
+  background: rgba(16, 27, 33, 0.797);
+  border: 1px solid rgba(120, 233, 230, 0.6);
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+  border-radius: 10px;
 
-  span {
-    color: #fff;
+  input {
+    margin: 0.4rem;
+    padding: 0.5rem 1rem;
+    background: rgba(24, 31, 38, 0.7);
+    border: 1px solid rgba(120, 233, 230, 0.3);
+    border-radius: 5px;
+    font-family: inherit;
+    color: #6cfff3;
+    letter-spacing: inherit;
+    width: auto;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: #6cfff3;
+    box-shadow: 0 0 8px rgba(108, 168, 255, 0.6);
   }
 
   button {
-    margin-top: 10px;
+    margin: 0.4rem;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid rgba(120, 200, 255, 0.7);
     border-radius: 5px;
-    background-color: #1d1c44f5;
+    background-color: rgba(40, 69, 90, 0.8);
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.25);
     color: #fff;
     cursor: pointer;
     font-family: inherit;
     letter-spacing: inherit;
   }
 
-  input {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+  button:hover {
+    border-color: #6cfff3;
+    box-shadow: 0 0 8px rgba(108, 168, 255, 0.6);
   }
 }
 
@@ -140,21 +159,31 @@ section {
     text-align: center;
     font-size: 2rem;
     color: #fff;
-    padding: 20px;
-    width: 80%;
+    max-width: 700px;
 
     h1 {
-      font-size: 3.5rem;
-      text-shadow: 2px 4px 0px #6d7dbb;
-      font-family: "Rubik Dirt  ", system-ui;
-      padding: 20px;
+      text-transform: uppercase;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      /*
+      // RED
+      color: #ff6b4a;
+      text-shadow:
+        0 0 10px rgba(255, 80, 80, 0.8),
+        0 0 25px rgba(255, 80, 80, 0.4);*/
+
+      // BLUE
+      color: rgb(120, 196, 215);
+      text-shadow:
+        0 0 8px rgba(0, 200, 255, 0.8),
+        0 0 20px rgba(0, 200, 255, 0.4);
     }
 
     p {
-      margin-top: 20px;
-      font-size: 2rem;
-      text-shadow: 1px 3px 0px #232324;
-      font-family: "Iceland", system-ui;
+      font-size: 1rem;
+      color: #d8fefe;
+      line-height: 1.5rem;
+      margin-bottom: 2rem;
     }
   }
 }

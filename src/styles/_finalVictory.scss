@@ -3,13 +3,15 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  text-shadow: 1px 1px 15px rgb(24, 24, 24);
+  text-shadow: 1px 1px 15px rgb(130, 210, 214);
   color: black;
   gap: 20px;
   height: 100vh;
   background-image: url('/images/portal-home.webp');
+  background-size: cover;
   background-repeat: no-repeat;
-  background-size: contain, cover;
+  background-position: center;
+  min-height: 100vh;
   isolation: isolate;
   position: relative;
 
@@ -31,7 +33,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(192, 192, 192, 0.473);
+    background-color: #eff5f436;
+    border: 1px solid rgba(240, 242, 243, 0.7);
+    box-shadow: 0 0 10px rgba(245, 247, 248, 0.3);
     padding: 20px;
     border-radius: 15px;
 
@@ -47,7 +51,9 @@
   .share-box {
     display: flex;
     flex-direction: column;
-    background-color: rgba(192, 192, 192, 0.473);
+    background-color: #f0f5f536;
+    border: 1px solid rgba(231, 235, 238, 0.7);
+    box-shadow: 0 0 10px rgba(249, 250, 250, 0.3);
     padding: 15px;
     border-radius: 20px;
     line-height: 1rem;
@@ -59,6 +65,7 @@
       line-height: 2rem;
       font-size: 1.1rem;
       font-weight: 600;
+      overflow: hidden;
     }
   }
 }
