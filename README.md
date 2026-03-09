@@ -55,7 +55,7 @@ Det är möjligt för spelare att rensa highscore-listan med ett dolt specialhac
 
 
 ## ✍️ Creators
-Klick on the names to visit our GitHub profiles.
+Click to visit our GitHub profiles.
 - 👤 [Tilda Egland](https://github.com/tildaegland)
 - 👤 [Alexander Gerhard](https://github.com/alexgeho)
 - 👤 [Harez Sait](https://github.com/CharikliaA)
