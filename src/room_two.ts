@@ -5,7 +5,7 @@ import { saveRoomProgress } from "./saveRoomProgress";
 
 const dataBaseContainer = document.getElementById("database");
 const roomNumber = 2;
-const roomArtifact = "i";
+const roomArtifact = "T";
 
 export function loadRoomTwo(): void {
   initBrokenDatabase();
@@ -36,14 +36,11 @@ export function loadRoomTwo(): void {
     <button id="reset-btn" class="btn-primary">Reset Room</button>
     <button id="back-to-lobby-btn" class="btn-primary">Back To Lobby</button>
 
-    <button id="next-btn" class="btn-primary">
-      Next
-    </button>
   `;
 
   /*  */
 
-  startRoomTimer(dataBaseContainer, 960);
+  startRoomTimer(dataBaseContainer, 240);
 
   // Render current localStorage state in the UI
   renderStorageView();
@@ -54,7 +51,6 @@ export function loadRoomTwo(): void {
   const checkBtn = document.getElementById("check-btn");
   const resetBtn = document.getElementById("reset-btn");
   const toLobbyBtn = document.getElementById("back-to-lobby-btn");
-  const nextBtn = document.getElementById("next-btn");
 
   // Handle navigation back to lobby
   toLobbyBtn?.addEventListener("click", () => {
@@ -62,17 +58,16 @@ export function loadRoomTwo(): void {
     goToLobby();
   });
 
+
   /* Attach event listeners to room action buttons */
+
   if (addBtn) addBtn.addEventListener("click", addOrUpdateItem);
+
   if (removeBtn) removeBtn.addEventListener("click", removeItem);
+
   if (checkBtn) {
-    checkBtn.addEventListener("click", function () {
-      const success = checkDatabase();
-      if (success && nextBtn) {
-        nextBtn.classList.add("show");
-      }
-    });
-  }
+    checkBtn.addEventListener("click", checkDatabase) }
+    
   if (resetBtn) {
     resetBtn.addEventListener("click", function () {
       initBrokenDatabase();
@@ -80,11 +75,7 @@ export function loadRoomTwo(): void {
     });
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      goToLobby();
-    });
-  }
+ 
   /*  */
 }
 /* END function loadRoomTwo() */
@@ -179,7 +170,7 @@ function checkDatabase(): boolean {
   if (k1 === "M" && k2 === "A" && k3 === "R" && k4 === "S") {
     localStorage.setItem("T", "true");
 
-    const message = "ACCESS GRANTED\nArtifact 'I' collected!";
+    const message = "ACCESS GRANTED\nArtifact 'T' collected!";
     saveRoomProgress(roomNumber, roomArtifact);
     loadGameOverPage(message, true);
 
