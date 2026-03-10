@@ -11,7 +11,7 @@ export function loadFinalRoom(): void {
   const player = getPlayer();
   const artifacts = player?.artifacts;
   memoryContainer.innerHTML = `
-<h2>Final Room - The Destiny</h2>
+<h2>Final Room - Destiny</h2>
     <div class="riddle-text">
       <h3>⚠ DECRYPT SEQUENCE INITIATED ⚠</h3>
       <br>
@@ -40,7 +40,7 @@ export function loadFinalRoom(): void {
       </button>
     </form>
     
-    <button id="finalBackToRooms" class="btn-primary">Back</button>`
+    <button id="finalBackToRooms" class="btn-primary">Back</button>`;
 
   startRoomTimer(memoryContainer, 360);
   const backButton = document.getElementById("finalBackToRooms");
@@ -52,7 +52,7 @@ export function loadFinalRoom(): void {
   submitButton?.addEventListener("click", (e) => {
     e.preventDefault();
     if (checkAnswer()) {
-      const player = getPlayer()
+      const player = getPlayer();
       const highscoreList = getHighscoreList();
 
       const formElement = document.querySelector("#final-answer-form");
@@ -60,8 +60,10 @@ export function loadFinalRoom(): void {
 
       setTimeout(() => {
         if (player) {
-          const existingPlayer = highscoreList.find(item => item.id === player.id);
-          
+          const existingPlayer = highscoreList.find(
+            (item) => item.id === player.id,
+          );
+
           if (existingPlayer) {
             if (player.points > existingPlayer.score) {
               existingPlayer.score = player.points;
@@ -75,7 +77,10 @@ export function loadFinalRoom(): void {
               date: new Date().toLocaleDateString(),
             });
           }
-          loadFinalVictoryPage("Congratulations! You have successfully completed the game.", true);
+          loadFinalVictoryPage(
+            "Congratulations! You have successfully completed the game.",
+            true,
+          );
         }
       }, 1800);
     } else {
@@ -83,14 +88,19 @@ export function loadFinalRoom(): void {
       formElement?.classList.add("correct-answer");
 
       setTimeout(() => {
-        loadFinalVictoryPage("Oh no! You destroyed the portal. You are stuck here now forever!", false);
-      }, 1800)
+        loadFinalVictoryPage(
+          "Oh no! You destroyed the portal. You are stuck here now forever!",
+          false,
+        );
+      }, 1800);
     }
   });
 }
 
 function checkAnswer(): boolean {
-  const answerInput = document.getElementById('final-answer') as HTMLInputElement;
+  const answerInput = document.getElementById(
+    "final-answer",
+  ) as HTMLInputElement;
   const answer = answerInput.value.trim().toLowerCase();
-  return answer === 'github';
+  return answer === "github";
 }

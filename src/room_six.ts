@@ -5,7 +5,7 @@ import { saveRoomProgress } from "./saveRoomProgress";
 
 const portalContainer = document.getElementById("portal-control");
 const roomNumber = 6;
-const roomArtifact = 'U';
+const roomArtifact = "U";
 
 interface Portal {
   name: string;
@@ -20,9 +20,21 @@ interface PortalConfig {
 }
 
 const portalConfigs: PortalConfig[] = [
-  { name: "North", correctValue: 25, otherOptions: [10, 15, 18, 20, 30, 35, 40, 45] },
-  { name: "South", correctValue: 30, otherOptions: [15, 20, 25, 35, 40, 45, 50] },
-  { name: "East", correctValue: 22, otherOptions: [10, 15, 18, 25, 28, 32, 35] },
+  {
+    name: "North",
+    correctValue: 25,
+    otherOptions: [10, 15, 18, 20, 30, 35, 40, 45],
+  },
+  {
+    name: "South",
+    correctValue: 30,
+    otherOptions: [15, 20, 25, 35, 40, 45, 50],
+  },
+  {
+    name: "East",
+    correctValue: 22,
+    otherOptions: [10, 15, 18, 25, 28, 32, 35],
+  },
   { name: "West", correctValue: 23, otherOptions: [8, 12, 18, 28, 35, 40, 50] },
 ];
 
@@ -32,17 +44,17 @@ const maxPower = 100;
 
 // Randomly generate the portal options each time the room is loaded
 function generateRandomPortals(): void {
-  portals = portalConfigs.map(config => {
+  portals = portalConfigs.map((config) => {
     // Pick 2 random other values from otherOptions
     const shuffled = [...config.otherOptions].sort(() => Math.random() - 0.5);
     const options = [config.correctValue, shuffled[0], shuffled[1]];
-    
+
     // Shuffle so the correct value is not always in the same position
     options.sort(() => Math.random() - 0.5);
     return {
       name: config.name,
       options,
-      currentPower: 0
+      currentPower: 0,
     };
   });
 }
@@ -51,10 +63,10 @@ export function loadRoomSix(): void {
   if (!portalContainer) return;
 
   generateRandomPortals();
-  portals.forEach(portal => portal.currentPower = 0);
+  portals.forEach((portal) => (portal.currentPower = 0));
 
   portalContainer.innerHTML = `
-    <h2>Portal Control - Energy Distribution</h2>
+    <h2>Portal Control</h2>
     <p>You must distribute exactly 100 energy units across the four portals to stabilize the system. Choose wisely.</p>
     
     <div class="portal-grid"></div>
@@ -74,10 +86,12 @@ export function loadRoomSix(): void {
     goToLobby();
   });
 
-  document.getElementById("submitPowerDistribution")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    checkPowerDistribution();
-  });
+  document
+    .getElementById("submitPowerDistribution")
+    ?.addEventListener("click", (e) => {
+      e.preventDefault();
+      checkPowerDistribution();
+    });
 }
 
 function renderPortals(): void {
@@ -95,12 +109,12 @@ function renderPortals(): void {
               (option) =>
                 `<button class="portal-option-btn" data-portal-index="${index}" data-value="${option}">
                   ${option}
-                </button>`
+                </button>`,
             )
             .join("")}
         </div>
       </div>
-    `
+    `,
     )
     .join("");
 
@@ -117,14 +131,20 @@ function handleOptionClick(event: Event): void {
   portals[index].currentPower = value;
 
   // Update active button state
-  button.closest(".portal-card")?.querySelectorAll(".portal-option-btn").forEach((btn) => {
-    btn.classList.remove("active");
-  });
+  button
+    .closest(".portal-card")
+    ?.querySelectorAll(".portal-option-btn")
+    .forEach((btn) => {
+      btn.classList.remove("active");
+    });
   button.classList.add("active");
 }
 
 function checkPowerDistribution(): void {
-  const totalUsed = portals.reduce((sum, portal) => sum + portal.currentPower, 0);
+  const totalUsed = portals.reduce(
+    (sum, portal) => sum + portal.currentPower,
+    0,
+  );
 
   // Check if total is exactly 100
   if (totalUsed !== maxPower) {

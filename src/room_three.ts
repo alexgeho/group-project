@@ -5,7 +5,7 @@ import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { saveRoomProgress } from "./saveRoomProgress";
 
 // Game data
-//---------- 
+//----------
 const logicModuleContainer = document.getElementById("logic-module");
 const roomNumber = 3;
 
@@ -16,8 +16,8 @@ const correctSolution = [
   ")",
   "{",
   "deployToProduction();",
-  "}"
-]
+  "}",
+];
 
 const fragments = [
   "true",
@@ -30,16 +30,16 @@ const fragments = [
   ")",
   "{",
   "deployToProduction();",
-  "}"
-]
+  "}",
+];
 
-let selectedFragments: string [] = [];
+let selectedFragments: string[] = [];
 
 // Renders the room - builds the HTML structure
 // ---------------------------------------------
 
 function renderRoom(): void {
-  if(!logicModuleContainer) return;
+  if (!logicModuleContainer) return;
   logicModuleContainer.innerHTML = `
   <h2>Logic Module</h2>
   <p class="game-instructions">
@@ -77,7 +77,6 @@ function updateSelectedView(): void {
 // Checks if the player has the correct solution
 //------------------------------------------
 function checkSolution(): void {
-
   let isCorrect = selectedFragments.length === correctSolution.length;
 
   for (let i = 0; i < correctSolution.length && isCorrect; i++) {
@@ -89,13 +88,14 @@ function checkSolution(): void {
     saveRoomProgress(roomNumber, "B");
     showPlayerStats();
 
-    const message = "You deployed without testing... or did you? The logic holds. The system stabilizes. The letter B is yours.";
+    const message =
+      "You deployed without testing... or did you? The logic holds. The system stabilizes. The letter B is yours.";
     loadGameOverPage(message, true);
-
   } else {
     stopRoomTimer();
 
-    const message = "Logic Error: The condition doesn´t hold. Production refuses to cooperate. Try again!";
+    const message =
+      "Logic Error: The condition doesn´t hold. Production refuses to cooperate. Try again!";
     loadGameOverPage(message, false);
   }
 }
@@ -105,21 +105,21 @@ function checkSolution(): void {
 function addFragmentListeners(): void {
   const fragmentsContainer = document.getElementById("fragments");
   if (!fragmentsContainer) return;
-  
+
   fragments.forEach((fragment) => {
     const button = document.createElement("button");
     button.textContent = fragment;
     button.dataset.fragment = fragment;
     fragmentsContainer.appendChild(button);
-    
+
     button.addEventListener("click", () => {
       if (!selectedFragments.includes(fragment)) {
         selectedFragments.push(fragment);
         button.style.display = "none";
         updateSelectedView();
       }
-    })
-  })
+    });
+  });
 }
 
 // Adds listeners to the undo, check and back buttons
@@ -129,13 +129,15 @@ function addButtonListeners(): void {
   backButton?.addEventListener("click", () => {
     stopRoomTimer();
     goToLobby();
-    });
+  });
 
   const undoBtn = document.getElementById("undoBtn");
   undoBtn?.addEventListener("click", () => {
     const lastFragment = selectedFragments.pop();
     if (lastFragment) {
-      const buttonToRestore = document.querySelector(`button[data-fragment="${lastFragment}"]`) as HTMLButtonElement;
+      const buttonToRestore = document.querySelector(
+        `button[data-fragment="${lastFragment}"]`,
+      ) as HTMLButtonElement;
       if (buttonToRestore) {
         buttonToRestore.style.display = "";
       }
@@ -150,11 +152,10 @@ function addButtonListeners(): void {
 // Starts the room
 //----------------
 export function loadRoomThree(): void {
-
   selectedFragments = [];
   if (!logicModuleContainer) return;
   renderRoom();
-  startRoomTimer( logicModuleContainer, 60);
+  startRoomTimer(logicModuleContainer, 60);
   fragments.sort(() => Math.random() - 0.5);
   addFragmentListeners();
   addButtonListeners();
