@@ -2,14 +2,11 @@ import { goToLobby } from "./gotoLobby";
 import { startRoomTimer, stopRoomTimer } from "./roomTimer";
 import { loadGameOverPage } from "./gameOverPage";
 import { saveRoomProgress } from "./saveRoomProgress";
-import { showPlayerStats } from "./showPlayerStats";
 
 export function loadRoomOne() {
   renderFirewallContainer();
 
-  const firewallContainer = document.getElementById("firewall");
   if (!firewallContainer) return;
-
   startRoomTimer(firewallContainer, 100);
 }
 
@@ -59,18 +56,11 @@ function renderFirewallContainer() {
   if (!firewallContainer) return;
 
   firewallContainer.innerHTML = `
-    <div class="header">
-      <h2>The Firewall</h2>
-      <p>Match all pairs of cards to break the firewall</p>
-      <p>and collect the artifact needed for the password.</p> 
-      <p>Be quick — time is running out!</p>
-    </div>
-
-    <div class="game">
-      <div id="memoryContainer" class="memory-container"></div>
-    </div>
-
-    <button id="back" class="btn-primary">Back</button>
+    
+  <h2>The Firewall</h2>
+  <p>Match all pairs of cards to break the firewall.</p>
+  <div id="memoryContainer" class="memory-container"></div>
+  <button id="back" class="btn-primary">Back</button>
   `;
 
   addEventListenerForBackButton();
@@ -85,9 +75,11 @@ function renderCards() {
 
   memoryCards.forEach((card) => {
     html += `
+
     <button class="card" data-id="${card.id}">
-      ${card.flipped ? card.emoji : "🔥"}
-    </button>`;
+    ${card.flipped ? card.emoji : "🔥"}
+    </button>
+    `;
   });
 
   cards.innerHTML = html;
@@ -103,7 +95,7 @@ function handleCardClick(id: number) {
   if (clickedCard.matched) return; // Already matched
 
   const flippedCards = getUnmatchedFlippedCards();
-  if (flippedCards.length >= 2) return; // Two cards open
+  if (flippedCards.length >= 2) return;
 
   clickedCard.flipped = true;
 
@@ -129,7 +121,6 @@ function checkForMatch() {
 
     renderCards();
 
-    // All matched?
     if (memoryCards.every((card) => card.matched)) {
       handleGameComplete();
     }
@@ -149,7 +140,6 @@ function checkForMatch() {
 function handleGameComplete() {
   stopRoomTimer();
   saveRoomProgress(roomNumber, roomArtifact);
-  showPlayerStats();
 
   const message = "You broke the firewall and collected artifact 'I'.";
   loadGameOverPage(message, true);
@@ -161,6 +151,7 @@ function addEventListenerForEachCard() {
   cards.forEach((button) => {
     button.addEventListener("click", () => {
       const id = Number(button.dataset.id);
+
       handleCardClick(id);
     });
   });
@@ -169,5 +160,8 @@ function addEventListenerForEachCard() {
 function addEventListenerForBackButton() {
   const backButton = document.querySelector<HTMLButtonElement>("#back");
 
-  backButton?.addEventListener("click", goToLobby);
+  backButton?.addEventListener("click", () => {
+    stopRoomTimer();
+    goToLobby();
+  });
 }
