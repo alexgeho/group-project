@@ -161,7 +161,7 @@ function addEventListenerForBackButton() {
   const backButton = document.querySelector<HTMLButtonElement>("#back");
 
   backButton?.addEventListener("click", () => {
-    stopRoomTimer(); //pauseRoomTimer();
+    stopRoomTimer();
     goToLobby();
   });
 }
