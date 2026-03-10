@@ -1,13 +1,19 @@
-@use "reset";
-@use "global";
-@use "login";
-@use "room_one";
-@use "room_two";
-@use "room_six";
-@use "room_three";
-@use "roomFinal";
-@use "highscoreDisplay";
-@use "finalVictory";
-@use "about";
-@use "welcomeModal";
-@use "resetHighscoreHack";
+@use "base/reset";
+@use "base/global";
+
+@use "../styles/rooms/room_one";
+@use "../styles/rooms/room_two";
+@use "../styles/rooms/room_three";
+@use "../styles/rooms/room_four";
+@use "../styles/rooms/roomFive";
+@use "../styles/rooms/room_six";
+@use "../styles/rooms/roomFinal";
+
+@use "./components/highscoreDisplay";
+@use "./components/welcomeModal";
+@use "./components/resetHighscoreHack";
+
+@use "pages/login";
+@use "pages/finalVictory";
+@use "pages/about";
+@use "pages/gameOver";
