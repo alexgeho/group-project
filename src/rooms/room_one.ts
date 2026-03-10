@@ -1,7 +1,7 @@
-import { goToLobby } from "./gotoLobby";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { loadGameOverPage } from "./gameOverPage";
-import { saveRoomProgress } from "./saveRoomProgress";
+import { goToLobby } from "../navigation/gotoLobby";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { saveRoomProgress } from "../game/saveRoomProgress";
 
 export function loadRoomOne() {
   renderFirewallContainer();

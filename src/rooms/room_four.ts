@@ -1,9 +1,9 @@
-import { goToLobby } from "./gotoLobby";
-import { showPlayerStats } from "./showPlayerStats";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { loadGameOverPage } from "./gameOverPage";
-import { saveRoomProgress } from "./saveRoomProgress";
-import type { IPlayer } from "./models/Player";
+import { goToLobby } from "../navigation/gotoLobby";
+import { showPlayerStats } from "../ui/showPlayerStats";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { saveRoomProgress } from "../game/saveRoomProgress";
+import type { IPlayer } from "../models/Player";
 
 const roomNumber = 4;
 
@@ -13,7 +13,7 @@ const shift = 1;
 const roomArtifact = "G";
 
 // Dekoderar en text med Caesar-chiffer. Varje bokstav flyttas 1 'shift' steg bakåt i alfabetet.
- 
+
 function caesarDecode(text: string, shift: number): string {
   let result = "";
 
@@ -44,7 +44,7 @@ function caesarDecode(text: string, shift: number): string {
 const decodedMessage = caesarDecode(encryptedMessage, shift);
 
 // Kontrollerar om spelarens svar är rätt. 
- 
+
 function isCorrectAnswer(answer: string): boolean {
   const answerUpper = answer.toUpperCase().trim();
   const correctMessage = "THE PORTAL LETTER IS G";

@@ -1,4 +1,4 @@
-import { goToLobby } from "./gotoLobby";
+import { goToLobby } from "../navigation/gotoLobby";
 
 export function loadAboutPage() {
   const aboutSection = document.getElementById("about");

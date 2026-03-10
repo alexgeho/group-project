@@ -1,4 +1,4 @@
-import { SetFinalRoomBtnStatus } from "./final-room-btn-access";
+import { SetFinalRoomBtnStatus } from "../ui/final-room-btn-access";
 import { resetTotalTimer } from "./total_timer";
 
 export function resetUI(): void {
@@ -17,7 +17,7 @@ export function resetUI(): void {
   if (artefacts) artefacts.textContent = '';
 
   const finalRoomCard = document.querySelector('.room-7');
-  if(finalRoomCard){
+  if (finalRoomCard) {
     if (finalRoomCard) {
       const classesToDelete = Array.from(finalRoomCard.classList)
         .filter(className => className.startsWith('portal-progress'));
@@ -25,7 +25,7 @@ export function resetUI(): void {
       finalRoomCard.classList.remove(...classesToDelete);
 
       finalRoomCard.classList.add('portal-progress1');
-    } 
+    }
   }
   resetTotalTimer()
   SetFinalRoomBtnStatus();

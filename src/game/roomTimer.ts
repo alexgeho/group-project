@@ -1,4 +1,4 @@
-import { loadGameOverPage } from "./gameOverPage";
+import { loadGameOverPage } from "../ui/gameOverPage";
 let intervalId: number | null = null
 let timeLeft = 0;
 

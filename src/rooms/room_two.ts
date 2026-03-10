@@ -1,7 +1,7 @@
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { goToLobby } from "./gotoLobby";
-import { loadGameOverPage } from "./gameOverPage";
-import { saveRoomProgress } from "./saveRoomProgress";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { goToLobby } from "../navigation/gotoLobby";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { saveRoomProgress } from "../game/saveRoomProgress";
 
 const dataBaseContainer = document.getElementById("database");
 const roomNumber = 2;
@@ -66,8 +66,9 @@ export function loadRoomTwo(): void {
   if (removeBtn) removeBtn.addEventListener("click", removeItem);
 
   if (checkBtn) {
-    checkBtn.addEventListener("click", checkDatabase) }
-    
+    checkBtn.addEventListener("click", checkDatabase)
+  }
+
   if (resetBtn) {
     resetBtn.addEventListener("click", function () {
       initBrokenDatabase();
@@ -75,7 +76,7 @@ export function loadRoomTwo(): void {
     });
   }
 
- 
+
   /*  */
 }
 /* END function loadRoomTwo() */

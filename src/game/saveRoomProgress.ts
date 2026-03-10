@@ -1,4 +1,4 @@
-import { getPlayer } from "./fetchPlayerFromLs";
+import { getPlayer } from "../storage/fetchPlayerFromLs";
 import { stopRoomTimer, getTimeLeft } from "./roomTimer";
 
 export function saveRoomProgress(roomNumber: number, roomArtifact: string): void {

@@ -1,9 +1,9 @@
-import { getPlayer } from "./fetchPlayerFromLs"
-import { goToLobby } from "./gotoLobby";
+import { getPlayer } from "../storage/fetchPlayerFromLs"
+import { goToLobby } from "../navigation/gotoLobby";
 import { resetUI } from "./reset-ui";
-import { showPlayerStats } from "./showPlayerStats";
+import { showPlayerStats } from "../ui/showPlayerStats";
 
-export function ResetPlayerStats(){
+export function ResetPlayerStats() {
   const player = getPlayer();
   if (player) {
     player.points = 0,

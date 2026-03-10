@@ -1,4 +1,4 @@
-import { getHighscoreList } from './highscore.ts';
+import { getHighscoreList } from '../game/highscore.ts';
 import { handleResetHighscore } from './resetHighscore.ts';
 
 export function showHighscore(elementName: string): void {

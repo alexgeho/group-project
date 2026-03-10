@@ -1,4 +1,4 @@
-import { getPlayer } from "./fetchPlayerFromLs";
+import { getPlayer } from "../storage/fetchPlayerFromLs";
 
 export function showPlayerStats(): void {
   const playerData = getPlayer();
@@ -18,7 +18,7 @@ export function showPlayerStats(): void {
   }
 
   const score = document.querySelector("#score") as HTMLSpanElement
-  if(score){
+  if (score) {
     score.textContent = `${playerData.points}`;
   }
   const progress = document.querySelector('#progress-bar') as HTMLProgressElement;
@@ -59,13 +59,13 @@ export function showPlayerStats(): void {
       finalRoomCard?.classList.add('portal-progress6');
       break;
   }
-  
+
   const finishedRooms: number[] = playerData.roomsCompleted;
 
   finishedRooms.forEach(element => {
     const btn = document.getElementById(`enterRoom${element}`) as HTMLButtonElement
-    if(btn){
-      btn.disabled=true;
+    if (btn) {
+      btn.disabled = true;
     }
   });
 }

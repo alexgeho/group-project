@@ -1,10 +1,10 @@
 import "./styles/style.scss";
-import { loginUser } from "./login.ts";
-import { logout } from "./logout";
-import { fetchRooms } from "./fetchRooms";
-import { checkLoggedInPlayer } from "./checkLoggedInPlayer";
-import { showHighscore } from "./highscoreDisplay.ts";
-import { loadAboutPage } from "./about.ts";
+import { loginUser } from "./auth/login.ts";
+import { logout } from "./auth/logout.ts";
+import { fetchRooms } from "./utils/fetchRooms.ts";
+import { checkLoggedInPlayer } from "./storage/checkLoggedInPlayer.ts";
+import { showHighscore } from "./ui/highscoreDisplay.ts";
+import { loadAboutPage } from "./rooms/about.ts";
 
 await fetchRooms();
 showHighscore("high-score-start-page");

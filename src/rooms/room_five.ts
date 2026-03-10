@@ -1,7 +1,7 @@
-import { goToLobby } from "./gotoLobby";
-import { loadGameOverPage } from "./gameOverPage";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { saveRoomProgress } from "./saveRoomProgress";
+import { goToLobby } from "../navigation/gotoLobby";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { saveRoomProgress } from "../game/saveRoomProgress";
 
 const bugRoomContainer = document.getElementById("bug-room");
 const roomNumber = 5;

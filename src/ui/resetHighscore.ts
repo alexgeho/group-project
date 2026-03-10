@@ -1,4 +1,4 @@
-import { saveHighscoreList } from './highscore.ts';
+import { saveHighscoreList } from '../game/highscore.ts';
 import { showHighscore } from './highscoreDisplay.ts';
 
 const RESET_HIGHSCORE_PASSWORD = 'marsmarauders'; // current password for resetting highscore list
@@ -11,10 +11,10 @@ const RESET_HIGHSCORE_PASSWORD = 'marsmarauders'; // current password for resett
 export function handleResetHighscore(elementName: string): void {
     const backdrop = document.createElement('div');
     backdrop.className = 'reset-modal-backdrop';
-    
+
     const modal = document.createElement('div');
     modal.className = 'reset-modal';
-    
+
     modal.innerHTML = `
         <div class="reset-modal-content">
             <h3>🔐 ACCESS TERMINAL //... </h3>
@@ -27,25 +27,25 @@ export function handleResetHighscore(elementName: string): void {
             </div>
         </div>
     `;
-    
+
     document.body.appendChild(backdrop);
     document.body.appendChild(modal);
-    
+
     const input = modal.querySelector('#reset-password-input') as HTMLInputElement;
     const submitBtn = modal.querySelector('#reset-submit-btn') as HTMLButtonElement;
     const cancelBtn = modal.querySelector('#reset-cancel-btn') as HTMLButtonElement;
     const feedback = modal.querySelector('#reset-feedback') as HTMLDivElement;
-    
+
     const cleanup = () => {
         backdrop.remove();
         modal.remove();
     };
-    
+
     const showFeedback = (message: string, type: 'success' | 'error') => {
         feedback.textContent = message;
         feedback.className = `reset-feedback reset-feedback-${type}`;
     };
-    
+
     const handleSubmit = () => {
         const password = input.value.trim();
         if (password === RESET_HIGHSCORE_PASSWORD) {
@@ -61,7 +61,7 @@ export function handleResetHighscore(elementName: string): void {
             showFeedback('✗ ERROR: ACCESS DENIED - invalid code', 'error');
         }
     };
-    
+
     submitBtn.addEventListener('click', handleSubmit);
     cancelBtn.addEventListener('click', cleanup);
     input.addEventListener('keypress', (e) => {

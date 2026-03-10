@@ -1,13 +1,13 @@
-import { startTotalTimer } from "./total_timer";
-import { loadRoomFive } from "./room_five";
-import { loadRoomOne } from "./room_one";
-import { loadRoomTwo } from "./room_two";
-import { loadRoomFour } from "./room_four";
-import { loadRoomSix } from "./room_six";
-import { loadRoomThree } from "./room_three";
-import type { IRoom } from "./models/Room";
-import { loadFinalRoom } from "./room_final";
-import { SetFinalRoomBtnStatus } from "./final-room-btn-access";
+import { startTotalTimer } from "../game/total_timer";
+import { loadRoomFive } from "../rooms/room_five";
+import { loadRoomOne } from "../rooms/room_one";
+import { loadRoomTwo } from "../rooms/room_two";
+import { loadRoomFour } from "../rooms/room_four";
+import { loadRoomSix } from "../rooms/room_six";
+import { loadRoomThree } from "../rooms/room_three";
+import type { IRoom } from "../models/Room";
+import { loadFinalRoom } from "../rooms/room_final";
+import { SetFinalRoomBtnStatus } from "../ui/final-room-btn-access";
 
 let roomLoaded = false;
 

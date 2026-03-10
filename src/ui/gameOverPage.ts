@@ -1,5 +1,5 @@
-import { goToLobby } from "./gotoLobby";
-import { stopRoomTimer } from "./roomTimer";
+import { goToLobby } from "../navigation/gotoLobby";
+import { stopRoomTimer } from "../game/roomTimer";
 
 export function loadGameOverPage(message: string, isWin: boolean): void {
 

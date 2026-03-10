@@ -1,8 +1,8 @@
-import { getPlayer } from "./fetchPlayerFromLs";
-import { goToLobby } from "./gotoLobby";
-import { addHighscore, getHighscoreList } from "./highscore";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
+import { getPlayer } from "../storage/fetchPlayerFromLs";
+import { goToLobby } from "../navigation/gotoLobby";
+import { addHighscore, getHighscoreList } from "../game/highscore";
 import { loadFinalVictoryPage } from "./room-final-victory";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
 
 const memoryContainer = document.getElementById("destiny");
 

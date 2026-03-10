@@ -1,5 +1,5 @@
-import { getPlayer } from "./fetchPlayerFromLs";
-export function SetFinalRoomBtnStatus(){
+import { getPlayer } from "../storage/fetchPlayerFromLs";
+export function SetFinalRoomBtnStatus() {
   const playerData = getPlayer();
   const finalRoomBtn = document.querySelector("#enterRoom7") as HTMLButtonElement;
   if (playerData) {

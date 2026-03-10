@@ -1,8 +1,8 @@
-import { goToLobby } from "./gotoLobby";
-import { showPlayerStats } from "./showPlayerStats";
-import { loadGameOverPage } from "./gameOverPage";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { saveRoomProgress } from "./saveRoomProgress";
+import { goToLobby } from "../navigation/gotoLobby";
+import { showPlayerStats } from "../ui/showPlayerStats";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { saveRoomProgress } from "../game/saveRoomProgress";
 
 // Game data
 //----------

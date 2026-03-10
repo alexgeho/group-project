@@ -1,7 +1,7 @@
-import { goToLobby } from "./gotoLobby";
-import { loadGameOverPage } from "./gameOverPage";
-import { startRoomTimer, stopRoomTimer } from "./roomTimer";
-import { saveRoomProgress } from "./saveRoomProgress";
+import { goToLobby } from "../navigation/gotoLobby";
+import { loadGameOverPage } from "../ui/gameOverPage";
+import { startRoomTimer, stopRoomTimer } from "../game/roomTimer";
+import { saveRoomProgress } from "../game/saveRoomProgress";
 
 const portalContainer = document.getElementById("portal-control");
 const roomNumber = 6;
@@ -105,13 +105,13 @@ function renderPortals(): void {
         <h3>${portal.name} Portal</h3>
         <div class="portal-options">
           ${portal.options
-            .map(
-              (option) =>
-                `<button class="portal-option-btn" data-portal-index="${index}" data-value="${option}">
+          .map(
+            (option) =>
+              `<button class="portal-option-btn" data-portal-index="${index}" data-value="${option}">
                   ${option}
                 </button>`,
-            )
-            .join("")}
+          )
+          .join("")}
         </div>
       </div>
     `,

@@ -1,13 +1,13 @@
-import { getPlayer } from "./fetchPlayerFromLs";
-import { ResetPlayerStats } from "./reset-player-stats";
-import { stopRoomTimer } from "./roomTimer";
-import { GetDataToShare } from "./share-result";
-import { pauseTotalTimer } from "./total_timer";
+import { getPlayer } from "../storage/fetchPlayerFromLs";
+import { ResetPlayerStats } from "../game/reset-player-stats";
+import { stopRoomTimer } from "../game/roomTimer";
+import { GetDataToShare } from "../ui/share-result";
+import { pauseTotalTimer } from "../game/total_timer";
 
 export function loadFinalVictoryPage(message: string, isWin: boolean): void {
   const player = getPlayer()
   pauseTotalTimer();
-  
+
   const gameOverContainer = document.querySelector(".final-puzzle-victory");
   if (!gameOverContainer) return;
 
@@ -19,8 +19,8 @@ export function loadFinalVictoryPage(message: string, isWin: boolean): void {
               <div class="win-div">
                 <h2 class="win">Congratulations!</h2> 
                 <p class="p-message-win">${message}</p>
-              </div>` : 
-              `<div class="lose-div">
+              </div>` :
+      `<div class="lose-div">
                   <h2 class="lose">Game Over</h2> 
                   <p class="p-message-lose">${message}</p>
                 </div>`}

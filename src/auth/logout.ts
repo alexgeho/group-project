@@ -1,4 +1,4 @@
-import { showHighscore } from "./highscoreDisplay";
+import { showHighscore } from "../ui/highscoreDisplay";
 
 export function logout(): void {
   console.log('logout');
